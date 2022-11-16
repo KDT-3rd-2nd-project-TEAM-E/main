@@ -1,0 +1,27 @@
+/* header common area */
+#headerArea {
+  width: 20%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  font-family: 'Spoqa Han Sans Neo', sans-serif;
+}
+
+#headerArea .header_inner {
+  width: 1200px;
+  height: 240px;
+  margin: 0 auto;
+}
+
+#headerArea .logo a {
+  display: block;
+  width: 200px;
+  height: 100px;
+  margin: auto;
+  background: url("../images/logo.png") 0 0 no-repeat;
+  text-indent: -999px;
+  overflow: hidden;
+}
