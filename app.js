@@ -17,18 +17,31 @@ app.use(express.json());
 
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("main", {activeMenu : "main"});
 });
 
 app.get("/sub1", (req, res) => {
-  res.render("sub1");
+  res.render("sub1", {activeMenu : "sub1"});
 });
 
-app.post("/search", async (req, res) => {
+app.get("/sub2", (req, res) => {
+  res.render("sub2", {activeMenu : "sub2"});
+});
+
+app.get("/sub3", (req, res) => {
+  res.render("sub3", {activeMenu : "sub3"});
+});
+
+app.get("/sub4", (req, res) => {
+  res.render("sub4", {activeMenu : "sub4"});
+//커밋
+});
+
+app.post("/main", async (req, res) => {
   // console.log(req.body.search);
   let result = await main(req.body.search);
   console.log("aa >>> ", result);
-  res.render("search");
+  res.render("main");
 });
 
 //Crawler
@@ -94,18 +107,7 @@ async function main(search) {
   }
 }
 
-app.get("/sub2", (req, res) => {
-  res.render("sub2");
-});
 
-app.get("/sub3", (req, res) => {
-  res.render("sub3");
-});
-
-app.get("/sub4", (req, res) => {
-  res.render("sub4");
-
-});
 
 app.get("*", (req, res) => {
   res.render("404");
