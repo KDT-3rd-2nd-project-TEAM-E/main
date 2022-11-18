@@ -15,20 +15,19 @@ app.use(
 );
 app.use(express.json());
 
-
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("main", { activeMenu: main });
 });
 
 app.get("/sub1", (req, res) => {
   res.render("sub1");
 });
 
-app.post("/search", async (req, res) => {
+app.post("/main", async (req, res) => {
   // console.log(req.body.search);
   let result = await main(req.body.search);
   console.log("aa >>> ", result);
-  res.render("search");
+  res.render("main");
 });
 
 //Crawler
@@ -104,11 +103,6 @@ app.get("/sub3", (req, res) => {
 
 app.get("/sub4", (req, res) => {
   res.render("sub4");
-
-});
-
-app.get("*", (req, res) => {
-  res.render("404");
 });
 
 app.listen(PORT, () => {
