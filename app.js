@@ -15,6 +15,7 @@ app.use(
 );
 app.use(express.json());
 
+
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -103,6 +104,7 @@ app.get("/sub3", (req, res) => {
 
 app.get("/sub4", (req, res) => {
   res.render("sub4");
+
 });
 
 app.get("*", (req, res) => {
