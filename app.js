@@ -11,23 +11,23 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index', { activeMenu: 'main'});
 });
 
 app.get('/sub1', (req, res) => {
-  res.render('sub1');
+  res.render('sub1', { activeMenu: 'sub1'});
 });
 
 app.get('/sub2', (req, res) => {
-  res.render("sub2");
+  res.render("sub2", { activeMenu: 'sub2'});
 });
 
 app.get('/sub3', (req, res) => {
-  res.render("sub3");
+  res.render("sub3", { activeMenu: 'sub3'});
 });
 
 app.get('/sub4', (req, res) => {
-  res.render('sub4');
+  res.render('sub4', { activeMenu: 'sub4'});
 });
 
 app.get('*', (req, res) => {

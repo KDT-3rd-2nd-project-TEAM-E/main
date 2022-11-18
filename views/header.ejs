@@ -1,0 +1,54 @@
+<div id="skipNav">
+  <a href="#content">본문 바로가기</a>
+  <a href="#gnb">글로벌 네비게이션 바로가기</a>
+</div>
+
+<div id="wrap">
+  <header id="headerArea">
+    <div class="headerInner">
+      <h1 class="logo"><a href="/">Kcal-cal</a></h1>
+      <nav id="gnb">
+        <h2 class="hidden">Navigation</h2>
+        <ul>
+          <li class="<%= activeMenu === 'main' ? 'active' : '' %>">
+            <h3>
+              <b class="top-curve"></b>
+              <b class="bottom-curve"></b>
+              <a href="/"><i class="fas fa-home"></i>HOME</a>
+            </h3>
+          </li>
+          <li  class="<%= activeMenu === 'sub1' ? 'active' : '' %>">
+            <h3>
+              <b class="top-curve"></b>
+              <b class="bottom-curve"></b>
+              <a href="/sub1"><i class="fas fa-fire"></i>칼로리 측정</a>
+            </h3>
+          </li>
+          <li  class="<%= activeMenu === 'sub2' ? 'active' : '' %>">
+            <h3>
+              <b class="top-curve"></b>
+              <b class="bottom-curve"></b>
+              <a href="/sub2"><i class="fas fa-running"></i>운동량 측정</a>
+            </h3>
+          </li>
+          <li  class="<%= activeMenu === 'sub3' ? 'active' : '' %>">
+            <h3>
+              <b class="top-curve"></b>
+              <b class="bottom-curve"></b>
+              <a href="/sub3"><i class="fas fa-ruler-combined"></i>비만도 측정</a>
+            </h3>
+          </li>
+          <li  class="<%= activeMenu === 'sub4' ? 'active' : '' %>">
+            <h3>
+              <b class="top-curve"></b>
+              <b class="bottom-curve"></b>
+              <a href="/sub4"><i class="fas fa-utensil-spoon"></i>기초대사량</a>
+            </h3>
+          </li>
+        </ul>
+      </nav>
+      <a href="#" class="menu_ham">
+        <!-- <span>메뉴열고닫기</span> -->
+      </a>
+    </div>
+  </header>
