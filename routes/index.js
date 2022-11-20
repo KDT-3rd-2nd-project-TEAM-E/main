@@ -7,3 +7,5 @@ const router = express.Router();
 // GET / => localhost:PORT/
 router.get('/', controller.main);
 
+router.get('/login', controller.login);
+
