@@ -15,17 +15,22 @@ USE kcalcal;
         height INT
     );
 
-CREATE TABLE member(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    userid VARCHAR(20) NOT NULL UNIQUE,
-    userpw VARCHAR(20) NOT NULL
-);
+-- CREATE TABLE member(
+--     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--     userid VARCHAR(20) NOT NULL UNIQUE,
+--     userpw VARCHAR(20) NOT NULL
+-- );
 
 CREATE TABLE userweight(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    userid VARCHAR(20) NOT NULL UNIQUE,
-    DateInserted DATETIME DEFAULT CURRENT_TIMESTAMP, 
+    userid VARCHAR(20) NOT NULL PRIMARY KEY UNIQUE,
+    Date DATETIME DEFAULT NOW(), 
     weight INT
+);
+
+CREATE TABLE test(
+    userid VARCHAR(20) NOT NULL PRIMARY KEY UNIQUE,
+    Date DATETIME DEFAULT CURRENT_TIMESTAMP, 
+    NOW1 DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 -- CREATE TABLE socialKa ();
@@ -42,7 +47,7 @@ DESC user;
 DROP TABLE userweight;
 
 SELECT * FROM user;
-SELECT * FROM member;
+-- SELECT * FROM member;
 SELECT * FROM userweight;
 
 INSERT INTO user (userid, userpw, useremail, nickname, gender, age, height) VALUES ('aaa', 'aaa', 'aaa@aaa.a', 'aaa', 'M', 25, 178);
@@ -51,6 +56,10 @@ INSERT INTO member (userid, userpw) VALUES ('aaa', 'aaa');
 INSERT INTO member (userid, userpw) VALUES ('bbb', 'bbb');
 
 INSERT INTO userweight (userid, weight) VALUES ('aaa', 70); 
+INSERT INTO test (userid) VALUES ('aaa'); 
+SELECT * FROM test;
+DROP TABLE test;
+
 
 -- 예시들
 SELECT id, address FROM user; -- id, 주소 컬럼 조회
