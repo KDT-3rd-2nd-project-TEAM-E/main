@@ -12,15 +12,15 @@ app.use("/static", express.static(__dirname + "/static"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-
-var client_id = "urNGDSfBuXXLnlOxYK9B";
-var client_secret = "FlW5KvYsgW";
-
-
+// var client_id = "urNGDSfBuXXLnlOxYK9B";
+// var client_secret = "FlW5KvYsgW";
 
 // const indexRouter = require("./routes");
 // app.use("/", indexRouter);
+
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
 
 app.get("/testlogin", (req, res) => {
   res.render("testlogin");
@@ -42,12 +42,7 @@ app.get("/testsearchkakao", (req, res) => {
   // }
 });
 
-
-
-
-
 app.get("/", (req, res) => {
-  res.set({ "access-control-allow-origin": "*" });
   res.render("main", { activeMenu: "main" });
 });
 
@@ -145,9 +140,6 @@ async function main(search) {
     console.log(err);
   }
 }
-
-
-
 
 app.get("*", (req, res) => {
   res.render("404");
