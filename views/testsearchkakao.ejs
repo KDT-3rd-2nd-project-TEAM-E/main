@@ -14,14 +14,25 @@
     <title>Document</title>
   </head>
   <body>
+    <p></p>
     <script>
       $.ajax({
         method: "GET",
         url: "https://dapi.kakao.com/v2/search/blog?target=title",
-        data: { query: "건강" },
+        data: { query: "건강관리" },
         headers: { Authorization: "KakaoAK a781e81dc26fc9d9edf0b4cb02c30760" },
       }).done(function (msg) {
         console.log(msg);
+        for (i = 0; i < msg.documents.length; i++) {
+          $("p").append("<strong>" + msg.documents[i].blogname + "</strong>");
+          $("p").append(
+            "<div>" + msg.documents[i].contents.substr(0, 20) + "..." + "</div>"
+          );
+          $("p").append("<div>" + msg.documents[i].datetime + "</div>");
+          $("p").append("<div>" + msg.documents[i].title + "</div>");
+          $("p").append("<div>" + msg.documents[i].url + "</div>");
+          $("p").append("<img src='" + msg.documents[i].thumbnail + "'/>");
+        }
       });
     </script>
   </body>
