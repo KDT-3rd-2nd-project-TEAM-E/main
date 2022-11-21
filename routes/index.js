@@ -7,6 +7,7 @@ const router = express.Router();
 // GET / => localhost:PORT/
 router.get("/", controller.index); // intro => index
 
+
 router.get("/main", controller.main);
 
 router.get("/login", controller.login);
@@ -27,3 +28,4 @@ router.get("/info", controller.info);
 // get, post 등의 순서로 할지 페이지의 순서대로 할지 보기 좋게 정렬
 
 module.exports = router;
+
