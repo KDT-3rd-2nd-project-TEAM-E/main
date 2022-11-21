@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = 8000;
 const axios = require("axios");
+const cors = require("cors");
 //crawler
 const cheerio = require("cheerio");
 
@@ -46,24 +47,25 @@ app.get("/testsearchkakao", (req, res) => {
 
 
 app.get("/", (req, res) => {
-  res.render("main", {activeMenu : "main"});
+  res.set({ "access-control-allow-origin": "*" });
+  res.render("main", { activeMenu: "main" });
 });
 
 app.get("/sub1", (req, res) => {
-  res.render("sub1", {activeMenu : "sub1"});
+  res.render("sub1", { activeMenu: "sub1" });
 });
 
 app.get("/sub2", (req, res) => {
-  res.render("sub2", {activeMenu : "sub2"});
+  res.render("sub2", { activeMenu: "sub2" });
 });
 
 app.get("/sub3", (req, res) => {
-  res.render("sub3", {activeMenu : "sub3"});
+  res.render("sub3", { activeMenu: "sub3" });
 });
 
 app.get("/sub4", (req, res) => {
-  res.render("sub4", {activeMenu : "sub4"});
-//커밋
+  res.render("sub4", { activeMenu: "sub4" });
+  //커밋
 });
 
 app.get("/login", (req, res) => {
@@ -150,6 +152,7 @@ async function main(search) {
 app.get("*", (req, res) => {
   res.render("404");
 });
+
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
