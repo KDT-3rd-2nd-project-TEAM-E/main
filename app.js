@@ -15,7 +15,6 @@ app.use(
 );
 app.use(express.json());
 
-
 app.get("/", (req, res) => {
   res.render("main", {activeMenu : "main"});
 });
@@ -35,6 +34,14 @@ app.get("/sub3", (req, res) => {
 app.get("/sub4", (req, res) => {
   res.render("sub4", {activeMenu : "sub4"});
 //커밋
+});
+
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.get("/signup", (req, res) => {
+  res.render("signup");
 });
 
 app.post("/main", async (req, res) => {

@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@100;300;400&display=swap");
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+  scale: 0.95;
+}
+
+body {
+  background: #d9ebdf;
+  width: 100%;
+  min-width: 320px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: #ffffff;
+  border: 0px solid black;
+  border-radius: 20px;
+  width: 50%;
+  height: auto;
+  text-align: center;
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05);
+  border: 0.2rem solid #fff;
+  border-radius: 2rem;
+  padding: 0.4em;
+}
+
+.title {
+  margin-top: 8px;
+  text-align: center;
+  padding: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 18px;
+  color: #777;
+}
+
+.title h2 {
+  color: #3dad6b;
+}
+
+.inputBox {
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 530px;
+  padding: 15px;
+  width: 100%;
+  margin: 0px 0px 10px;
+}
+
+.inputBox:focus {
+  border: 2px solid #34945c;
+  background-color: #f7faf9;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 530px;
+  padding: 15px;
+  width: 100%;
+  margin: 0px 0px 10px;
+}
+
+.signupId input {
+  width: 70%;
+  height: 100%;
+  font-size: 1em;
+  display: inline;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+.signupId input:focus {
+  margin-top: 20px;
+  width: 70%;
+}
+
+#checkId {
+  width: 30%;
+  height: 100%;
+  font-size: 1em;
+  display: inline;
+  box-sizing: border-box;
+}
+
+.signupId,
+.signupPw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loginBtn {
+  text-transform: uppercase;
+  outline: 0;
+  background: #3dad6b;
+  width: 100%;
+  max-width: 530px;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+#loginBtn:hover,
+#loginBtn:active,
+#loginBtn:focus {
+  background: #34945c;
+  text-decoration: underline;
+}
