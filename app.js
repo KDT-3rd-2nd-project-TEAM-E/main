@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = 8000;
 const axios = require("axios");
+const cors = require("cors");
 //crawler
 const cheerio = require("cheerio");
 
@@ -143,6 +144,7 @@ async function main(search) {
 app.get("*", (req, res) => {
   res.render("404");
 });
+
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
