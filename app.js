@@ -8,12 +8,42 @@ const cheerio = require("cheerio");
 app.set("view engine", "ejs");
 app.use("/views", express.static(__dirname + "/views"));
 app.use("/static", express.static(__dirname + "/static"));
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-);
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
+
+var client_id = "urNGDSfBuXXLnlOxYK9B";
+var client_secret = "FlW5KvYsgW";
+
+
+
+// const indexRouter = require("./routes");
+// app.use("/", indexRouter);
+
+app.get("/testlogin", (req, res) => {
+  res.render("testlogin");
+});
+
+app.get("/testsearch", (req, res) => {
+  res.render("testsearch");
+});
+
+app.get("/testsearchkakao", (req, res) => {
+  console.log(req.query.result);
+
+  res.render("testsearchkakao");
+
+  // if (req.query == `req.query.result`) {
+  //   res.render("testsearchkakao");
+  // } else {
+  //   res.send("오류");
+  // }
+});
+
+
+
+
 
 app.get("/", (req, res) => {
   res.render("main", {activeMenu : "main"});
@@ -113,6 +143,7 @@ async function main(search) {
     console.log(err);
   }
 }
+
 
 
 
