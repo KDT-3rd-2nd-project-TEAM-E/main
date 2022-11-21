@@ -16,11 +16,24 @@ app.use(
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.render("main", { activeMenu: main });
+  res.render("main", { activeMenu: "main" });
 });
 
 app.get("/sub1", (req, res) => {
-  res.render("sub1");
+  res.render("sub1", { activeMenu: "sub1" });
+});
+
+app.get("/sub2", (req, res) => {
+  res.render("sub2", { activeMenu: "sub2" });
+});
+
+app.get("/sub3", (req, res) => {
+  res.render("sub3", { activeMenu: "sub3" });
+});
+
+app.get("/sub4", (req, res) => {
+  res.render("sub4", { activeMenu: "sub4" });
+  //커밋
 });
 
 app.post("/main", async (req, res) => {
@@ -93,16 +106,8 @@ async function main(search) {
   }
 }
 
-app.get("/sub2", (req, res) => {
-  res.render("sub2");
-});
-
-app.get("/sub3", (req, res) => {
-  res.render("sub3");
-});
-
-app.get("/sub4", (req, res) => {
-  res.render("sub4");
+app.get("*", (req, res) => {
+  res.render("404");
 });
 
 app.listen(PORT, () => {
