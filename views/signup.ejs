@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/static/css/signup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrap">
+        <div class="title">
+          <h2>회원가입</h2>
+          <span>가입을 통해 더 다양한 서비스를 만나보세요!</span>
+        </div>
+        <hr />
+
+        <div class="signupId">
+          <input
+            type="text"
+            class="inputBox"
+            name="userid"
+            id="userid"
+            placeholder="아이디 입력"
+            required
+          />
+          <button type="button" class="" id="checkId">중복 확인</button>
+          <div id="idError" class="error"></div>
+        </div>
+
+        <div class="signupPw">
+          <input
+            type="password"
+            class="inputBox"
+            name="userpw"
+            id="userpw"
+            placeholder="비밀번호 입력"
+            required
+          />
+          <div id="pwError" class="error"></div>
+        </div>
+
+        <div class="signupPwCheck">
+          <input
+            type="password"
+            class="inputBox"
+            name="checkPw"
+            id="checkPw"
+            placeholder="비밀번호 재입력"
+            required
+          />
+          <div id="pwError" class="error"></div>
+        </div>
+
+        <div class="login">
+          <button type="submit" id="loginBtn" disabled onclick="abc();">
+            가입하기
+          </button>
+          <br />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
