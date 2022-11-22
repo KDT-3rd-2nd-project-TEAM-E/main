@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const PORT = 8000;
 const axios = require("axios");
-const cors = require("cors");
 //crawler
+exports.cors = require("cors");
 const cheerio = require("cheerio");
 
 app.set("view engine", "ejs");
@@ -17,7 +17,6 @@ app.use(
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.set({ "access-control-allow-origin": "*" });
   res.render("main", { activeMenu: "main" });
 });
 

@@ -62,7 +62,7 @@
       }
     });
 
-async function crawler() {
+    async function crawler() {
   axios.defaults.withCredentials = true; // withCredentials 전역 설정
 
   
@@ -73,7 +73,7 @@ async function crawler() {
   try {
     
     const resp = await axios.get(
-      `http://www.myfitnesspal.com/ko/nutrition-facts-calories/${encodeURI(
+      `https://www.myfitnesspal.com/ko/nutrition-facts-calories/${encodeURI(
         search
       )}`);
     const $ = cheerio.load(resp.data); // ❷ HTML을 파싱하고 DOM 생성하기
