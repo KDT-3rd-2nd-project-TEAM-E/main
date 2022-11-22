@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const PORT = 8000;
 const axios = require("axios");
+const cors = require("cors");
 //crawler
-exports.cors = require("cors");
 const cheerio = require("cheerio");
 
 app.set("view engine", "ejs");
@@ -11,6 +11,23 @@ app.use("/views", express.static(__dirname + "/views"));
 app.use("/static", express.static(__dirname + "/static"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// app.use(function (req, res, next) {
+//   // res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
+
+// const options = {
+//   origin: true,
+//   credentials: true,
+//   // optionSuccessStatus: 200,
+// };
+// app.use(cors(options));
 
 // var client_id = "urNGDSfBuXXLnlOxYK9B";
 // var client_secret = "FlW5KvYsgW";
@@ -46,6 +63,12 @@ app.get("/", (req, res) => {
   res.render("main", { activeMenu: "main" });
 });
 
+app.post("/", async (req, res) => {
+  let result = await crawler(req.body.search);
+  console.log("result >>>>", result);
+  res.send({ data: result });
+});
+
 app.get("/sub1", (req, res) => {
   res.render("sub1", { activeMenu: "sub1" });
 });
@@ -71,15 +94,8 @@ app.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-app.post("/main", async (req, res) => {
-  // console.log(req.body.search);
-  let result = await main(req.body.search);
-  console.log("aa >>> ", result);
-  res.render("main");
-});
-
-//Crawler
-async function main(search) {
+// Crawler;
+async function crawler(search) {
   // ❶ HTML 로드하기
   try {
     const resp = await axios.get(
@@ -126,10 +142,10 @@ async function main(search) {
       let fatRegex = kcalText.match(/지방\s:\s\d{1,3}g+./g);
       fat = String(fatRegex[i]).replace(/[^0-9]/g, "");
 
-      let protienRegex = kcalText.match(/단백질\s:\s\d{1,3}./g);
-      protien = String(protienRegex[i]).replace(/[^0-9]/g, "");
+      let proteinRegex = kcalText.match(/단백질\s:\s\d{1,3}./g);
+      protein = String(proteinRegex[i]).replace(/[^0-9]/g, "");
 
-      let array = { title, brand, kcal, amount, carbs, fat, protien };
+      let array = { title, brand, kcal, amount, carbs, fat, protein };
 
       // console.log(">>>", brandAmountArray[i].children[0].data);
       foods.push(array);
@@ -141,10 +157,9 @@ async function main(search) {
   }
 }
 
-app.get("*", (req, res) => {
-  res.render("404");
-});
-
+// app.get("*", (req, res) => {
+//   res.render("404");
+// });
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
