@@ -1,25 +1,69 @@
 body {
   background: #f7f7f7;
   font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1.5;
 }
 
 main {
-  margin-left: 220px;
-  height: 95vh;
+  background: #fff;
+  width: 80vw;
+  height: 96vh;
+  margin: 15px 0 0 215px;
+  padding: 30px 40px 0;
+  position: fixed;
 }
 
-article {
+section {}
+
+/* article {
   background: #fff;
   border-radius: 20px;
   margin: 20px;
   box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .05);
+  padding: 30px 40px;
+} */
+
+h3 {
+  font-size: 2em;
 }
 
 /* SUB1 CSS */
 
 
 /* SUB2 CSS */
+.content_area {
+  padding-top: 20px;
+}
 
+.content_area .list_header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.content_area .list_header ul{
+  display: flex;
+  font-size: 2em;
+}
+.content_area .list_header ul li{
+  margin-left: 20px;
+}
+
+.content_area .list_content a {
+  display: flex;
+}
+
+.content_area .list_content .news{
+  width: 60%;
+}
+
+.content_area .list_content img{
+  width: 30%;
+}
 
 /* SUB3 CSS */
-
+/* input 창 카운트 업 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
