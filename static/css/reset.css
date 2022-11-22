@@ -132,6 +132,8 @@ input, select {
 #skipNav {
   font-family: 'Lato', 'Noto Sans KR', sans-serif;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   overflow: hidden;
   z-index: 110;
