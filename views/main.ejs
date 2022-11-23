@@ -26,7 +26,9 @@
 </head>
 
 <body>
-  <%- include('header.ejs') %>
+  <div id="wrap">
+    <%- include('header.ejs') %>
+  
 
   <!-- main content -->
   <main>
@@ -67,16 +69,17 @@
                 <div class="wedge"></div>
               </div>
               <div class="marker start"></div>
-              <fdiv class="marker end"></div>
+              <div class="marker end"></div>
             </div>
               <div class="marker start"></div>
               <div class="marker end"></div>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
       </section>
-  </main>
-  <script>
+      </main>
+    </div>
+    <script>
      // function crawler 크롤러 값 리스트에 작성
     const form = document.forms["search"];
     function inputInformation(){
@@ -115,7 +118,7 @@
         <p class="food-protein">단백질 ${value[0][i].protein}g</p>
         <p class="food-fat">지방 ${value[0][i].fat}g</p>
       </div>
-      <div class="select" onclick="addKcal();"><i class="fas fa-check"></i></div>
+      <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
       <hr>
     </li>
     `;
@@ -141,7 +144,7 @@
         <p class="food-protein">단백질 ${value[0][i].protein}g</p>
         <p class="food-fat">지방 ${value[0][i].fat}g</p>
       </div>
-      <div class="select" onclick="addKcal();"><i class="fas fa-check"></i></div>
+      <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
       <hr>
     </li>
     `;
@@ -153,31 +156,42 @@
   })}
 
   //function kcal gage  칼로리 값 게이지에 적용
-  function addKcal() {
-    console.log(1);
+  function addKcal(kcal) {
+    console.log('kcal', kcal);
     const kcalTotal = 1700;
     let container1Wedge = document.querySelector(".container1 .wedge");
     let container2Wedge = document.querySelector(".container2 .wedge");
     let markerEnd = document.querySelector(".end");
-    
-    const selectButton = document.querySelectorAll('.select');
-    console.log(selectButton);
-    for(let i = 0 ; i > selectButton.length ; i++){
-      const kcalAmount = document.querySelectorAll('.food-kcal');
-      console.log(`selectButton[n]`);
-      let percentage = (kcalAmount[i] / kcalTotal) * 100 
-      container1Wedge.style.transform = `rotateZ(${percentage =+ percentage}deg)`;
-      container1Wedge.style.transform = `rotateZ(${percentage =+ percentage}deg)`;
-      container1Wedge.style.transform = `rotateZ(${percentage =+ percentage}deg)`;
-      container1Wedge.style.transform = `rotateZ(${percentage =+ percentage}deg)`;
-      markerEnd.style.transform = `rotateZ(${percentage =+ percentage}deg)`;
+      let kcalPercent = (kcal / kcalTotal) * 100;
       
-        if (input.value > 180) {
+      let anglePercent = kcalPercent;
+      let angle = (anglePercent / 100) * 360;
+
+
+
+      let st = window.getComputedStyle(el, null);
+      var tr = st.getPropertyValue("transform");
+
+      if(container1Wedge.style.transform == null){
+        container1Wedge.style.transform = `rotateZ(${angle}deg)`;
+        markerEnd.style.transform = `rotateZ(${angle}deg)`;
+
+        if (container1Wedge.style.transform > 180) {
           container1Wedge.style.transform = `rotateZ(180deg)`;
-          container2Wedge.style.transform = `rotateZ(${percentage =+ percentage - 180}deg)`;
+          container2Wedge.style.transform = `rotateZ(${angle - 180}deg)`;
+          console.log("container1Wedge.style.transform>>", container1Wedge.style.transform);
+        }
+      }else{
+        console.dir("container1Wedge.style.transform>>", container1Wedge.style.transform);
+        container1Wedge.style.transform = container1Wedge.style.transform + `rotateZ(${angle}deg)`;
+        markerEnd.style.transform = markerEnd.style.transform + `rotateZ(${angle}deg)`;
+        if (container1Wedge.style.transform > 180) {
+          console.log("container1Wedge.style.transform>>", container1Wedge.style.transform);
+          container1Wedge.style.transform = container1Wedge.style.transform + `rotateZ(180deg)`;
+          container2Wedge.style.transform = container2Wedge.style.transform + `rotateZ(${angle - 180}deg)`;
         }
       }
-    }
+      }
   </script>
 </body>
 
