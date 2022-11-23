@@ -53,18 +53,6 @@ app.get("/testsearchkakao", (req, res) => {
   // }
 });
 
-app.get("/", (req, res) => {
-  res.render("main", { activeMenu: "main" });
-
-});
-
-app.post("/main", async (req, res) => {
-  // console.log(req.body.search);
-  let result = await main(req.body.search);
-  console.log("aa >>> ", result);
-  res.render("main");
-});
-
 // sub
 app.get("/sub1", (req, res) => {
   res.render("sub1", { activeMenu: "sub1" });
