@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="../static/css/header.css">
   <!-- css : main -->
   <link rel="stylesheet" href="../static/css/main.css">
+  <!-- css : radial -->
+  <link rel="stylesheet" href="../static/css/radial.css">
   <!-- fontawsome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
   <!-- xelcon -->
@@ -28,7 +30,7 @@
 
   <!-- main content -->
   <main>
-    <section>
+    <section class="part1">
       <h2 class="hidden">Main Content</h2>
       <!-- gauge -->
       <article class="gauge">
@@ -46,36 +48,38 @@
         <h3 class="hidden">음식 칼로리 체크하기</h3>
         <form name="search" action="/" method="post" role="search">
           <label for="search">음식 또는 브랜드명 검색</label>
-          <input name="search" id="search" placeholder="음식 또는 브랜드명 검색" autofocus required />
+          <input name="search" id="search" placeholder="음식 또는 브랜드명 검색" autofocus required/>
           <button type="button" onclick="inputInformation();">Go</button>
         </form>
         <ul class="food-list">
-
-          <li>
-            <dl>
-              <dt class="food-name">커피</dt>
-              <dd class="food-brand ">브랜드</dd>
-              <dd class="food-vol">1g</dd>
-            </dl>
-            <div class="cal-box clearfix">
-              <p class="food-kcal">300kcal</p>
-              <p class="food-car">탄수화물 22g</p>
-              <p class="food-protein">단백질 2g</p>
-              <p class="food-fat">지방 0g</p>
-            </div>
-            <div class="select"><i class="fas fa-check"></i></div>
-            <hr>
-          </li>
         </ul>
-        
       </article>
     </section>
+    <section class="part2">
+        <div class="screen">
+          <section class="dials">
+            <div class="dial move">
+              <div class="dial-background one"></div>
+              <div class="dial-container container1">
+                <div class="wedge"></div>
+              </div>
+              <div class="dial-container container2">
+                <div class="wedge"></div>
+              </div>
+              <div class="marker start"></div>
+              <fdiv class="marker end"></div>
+            </div>
+              <div class="marker start"></div>
+              <div class="marker end"></div>
+            </div>
+          </section>
+        </div>
+      </section>
   </main>
   <script>
-     //크롤러 값 리스트에 작성
+     // function crawler 크롤러 값 리스트에 작성
     const form = document.forms["search"];
     function inputInformation(){
-
     axios({
       method: "POST",
       url: "/",
@@ -83,11 +87,8 @@
         search: form.search.value
       },
     }).then((res) => {
-      console.log("res.data >> ",res.data);
       return data = res.data;
     }).then((data) => {
-      console.log("data>>>",data);
-      console.log("data[0]>>>",data[0]);
       const keys = Object.keys(data);
       const value = [];
       for(let i = 0; i < keys.length; i++){
@@ -100,7 +101,8 @@
       
       if(foodsInformation == null) {
         for(let i = 0 ; i < value[0].length ; i++){
-          const html = `
+          const html = 
+          `
       <li class="foods-information">
         <dl>
         <dt class="food-name">${value[0][i].title}</dt>
@@ -108,12 +110,12 @@
         <dd class="food-vol">${value[0][i].amount}</dd>
       </dl>
       <div class="cal-box clearfix">
-        <p class="food-kcal">${value[0][i].kcal}</p>
-        <p class="food-car">${value[0][i].carbs}</p>
-        <p class="food-protein">${value[0][i].protein}</p>
-        <p class="food-fat">${value[0][i].fat}</p>
+        <p class="food-kcal">${value[0][i].kcal}kcal</p>
+        <p class="food-car">탄수화물 ${value[0][i].carbs}g</p>
+        <p class="food-protein">단백질 ${value[0][i].protein}g</p>
+        <p class="food-fat">지방 ${value[0][i].fat}g</p>
       </div>
-      <div class="select"><i class="fas fa-check"></i></div>
+      <div class="select" onclick="addKcal();"><i class="fas fa-check"></i></div>
       <hr>
     </li>
     `;
@@ -129,20 +131,20 @@
       const html = `
       <li class="foods-information">
         <dl>
-          <dt class="food-name">${value[0][i].title}</dt>
+        <dt class="food-name">${value[0][i].title}</dt>
         <dd class="food-brand ">${value[0][i].brand}</dd>
         <dd class="food-vol">${value[0][i].amount}</dd>
-        </dl>
-        <div class="cal-box clearfix">
-        <p class="food-kcal">${value[0][i].kcal}</p>
-        <p class="food-car">${value[0][i].carbs}</p>
-        <p class="food-protein">${value[0][i].protein}</p>
-        <p class="food-fat">${value[0][i].fat}</p>
-        </div>
-        <div class="select"><i class="fas fa-check"></i></div>
-        <hr>
-        </li>
-        `;
+      </dl>
+      <div class="cal-box clearfix">
+        <p class="food-kcal">${value[0][i].kcal}kcal</p>
+        <p class="food-car">탄수화물 ${value[0][i].carbs}g</p>
+        <p class="food-protein">단백질 ${value[0][i].protein}g</p>
+        <p class="food-fat">지방 ${value[0][i].fat}g</p>
+      </div>
+      <div class="select" onclick="addKcal();"><i class="fas fa-check"></i></div>
+      <hr>
+    </li>
+    `;
         
     const foodList = document.querySelector('.food-list');
         foodList.insertAdjacentHTML('afterbegin', html);
@@ -150,11 +152,32 @@
     }
   })}
 
-  //칼로리, 탄수화물, 단백질, 지방 값들 게이지에 적용
-  const checkButton = document.querySelector(".select");
-  checkButton.addEventListener('click', function(){
+  //function kcal gage  칼로리 값 게이지에 적용
+  function addKcal() {
+    console.log(1);
+    const kcalTotal = 1700;
+    let container1Wedge = document.querySelector(".container1 .wedge");
+    let container2Wedge = document.querySelector(".container2 .wedge");
+    let markerEnd = document.querySelector(".end");
     
-  })
+    const selectButton = document.querySelectorAll('.select');
+    console.log(selectButton);
+    for(let i = 0 ; i > selectButton.length ; i++){
+      const kcalAmount = document.querySelectorAll('.food-kcal');
+      console.log(`selectButton[n]`);
+      let percentage = (kcalAmount[i] / kcalTotal) * 100 
+      container1Wedge.style.transform = `rotateZ(${percentage =+ percentage}deg)`;
+      container1Wedge.style.transform = `rotateZ(${percentage =+ percentage}deg)`;
+      container1Wedge.style.transform = `rotateZ(${percentage =+ percentage}deg)`;
+      container1Wedge.style.transform = `rotateZ(${percentage =+ percentage}deg)`;
+      markerEnd.style.transform = `rotateZ(${percentage =+ percentage}deg)`;
+      
+        if (input.value > 180) {
+          container1Wedge.style.transform = `rotateZ(180deg)`;
+          container2Wedge.style.transform = `rotateZ(${percentage =+ percentage - 180}deg)`;
+        }
+      }
+    }
   </script>
 </body>
 
