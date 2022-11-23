@@ -2,11 +2,17 @@ const Userweight = function (Sequelize, DataTypes) {
   const model = Sequelize.define(
     "userweight",
     {
-      // userid VARCHAR(20) NOT NULL UNIQUE PRIMARY KEY
+      // id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      // userid VARCHAR(20) NOT NULL
       userid: {
         type: DataTypes.STRING(20),
         allowNull: false,
-        primaryKey: true,
       },
       // Date DATETIME DEFAULT NOW(),
       Date: {
