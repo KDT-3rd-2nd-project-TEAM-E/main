@@ -168,28 +168,13 @@
 
 
 
-      let st = window.getComputedStyle(el, null);
-      var tr = st.getPropertyValue("transform");
-
       if(container1Wedge.style.transform == null){
         container1Wedge.style.transform = `rotateZ(${angle}deg)`;
         markerEnd.style.transform = `rotateZ(${angle}deg)`;
-
-        if (container1Wedge.style.transform > 180) {
-          container1Wedge.style.transform = `rotateZ(180deg)`;
-          container2Wedge.style.transform = `rotateZ(${angle - 180}deg)`;
-          console.log("container1Wedge.style.transform>>", container1Wedge.style.transform);
-        }
       }else{
         console.dir("container1Wedge.style.transform>>", container1Wedge.style.transform);
         container1Wedge.style.transform = container1Wedge.style.transform + `rotateZ(${angle}deg)`;
         markerEnd.style.transform = markerEnd.style.transform + `rotateZ(${angle}deg)`;
-        if (container1Wedge.style.transform > 180) {
-          console.log("container1Wedge.style.transform>>", container1Wedge.style.transform);
-          container1Wedge.style.transform = container1Wedge.style.transform + `rotateZ(180deg)`;
-          container2Wedge.style.transform = container2Wedge.style.transform + `rotateZ(${angle - 180}deg)`;
-
-        }
       }
       }
 
