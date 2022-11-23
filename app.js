@@ -4,6 +4,7 @@ const PORT = 8000;
 const axios = require("axios");
 //crawler
 const cheerio = require("cheerio");
+const { json } = require("sequelize");
 
 app.set("view engine", "ejs");
 app.use("/views", express.static(__dirname + "/views"));
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
 
 // main
 app.get("/main", (req, res) => {
+
 
   res.render("main", { activeMenu: "main" });
 
@@ -59,14 +61,13 @@ app.get("/", (req, res) => {
   res.render("main", { activeMenu: "main" });
 });
 
-app.post("/main", async (req, res) => {
-  // console.log(req.body.search);
-  let result = await main(req.body.search);
-  console.log("aa >>> ", result);
-  res.render("main");
+app.post("/", async (req, res) => {
+  console.log("req.body.search>>", req.body.search);
+  let result = await crawler(req.body.search);
+  console.log("result >>>>", result);
+  res.send({ data: result });
 });
 
-// sub
 app.get("/sub1", (req, res) => {
   res.render("sub1", { activeMenu: "sub1" });
 });
@@ -87,19 +88,12 @@ app.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-app.post("/main", async (req, res) => {
-  // console.log(req.body.search);
-  let result = await main(req.body.search);
-  console.log("aa >>> ", result);
-  res.render("main");
-});
-
-//Crawler
-async function main(search) {
+// Crawler;
+async function crawler(search) {
   // ❶ HTML 로드하기
   try {
     const resp = await axios.get(
-      `https://www.myfitnesspal.com/ko/nutrition-facts-calories/${encodeURI(
+      `https://www.myfitnesspal.com/ko/nutrition-facts-calories/${encodeURIComponent(
         search
       )}`
     );
@@ -126,15 +120,26 @@ async function main(search) {
 
     for (let i = 0; i < titleArray.length; i++) {
       let title = titleArray[i].children[0].data;
+      let brand = brandAmountArray[i].children[0].data;
+
+      console.log("children.length>>>", brandAmountArray[i].children.length);
+
+      let amount;
+
+      if (brandAmountArray[i].children.length < 7) {
+        brand = "브랜드 정보없음";
+        amount =
+          brandAmountArray[i].children[0].data +
+          brandAmountArray[i].children[4].data;
+      } else {
+        amount =
+          brandAmountArray[i].children[2].data +
+          brandAmountArray[i].children[6].data;
+      }
 
       let kcalText = kcalArray.text();
       kcalRegex = kcalText.match(/칼로리\s:\s\d{1,3}탄수화물+./g);
       kcal = String(kcalRegex[i]).replace(/[^0-9]/g, "");
-
-      let brand = brandAmountArray[i].children[0].data;
-      let amount =
-        brandAmountArray[i].children[2].data +
-        brandAmountArray[i].children[6].data;
 
       let carbsRegex = kcalText.match(/탄수화물:\s\d{1,3}g+./g);
       carbs = String(carbsRegex[i]).replace(/[^0-9]/g, "");
@@ -142,10 +147,10 @@ async function main(search) {
       let fatRegex = kcalText.match(/지방\s:\s\d{1,3}g+./g);
       fat = String(fatRegex[i]).replace(/[^0-9]/g, "");
 
-      let protienRegex = kcalText.match(/단백질\s:\s\d{1,3}./g);
-      protien = String(protienRegex[i]).replace(/[^0-9]/g, "");
+      let proteinRegex = kcalText.match(/단백질\s:\s\d{1,3}./g);
+      protein = String(proteinRegex[i]).replace(/[^0-9]/g, "");
 
-      let array = { title, brand, kcal, amount, carbs, fat, protien };
+      let array = { title, brand, kcal, amount, carbs, fat, protein };
 
       // console.log(">>>", brandAmountArray[i].children[0].data);
       foods.push(array);
@@ -157,9 +162,9 @@ async function main(search) {
   }
 }
 
-app.get("*", (req, res) => {
-  res.render("404");
-});
+// app.get("*", (req, res) => {
+//   res.render("404");
+// });
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
