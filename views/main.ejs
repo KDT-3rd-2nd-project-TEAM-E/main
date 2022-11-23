@@ -28,9 +28,8 @@
 <body>
   <div id="wrap">
     <%- include('header.ejs') %>
-  
 
-  <!-- main content -->
+    <!-- main content -->
   <main>
     <section class="part1">
       <h2 class="hidden">Main Content</h2>
@@ -189,9 +188,11 @@
           console.log("container1Wedge.style.transform>>", container1Wedge.style.transform);
           container1Wedge.style.transform = container1Wedge.style.transform + `rotateZ(180deg)`;
           container2Wedge.style.transform = container2Wedge.style.transform + `rotateZ(${angle - 180}deg)`;
+
         }
       }
       }
+
   </script>
 </body>
 

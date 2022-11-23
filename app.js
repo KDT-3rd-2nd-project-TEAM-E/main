@@ -31,7 +31,10 @@ app.get("/", (req, res) => {
 
 // main
 app.get("/main", (req, res) => {
+
+
   res.render("main", { activeMenu: "main" });
+
 });
 
 app.get("/testlogin", (req, res) => {
