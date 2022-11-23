@@ -5,6 +5,7 @@ const axios = require("axios");
 const cors = require("cors");
 //crawler
 const cheerio = require("cheerio");
+const { json } = require("sequelize");
 
 app.set("view engine", "ejs");
 app.use("/views", express.static(__dirname + "/views"));
@@ -64,6 +65,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", async (req, res) => {
+  console.log("req.body.search>>", req.body.search);
   let result = await crawler(req.body.search);
   console.log("result >>>>", result);
   res.send({ data: result });
@@ -99,7 +101,7 @@ async function crawler(search) {
   // ❶ HTML 로드하기
   try {
     const resp = await axios.get(
-      `https://www.myfitnesspal.com/ko/nutrition-facts-calories/${encodeURI(
+      `https://www.myfitnesspal.com/ko/nutrition-facts-calories/${encodeURIComponent(
         search
       )}`
     );
@@ -126,15 +128,26 @@ async function crawler(search) {
 
     for (let i = 0; i < titleArray.length; i++) {
       let title = titleArray[i].children[0].data;
+      let brand = brandAmountArray[i].children[0].data;
+
+      console.log("children.length>>>", brandAmountArray[i].children.length);
+
+      let amount;
+
+      if (brandAmountArray[i].children.length < 7) {
+        brand = "브랜드 정보없음";
+        amount =
+          brandAmountArray[i].children[0].data +
+          brandAmountArray[i].children[4].data;
+      } else {
+        amount =
+          brandAmountArray[i].children[2].data +
+          brandAmountArray[i].children[6].data;
+      }
 
       let kcalText = kcalArray.text();
       kcalRegex = kcalText.match(/칼로리\s:\s\d{1,3}탄수화물+./g);
       kcal = String(kcalRegex[i]).replace(/[^0-9]/g, "");
-
-      let brand = brandAmountArray[i].children[0].data;
-      let amount =
-        brandAmountArray[i].children[2].data +
-        brandAmountArray[i].children[6].data;
 
       let carbsRegex = kcalText.match(/탄수화물:\s\d{1,3}g+./g);
       carbs = String(carbsRegex[i]).replace(/[^0-9]/g, "");
