@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const PORT = 8000;
 const axios = require("axios");
-const cors = require("cors");
 //crawler
 const cheerio = require("cheerio");
 
@@ -12,11 +11,13 @@ app.use("/static", express.static(__dirname + "/static"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// var client_id = "urNGDSfBuXXLnlOxYK9B";
-// var client_secret = "FlW5KvYsgW";
+// var client_id = "C3dt4QoaXUtAKOrk2Qju";
+// var client_secret = "1Ww9zMtpb5";
+// var state = "RANDOM_STATE";
+// var redirectURI = encodeURI("http://localhost:8000/naverLogin");
 
-// const indexRouter = require("./routes");
-// app.use("/", indexRouter);
+const indexRouter = require("./routes");
+app.use("/", indexRouter);
 
 // app.get("/", (req, res) => {
 //   res.render("index");
@@ -24,10 +25,6 @@ app.use(express.json());
 
 app.get("/testlogin", (req, res) => {
   res.render("testlogin");
-});
-
-app.get("/testsearch", (req, res) => {
-  res.render("testsearch");
 });
 
 app.get("/testsearchkakao", (req, res) => {
@@ -40,6 +37,10 @@ app.get("/testsearchkakao", (req, res) => {
   // } else {
   //   res.send("오류");
   // }
+});
+
+app.get("/buhee", (req, res) => {
+  res.render("buhee");
 });
 
 app.get("/", (req, res) => {
@@ -144,7 +145,6 @@ async function main(search) {
 app.get("*", (req, res) => {
   res.render("404");
 });
-
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
