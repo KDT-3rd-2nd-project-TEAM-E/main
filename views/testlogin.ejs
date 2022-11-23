@@ -72,6 +72,8 @@
               url: "/v2/user/me",
               success: function (response) {
                 console.log(response);
+                console.log(response.properties);
+                console.log(response.properties.nickname);
               },
               fail: function (error) {
                 console.log(error);
