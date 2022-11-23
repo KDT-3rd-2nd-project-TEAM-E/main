@@ -1,25 +1,128 @@
 body {
   background: #f7f7f7;
   font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1.5;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#wrap {
+  width: 96vw;
+  height: 96vh;
+  margin: 2vh auto;
+  background: #fff;
+  border-radius: 15px;
+  display: flex;
 }
 
 main {
-  margin-left: 220px;
-  height: 95vh;
+  width: 80%;
 }
 
 article {
   background: #fff;
   border-radius: 20px;
   margin: 20px;
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .05);
+  /* box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .05); */
+  padding: 30px 40px;
+}
+
+h3 {
+  font-size: 2em;
 }
 
 /* SUB1 CSS */
-
+/* input 창 카운트 업 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 /* SUB2 CSS */
+.content_area {
+  padding-top: 20px;
+}
 
+.content_area .list_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content_area .list_header ul {
+  display: flex;
+  font-size: 2em;
+}
+
+.content_area .list_header ul li {
+  margin-left: 20px;
+}
+
+.content_area .list_header p{
+  font-size: 2em;
+  color: #3dad6b;
+}
+
+.content_area .list_content a {
+  display: flex;
+}
+
+.content_area .list_content .news {
+  width: 50%;
+}
+
+.content_area .list_content .news h4{
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.content_area .list_content img {
+  width: 30%;
+  padding: 2%;
+}
 
 /* SUB3 CSS */
+.profile1 {
+  width: 1200px;
+  height: 300px;
+  background: #f7f7f7;
+  border-radius: 15px;
+  display: flex;
+
+}
+
+.profile1 img {
+  width: 20%;
+  border-radius: 15px;
+  padding: 2%;
+}
+
+.profile1 form {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.profile1 form input {
+
+}
+
+.profile1 form button {
+  position: absolute;
+  top: 50%;
+  right: 20%;
+  background: #3dad6b;
+  color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.profile2 {
+  width: 100px;
+  height: 300px;
+  background: #3dad6b;
+}
 

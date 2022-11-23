@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOME | Kcal-cal</title>
   <!-- favicon -->
-  <link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
   <!-- css: reset -->
   <link rel="stylesheet" href="../static/css/reset.css">
   <!-- css: header -->
@@ -30,111 +30,188 @@
   <main>
     <section>
       <h2 class="hidden">Main Content</h2>
-      <article class="hello">
+      <!-- gauge -->
+      <article class="gauge">
         <h3 class="hidden">기초 대사량 칼로리 게이지</h3>
-        <p>XX 님, 환영합니다 &#58;&#41;</p>
 
+        <p>XX 님,<br>환영합니다 &#58;&#41;</p>
+
+        <div class="progress">
+          <progress value="20" max="100"></progress>
+        </div>
       </article>
-      <article class="search">
-        <h3 class="hidden">음식 칼로리 체크하기</h3>
-        <!-- <form action="/" name="search" method="post"> -->
-        <form name="search" >
-          <input id="search" type="text" placeholder="음식 or 브랜드명 검색">
-          <button type="button" onclick="crawler();"><i class="fas fa-search"></i></button>
-        </form>
-        <ul class="food-list">
 
+      <!-- kcal search -->
+      <article class="search">
+        <h3 class="hidden">음식 칼로리 검색</h3>
+        <form onsubmit="event.preventDefault();" role="search">
+          <label for="search">음식 또는 브랜드명 검색</label>
+          <input id="search" type="search" placeholder="음식 또는 브랜드명 검색" autofocus required />
+          <button type="submit" onclick="crawler();">Go</button>
+        </form>
+
+        <ul class="food-list">
+          <li>
+            <dl>
+              <dt class="food-name">커피</dt>
+              <dd class="food-brand ">브랜드</dd>
+              <dd class="food-vol">1g</dd>
+            </dl>
+            <div class="cal-box clearfix">
+              <p class="food-kcal">300kcal</p>
+              <p class="food-car">탄수화물 22g</p>
+              <p class="food-protein">단백질 2g</p>
+              <p class="food-fat">지방 0g</p>
+            </div>
+            <div class="select"><i class="fas fa-check"></i></div>
+            <hr>
+          </li>
+          <li>
+            <dl>
+              <dt class="food-name">커피</dt>
+              <dd class="food-brand ">브랜드</dd>
+              <dd class="food-vol">1g</dd>
+            </dl>
+            <div class="cal-box clearfix">
+              <p class="food-kcal">300kcal</p>
+              <p class="food-car">탄수화물 22g</p>
+              <p class="food-protein">단백질 2g</p>
+              <p class="food-fat">지방 0g</p>
+            </div>
+            <div class="select"><i class="fas fa-check"></i></div>
+            <hr>
+          </li>
+          <li>
+            <dl>
+              <dt class="food-name">커피</dt>
+              <dd class="food-brand ">브랜드</dd>
+              <dd class="food-vol">1g</dd>
+            </dl>
+            <div class="cal-box clearfix">
+              <p class="food-kcal">300kcal</p>
+              <p class="food-car">탄수화물 22g</p>
+              <p class="food-protein">단백질 2g</p>
+              <p class="food-fat">지방 0g</p>
+            </div>
+            <div class="select"><i class="fas fa-check"></i></div>
+            <hr>
+          </li>
+          <li>
+            <dl>
+              <dt class="food-name">커피</dt>
+              <dd class="food-brand ">브랜드</dd>
+              <dd class="food-vol">1g</dd>
+            </dl>
+            <div class="cal-box clearfix">
+              <p class="food-kcal">300kcal</p>
+              <p class="food-car">탄수화물 22g</p>
+              <p class="food-protein">단백질 2g</p>
+              <p class="food-fat">지방 0g</p>
+            </div>
+            <div class="select"><i class="fas fa-check"></i></div>
+            <hr>
+          </li>
+          <li>
+            <dl>
+              <dt class="food-name">커피</dt>
+              <dd class="food-brand ">브랜드</dd>
+              <dd class="food-vol">1g</dd>
+            </dl>
+            <div class="cal-box clearfix">
+              <p class="food-kcal">300kcal</p>
+              <p class="food-car">탄수화물 22g</p>
+              <p class="food-protein">단백질 2g</p>
+              <p class="food-fat">지방 0g</p>
+            </div>
+            <div class="select"><i class="fas fa-check"></i></div>
+            <hr>
+          </li>
         </ul>
       </article>
     </section>
   </main>
-
+  </div>
 
   <script>
-   $.ajax({
-      url: "http://www.myfitnesspal.com/ko/nutrition-facts-calories/",
-      dataType: 'jsonp',
-      success: function(data) {
-        console.log('success - ', data);
-      },
-      error: function(xhr) {
-        console.log('failure - ', xhr);
-      }
-    });
+    async function crawler() {
+      axios.defaults.withCredentials = true; // withCredentials 전역 설정
 
-async function crawler() {
-  axios.defaults.withCredentials = true; // withCredentials 전역 설정
 
-  
-  let search = document.forms['search'].search.value;
-  console.log(search);
-  console.log(1);
-  // ❶ HTML 로드하기
-  try {
-    
-    const resp = await axios.get(
-      `http://www.myfitnesspal.com/ko/nutrition-facts-calories/${encodeURI(
+      let search = document.forms['search'].search.value;
+      console.log(search);
+      console.log(1);
+      // ❶ HTML 로드하기
+      try {
+
+        const resp = await axios.get(
+          `http://www.myfitnesspal.com/ko/nutrition-facts-calories/${encodeURI(
         search
       )}`);
-    const $ = cheerio.load(resp.data); // ❷ HTML을 파싱하고 DOM 생성하기
-    const titleArray = $(".css-qumjp8"); // ❸ CSS 셀렉터로 원하는 요소 찾기
-    const kcalArray = $(".css-w1kjmb");
+        const $ = cheerio.load(resp.data); // ❷ HTML을 파싱하고 DOM 생성하기
+        const titleArray = $(".css-qumjp8"); // ❸ CSS 셀렉터로 원하는 요소 찾기
+        const kcalArray = $(".css-w1kjmb");
 
-    const brandAmountArray = $(".css-j7qwjs > .css-w1kjmb");
+        const brandAmountArray = $(".css-j7qwjs > .css-w1kjmb");
 
-    // const brandAmountArray = $(".smallText greyText greyLink");
-    // const amountArray = $(".css-w1kjmb");
-    // ➍ 찾은 요소를 순회하면서 요소가 가진 텍스트를 출력하기
-    titleArray.each((idx, el) => {
-      return $(el).text();
-    });
-    brandAmountArray.each((idx, el) => {
-      return $(el).text();
-    });
-    kcalArray.each((idx, el) => {
-      return $(el).text();
-    });
+        // const brandAmountArray = $(".smallText greyText greyLink");
+        // const amountArray = $(".css-w1kjmb");
+        // ➍ 찾은 요소를 순회하면서 요소가 가진 텍스트를 출력하기
+        titleArray.each((idx, el) => {
+          return $(el).text();
+        });
+        brandAmountArray.each((idx, el) => {
+          return $(el).text();
+        });
+        kcalArray.each((idx, el) => {
+          return $(el).text();
+        });
 
-    const foods = [];
+        const foods = [];
 
-    for (let i = 0; i < titleArray.length; i++) {
-      let title = titleArray[i].children[0].data;
+        for (let i = 0; i < titleArray.length; i++) {
+          let title = titleArray[i].children[0].data;
 
-      let kcalText = kcalArray.text();
-      kcalRegex = kcalText.match(/칼로리\s:\s\d{1,3}탄수화물+./g);
-      kcal = String(kcalRegex[i]).replace(/[^0-9]/g, "");
+          let kcalText = kcalArray.text();
+          kcalRegex = kcalText.match(/칼로리\s:\s\d{1,3}탄수화물+./g);
+          kcal = String(kcalRegex[i]).replace(/[^0-9]/g, "");
 
-      let brand = brandAmountArray[i].children[0].data;
-      let amount =
-        brandAmountArray[i].children[2].data +
-        brandAmountArray[i].children[6].data;
+          let brand = brandAmountArray[i].children[0].data;
+          let amount =
+            brandAmountArray[i].children[2].data +
+            brandAmountArray[i].children[6].data;
 
-      let carbsRegex = kcalText.match(/탄수화물:\s\d{1,3}g+./g);
-      carbs = String(carbsRegex[i]).replace(/[^0-9]/g, "");
+          let carbsRegex = kcalText.match(/탄수화물:\s\d{1,3}g+./g);
+          carbs = String(carbsRegex[i]).replace(/[^0-9]/g, "");
 
-      let fatRegex = kcalText.match(/지방\s:\s\d{1,3}g+./g);
-      fat = String(fatRegex[i]).replace(/[^0-9]/g, "");
+          let fatRegex = kcalText.match(/지방\s:\s\d{1,3}g+./g);
+          fat = String(fatRegex[i]).replace(/[^0-9]/g, "");
 
-      let protienRegex = kcalText.match(/단백질\s:\s\d{1,3}./g);
-      protien = String(protienRegex[i]).replace(/[^0-9]/g, "");
+          let protienRegex = kcalText.match(/단백질\s:\s\d{1,3}./g);
+          protien = String(protienRegex[i]).replace(/[^0-9]/g, "");
 
-      let array = { title, brand, kcal, amount, carbs, fat, protien };
+          let array = {
+            title,
+            brand,
+            kcal,
+            amount,
+            carbs,
+            fat,
+            protien
+          };
 
-      // console.log(">>>", brandAmountArray[i].children[0].data);
-      foods.push(array);
-    }
-    const foodList = documnet.querySelector('.food-list');
-    const HTML = `<div>${foods}<div>`;
-    foodList.insertAdjacement('beforeend', HTML);
-    
-  } catch (err) {
-    console.log(err);
-  }
-};
+          // console.log(">>>", brandAmountArray[i].children[0].data);
+          foods.push(array);
+        }
+        const foodList = documnet.querySelector('.food-list');
+        const HTML = `<div>${foods}<div>`;
+        foodList.insertAdjacement('beforeend', HTML);
+
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
   </script>
-  <!-- <script src="../static/js/search.js"></script>
-  <script src="../static/js/header.js"></script>
-  <script src="../static/js/main.js"></script> -->
   </div>
 </body>
 
