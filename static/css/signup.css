@@ -75,20 +75,48 @@ body {
   font-size: 1em;
   display: inline;
   box-sizing: border-box;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .signupId input:focus {
-  margin-top: 20px;
+  margin-top: 10px;
   width: 70%;
 }
 
 #checkId {
-  width: 30%;
+  width: auto;
   height: 100%;
   font-size: 1em;
   display: inline;
   box-sizing: border-box;
+  background: #3dad6b;
+  color: white;
+  padding: 15px;
+}
+
+#nextBtn {
+  width: auto;
+  height: 100%;
+  float: right;
+  font-size: 1.2em;
+  display: inline;
+  box-sizing: border-box;
+  /* background: #3dad6b; */
+  color: #3dad6b;
+  padding: 15px 20px;
+  margin-right: 10px;
+}
+
+#checkId:hover {
+  background: #34945c;
+  color: white;
+  text-decoration: underline;
+}
+
+#nextBtn:hover {
+  color: #34945c;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 .signupId,
@@ -96,6 +124,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.signupId {
+  flex-direction: row;
+  justify-content: center;
 }
 
 #loginBtn {
@@ -114,7 +146,7 @@ body {
   transition: all 0.3 ease;
   cursor: pointer;
   margin-top: 20px;
-  margin-bottom: 8px;
+  margin-bottom: 13px;
 }
 
 #loginBtn:hover,
@@ -122,4 +154,102 @@ body {
 #loginBtn:focus {
   background: #34945c;
   text-decoration: underline;
+}
+
+label {
+  font-size: 18px;
+  line-height: 2rem;
+  padding: 0.2em 0.4em;
+}
+
+span {
+  vertical-align: middle;
+  color: #777;
+}
+
+[type="radio"] {
+  vertical-align: middle;
+  appearance: none;
+  border: max(2px, 0.1em) solid #777;
+  border-radius: 50%;
+  width: 1.25em;
+  height: 1.25em;
+  transition: border 0.5s ease-in-out;
+}
+
+[type="radio"]:checked {
+  border: 0.4em solid #3dad6b;
+}
+
+[type="radio"]:focus-visible {
+  outline-offset: max(2px, 0.1em);
+  outline: max(2px, 0.1em) dotted #3dad6b;
+}
+
+[type="radio"]:hover {
+  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+  cursor: pointer;
+}
+
+.oneline {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* email */
+.emailBox {
+  margin-top: 38px;
+  margin-bottom: 10px;
+}
+
+/* name */
+.nicknameBox {
+  width: 60%;
+  margin-bottom: 10px;
+}
+.nicknameBox #nickname {
+  width: 75%;
+}
+/* gender */
+.genderBox {
+  width: 40%;
+  margin-top: 5px;
+}
+/* age */
+.ageBox {
+  width: 50%;
+  margin-bottom: 10px;
+}
+.ageBox #userage {
+  width: 58%;
+}
+/* height */
+.heightBox {
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.heightBox #userheight {
+  width: 58%;
+}
+
+/* weight */
+.weightBox {
+  margin-bottom: 10px;
+}
+.weightBox #userweight {
+  width: 30%;
+}
+
+/* 몸무게_설명img */
+#exImg {
+  width: 90%;
+  height: fit-content;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.d-none {
+  display: none;
 }
