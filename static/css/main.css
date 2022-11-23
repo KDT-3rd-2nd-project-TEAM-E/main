@@ -1,73 +1,170 @@
 body {
   background: #f7f7f7;
   font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1.5;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#wrap {
+  width: 96vw;
+  height: 96vh;
+  margin: 2vh auto;
+  background: #fff;
+  border-radius: 15px;
+  display: flex;
 }
 
 main {
-  background: #fff;
-  height: 96vh;
-  margin: 15px 0 0 215px;
+  width: 80%;
 }
 
-/* article {
-  background: #fff;
+.clearfix:before,
+.clearfix:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+/* gauge css */
+article.gauge {
+  background: #d9ebdf;
+  width: 90%;
+  position: relative;
+  margin: 15px auto;
+  padding: 20px;
   border-radius: 15px;
-  margin: 15px;
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .05);
-} */
-
-/* hello css */
-article.hello {
-
 }
 
-article.hello p {
-  font-size: 2em;
+article.gauge p {
+  font-size: 2.2em;
+  font-weight: 700;
   padding: 40px 30px;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-}
-
-.progress-bar__container {
+progress {
   width: 80%;
-  height: 2rem;
-  border-radius: 2rem;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.5s;
-  will-change: transform;
-  box-shadow: 0 0 5px #e76f51;
+  height: 50px;
 }
 
-.progress-bar {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  content: "";
-  background-color: #e76f51;
-  top:0;
-  bottom: 0;
-  left: -100%;
-  border-radius: inherit;
-  display: flex;
-  justify-content: center;
-  align-items:center;
-  color: white;
-  font-family: sans-serif;
-}
-
-.progress-bar__text {
-  display: none;
+.progress {
+  padding: 10px 30px;
 }
 
 /* search css */
 article.search {
-  background: #fff;
-  height: 600px;
+  width: 400px;
+  padding: 30px;
+}
+
+/* search box */
+form {
+  position: relative;
+  /* width: 30rem; */
+  background: var(--color-brand);
+  border-radius: var(--rad);
+}
+
+input,
+button {
+  height: var(--height);
+  font-family: var(--font-fam);
+  border: 0;
+  color: var(--color-dark);
+  font-size: 1.8rem;
+}
+
+input[type="search"] {
+  outline: 0;
+  width: 100%;
+  background: var(--color-light);
+  padding: 0 1.6rem;
+  border-radius: var(--rad);
+  appearance: none;
+  transition: all var(--dur) var(--bez);
+  transition-property: width, border-radius;
+  z-index: 1;
+  position: relative;
+  background: #f7f7f7;
+}
+
+:root {
+  --rad: .7rem;
+  --dur: .3s;
+  --color-dark: #2f2f2f;
+  --color-light: #fff;
+  --color-brand: #57bd84;
+  --height: 5rem;
+  --btn-width: 6rem;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+
+button {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--btn-width);
+  font-weight: bold;
+  background: var(--color-brand);
+  border-radius: 0 var(--rad) var(--rad) 0;
+}
+
+input:not(:placeholder-shown) {
+  border-radius: var(--rad) 0 0 var(--rad);
+  width: calc(100% - var(--btn-width));
+  background: #f7f7f7;
+}
+
+button {
+  display: block;
+}
+
+label {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+/* food list */
+.food-list {
+  padding: 20px 5px;
+}
+
+.food-list li {
+  position: relative;
+}
+
+.food-list dl {
+  line-height: 1.5;
+}
+
+.food-list dt {
+  font-size: 2em;
+}
+
+.food-list dd {
+  float: left;
+  font-size: 1.4em;
+  margin-right: 10px;
+}
+
+.food-list p {
+  float: left;
+  margin-right: 10px;
+}
+
+.food-list .select {
+  position: absolute;
+  right: 2%;
+  top: 30%;
+}
+
+hr {
+  margin: 1em 0;
 }

@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SUB | Kcal-cal</title>
+  <title>비만도 측정 | Kcal-cal</title>
   <!-- favicon -->
-  <link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon">
   <!-- css: reset -->
   <link rel="stylesheet" href="../static/css/reset.css">
   <!-- css: header -->
@@ -29,19 +29,41 @@
   <main>
     <section>
       <h2 class="hidden">Main Content</h2>
-      <article class="hello">
-        <h3 class="hidden">title</h3>
+      <article>
+        <h3>키와 몸무게로 간단하게 자신의 비만도(BMI)를 확인해 보세요.</h3>
+        <form name="calculation">
+          <label for="height">신장</label>
+          <input type="number" name="cal" id="height">
+          <label for="weight">체중</label>
+          <input type="number" name="cal" id="weight">
+          <button type="button" id="btn" >확인</button>
+        </form>
+        <p>숫자를 입력해주세요</p>
+
+        <div id="result"></div>
+
+        <h4>비만도(BMI)란?</h4>
+        <p>체질량지수는 카우프지수로 비만을 평가하는 지수이며
+          세계적으로 쓰이는 공통표준 지수입니다.
+          체지방의 정도를 표준체중보다 비교적 정확하게 반영할 수 있고
+          매우 간단히 규정할 수 있는 장점이 있습니다.
+        </p>
+
+        <h4>비만도의 산출방법</h4>
+        <p>체질량지수 = 체중 &#40; kg &#41; / 키의 제곱 &#40; &#13217; &#41;</p>
 
       </article>
-      <article class="search">
-        <h3 class="hidden">title</h3>
-       
+      <article>
+        <h3 class="hidden">그래프</h3>
+        
+        <p>"어쩌구저쩌구 저체중입니다ㅏㅏ"</p>
+        <p>과체중입니다 운동하세요</p>
       </article>
     </section>
   </main>
 
-  <script src="../static/js/header.js"></script>
-  </div>
+  <!-- 비만도 측정 js -->
+  <script src="../static/js/calculation.js"></script>
 </body>
 
 </html>
