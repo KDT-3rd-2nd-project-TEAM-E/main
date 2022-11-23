@@ -22,7 +22,8 @@ USE kcalcal;
 -- );
 
 CREATE TABLE userweight(
-    userid VARCHAR(20) NOT NULL PRIMARY KEY UNIQUE,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid VARCHAR(20) NOT NULL,
     Date DATETIME DEFAULT NOW(), 
     weight INT
 );
@@ -55,11 +56,12 @@ INSERT INTO user (userid, userpw, useremail, nickname, gender, age, height) VALU
 INSERT INTO member (userid, userpw) VALUES ('aaa', 'aaa');
 INSERT INTO member (userid, userpw) VALUES ('bbb', 'bbb');
 
-INSERT INTO userweight (userid, weight) VALUES ('aaa', 70); 
+INSERT INTO userweight (userid, weight) VALUES ('aaa', 72); 
 INSERT INTO test (userid) VALUES ('aaa'); 
 SELECT * FROM test;
 DROP TABLE test;
 
+SELECT Date, weight FROM userweight WHERE userid='aaa' ORDER BY Date DESC;
 
 -- 예시들
 SELECT id, address FROM user; -- id, 주소 컬럼 조회
