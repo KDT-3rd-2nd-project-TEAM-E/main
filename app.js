@@ -13,33 +13,15 @@ app.use("/static", express.static(__dirname + "/static"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use(function (req, res, next) {
-//   // res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
+// intro
+app.get("/", (req, res) => {
+  res.render("index");
+});
 
-// const options = {
-//   origin: true,
-//   credentials: true,
-//   // optionSuccessStatus: 200,
-// };
-// app.use(cors(options));
-
-// var client_id = "urNGDSfBuXXLnlOxYK9B";
-// var client_secret = "FlW5KvYsgW";
-
-// const indexRouter = require("./routes");
-// app.use("/", indexRouter);
-
-// app.get("/", (req, res) => {
-//   res.render("index");
-// });
-
+// main
+app.get("/main", (req, res) => {
+  res.render("main", { activeMenu: "main" });
+});
 app.get("/testlogin", (req, res) => {
   res.render("testlogin");
 });
@@ -81,11 +63,6 @@ app.get("/sub2", (req, res) => {
 
 app.get("/sub3", (req, res) => {
   res.render("sub3", { activeMenu: "sub3" });
-});
-
-app.get("/sub4", (req, res) => {
-  res.render("sub4", { activeMenu: "sub4" });
-  //커밋
 });
 
 app.get("/login", (req, res) => {
