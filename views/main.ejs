@@ -24,112 +24,113 @@
 </head>
 
 <body>
-  <%- include('header.ejs') %>
+  <div id="wrap">
+    <%- include('header.ejs') %>
 
-  <!-- main content -->
-  <main>
-    <section>
-      <h2 class="hidden">Main Content</h2>
-      <!-- gauge -->
-      <article class="gauge">
-        <h3 class="hidden">기초 대사량 칼로리 게이지</h3>
+    <!-- main content -->
+    <main>
+      <section>
+        <h2 class="hidden">Main Content</h2>
+        <!-- gauge -->
+        <article class="gauge">
+          <h3 class="hidden">기초 대사량 칼로리 게이지</h3>
 
-        <p>XX 님,<br>환영합니다 &#58;&#41;</p>
+          <p>XX 님,<br>환영합니다 &#58;&#41;</p>
 
-        <div class="progress">
-          <progress value="20" max="100"></progress>
-        </div>
-      </article>
+          <div class="progress">
+            <progress value="20" max="100"></progress>
+          </div>
+        </article>
 
-      <!-- kcal search -->
-      <article class="search">
-        <h3 class="hidden">음식 칼로리 검색</h3>
-        <form onsubmit="event.preventDefault();" role="search">
-          <label for="search">음식 또는 브랜드명 검색</label>
-          <input id="search" type="search" placeholder="음식 또는 브랜드명 검색" autofocus required />
-          <button type="submit" onclick="crawler();">Go</button>
-        </form>
+        <!-- kcal search -->
+        <article class="search">
+          <h3 class="hidden">음식 칼로리 검색</h3>
+          <form onsubmit="event.preventDefault();" role="search">
+            <label for="search">음식 또는 브랜드명 검색</label>
+            <input id="search" type="search" placeholder="음식 또는 브랜드명 검색" autofocus required />
+            <button type="submit" onclick="crawler();">Go</button>
+          </form>
 
-        <ul class="food-list">
-          <li>
-            <dl>
-              <dt class="food-name">커피</dt>
-              <dd class="food-brand ">브랜드</dd>
-              <dd class="food-vol">1g</dd>
-            </dl>
-            <div class="cal-box clearfix">
-              <p class="food-kcal">300kcal</p>
-              <p class="food-car">탄수화물 22g</p>
-              <p class="food-protein">단백질 2g</p>
-              <p class="food-fat">지방 0g</p>
-            </div>
-            <div class="select"><i class="fas fa-check"></i></div>
-            <hr>
-          </li>
-          <li>
-            <dl>
-              <dt class="food-name">커피</dt>
-              <dd class="food-brand ">브랜드</dd>
-              <dd class="food-vol">1g</dd>
-            </dl>
-            <div class="cal-box clearfix">
-              <p class="food-kcal">300kcal</p>
-              <p class="food-car">탄수화물 22g</p>
-              <p class="food-protein">단백질 2g</p>
-              <p class="food-fat">지방 0g</p>
-            </div>
-            <div class="select"><i class="fas fa-check"></i></div>
-            <hr>
-          </li>
-          <li>
-            <dl>
-              <dt class="food-name">커피</dt>
-              <dd class="food-brand ">브랜드</dd>
-              <dd class="food-vol">1g</dd>
-            </dl>
-            <div class="cal-box clearfix">
-              <p class="food-kcal">300kcal</p>
-              <p class="food-car">탄수화물 22g</p>
-              <p class="food-protein">단백질 2g</p>
-              <p class="food-fat">지방 0g</p>
-            </div>
-            <div class="select"><i class="fas fa-check"></i></div>
-            <hr>
-          </li>
-          <li>
-            <dl>
-              <dt class="food-name">커피</dt>
-              <dd class="food-brand ">브랜드</dd>
-              <dd class="food-vol">1g</dd>
-            </dl>
-            <div class="cal-box clearfix">
-              <p class="food-kcal">300kcal</p>
-              <p class="food-car">탄수화물 22g</p>
-              <p class="food-protein">단백질 2g</p>
-              <p class="food-fat">지방 0g</p>
-            </div>
-            <div class="select"><i class="fas fa-check"></i></div>
-            <hr>
-          </li>
-          <li>
-            <dl>
-              <dt class="food-name">커피</dt>
-              <dd class="food-brand ">브랜드</dd>
-              <dd class="food-vol">1g</dd>
-            </dl>
-            <div class="cal-box clearfix">
-              <p class="food-kcal">300kcal</p>
-              <p class="food-car">탄수화물 22g</p>
-              <p class="food-protein">단백질 2g</p>
-              <p class="food-fat">지방 0g</p>
-            </div>
-            <div class="select"><i class="fas fa-check"></i></div>
-            <hr>
-          </li>
-        </ul>
-      </article>
-    </section>
-  </main>
+          <ul class="food-list">
+            <li>
+              <dl>
+                <dt class="food-name">커피</dt>
+                <dd class="food-brand ">브랜드</dd>
+                <dd class="food-vol">1g</dd>
+              </dl>
+              <div class="cal-box clearfix">
+                <p class="food-kcal">300kcal</p>
+                <p class="food-car">탄수화물 22g</p>
+                <p class="food-protein">단백질 2g</p>
+                <p class="food-fat">지방 0g</p>
+              </div>
+              <div class="select"><i class="fas fa-check"></i></div>
+              <hr>
+            </li>
+            <li>
+              <dl>
+                <dt class="food-name">커피</dt>
+                <dd class="food-brand ">브랜드</dd>
+                <dd class="food-vol">1g</dd>
+              </dl>
+              <div class="cal-box clearfix">
+                <p class="food-kcal">300kcal</p>
+                <p class="food-car">탄수화물 22g</p>
+                <p class="food-protein">단백질 2g</p>
+                <p class="food-fat">지방 0g</p>
+              </div>
+              <div class="select"><i class="fas fa-check"></i></div>
+              <hr>
+            </li>
+            <li>
+              <dl>
+                <dt class="food-name">커피</dt>
+                <dd class="food-brand ">브랜드</dd>
+                <dd class="food-vol">1g</dd>
+              </dl>
+              <div class="cal-box clearfix">
+                <p class="food-kcal">300kcal</p>
+                <p class="food-car">탄수화물 22g</p>
+                <p class="food-protein">단백질 2g</p>
+                <p class="food-fat">지방 0g</p>
+              </div>
+              <div class="select"><i class="fas fa-check"></i></div>
+              <hr>
+            </li>
+            <li>
+              <dl>
+                <dt class="food-name">커피</dt>
+                <dd class="food-brand ">브랜드</dd>
+                <dd class="food-vol">1g</dd>
+              </dl>
+              <div class="cal-box clearfix">
+                <p class="food-kcal">300kcal</p>
+                <p class="food-car">탄수화물 22g</p>
+                <p class="food-protein">단백질 2g</p>
+                <p class="food-fat">지방 0g</p>
+              </div>
+              <div class="select"><i class="fas fa-check"></i></div>
+              <hr>
+            </li>
+            <li>
+              <dl>
+                <dt class="food-name">커피</dt>
+                <dd class="food-brand ">브랜드</dd>
+                <dd class="food-vol">1g</dd>
+              </dl>
+              <div class="cal-box clearfix">
+                <p class="food-kcal">300kcal</p>
+                <p class="food-car">탄수화물 22g</p>
+                <p class="food-protein">단백질 2g</p>
+                <p class="food-fat">지방 0g</p>
+              </div>
+              <div class="select"><i class="fas fa-check"></i></div>
+              <hr>
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
   </div>
 
   <script>
@@ -210,7 +211,6 @@
         console.log(err);
       }
     };
-
   </script>
   </div>
 </body>

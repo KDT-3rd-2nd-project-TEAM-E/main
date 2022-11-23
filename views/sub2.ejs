@@ -23,42 +23,44 @@
 </head>
 
 <body>
-  <%- include('header.ejs') %>
+  <div id="wrap">
+    <%- include('header.ejs') %>
 
-  <!-- main content -->
-  <main>
-    <section>
-      <h2 class="hidden">Main Content</h2>
-      <article>
-        <h3>건강정보</h3>
-        <p>다양한 건강정보를 확인해보세요</p>
+    <!-- main content -->
+    <main>
+      <section>
+        <h2 class="hidden">Main Content</h2>
+        <article>
+          <h3>건강정보</h3>
+          <p>다양한 건강정보를 확인해보세요</p>
 
-        <div class="content_area">
-          <div class="list_header">
-            <p>TOTAL <span>15</span></p>
-            <ul>
-              <li class="showlist"><a href="#"><i class="fas fa-list"></i><span class="hidden"> 리스트</span></a></li>
-              <li class="thumb"><a href="#"><i class="fas fa-th-large"></i><span class="hidden">테이블</span></a></li>
-            </ul>
+          <div class="content_area">
+            <div class="list_header">
+              <p>TOTAL <span>15</span></p>
+              <ul>
+                <li class="showlist"><a href="#"><i class="fas fa-list"></i><span class="hidden"> 리스트</span></a></li>
+                <li class="thumb"><a href="#"><i class="fas fa-th-large"></i><span class="hidden">테이블</span></a></li>
+              </ul>
+            </div>
+            <hr>
+            <div class="list_content">
+              <a href="#">
+                <div class="news">
+                  <p>NO&#46;&nbsp;<span>15</span></p>
+                  <h4>제목이 들어갈겁니다ㅏㅏ</h4>
+                  <p>관리자 &#124;&nbsp;<span>2022-02-22</span></p>
+                  <p>내용이 들어갈건데 아삭아삭 신선한 샐러드 한 접시는 건강에 좋은 대표 메뉴이다. 신선한 채소에는 풍부한 비타민과 미네랄, 건강한 지방과 탄수화물까지 다양한 영양성분이 담겨 있다.
+                    샐러드를 건강하게 먹으려면 가장 중요한 것은 바로 재료와 드레싱인데, 특히 소금, 설탕, 지방 등의 열량에 주의해야 한다. 샐러드 더 건강하게 먹는 법을 알아본다.</p>
+                </div>
+                <img src="../static/img/img.jpeg" alt="건강정보이미지">
+              </a>
+            </div>
           </div>
-          <hr>
-          <div class="list_content">
-            <a href="#">
-              <div class="news">
-                <p>NO&#46;&nbsp;<span>15</span></p>
-                <h4>제목이 들어갈겁니다ㅏㅏ</h4>
-                <p>관리자 &#124;&nbsp;<span>2022-02-22</span></p>
-                <p>내용이 들어갈건데 아삭아삭 신선한 샐러드 한 접시는 건강에 좋은 대표 메뉴이다. 신선한 채소에는 풍부한 비타민과 미네랄, 건강한 지방과 탄수화물까지 다양한 영양성분이 담겨 있다. 샐러드를 건강하게 먹으려면 가장 중요한 것은 바로 재료와 드레싱인데, 특히 소금, 설탕, 지방 등의 열량에 주의해야 한다. 샐러드 더 건강하게 먹는 법을 알아본다.</p>
-              </div>
-              <img src="../static/img/img.jpeg" alt="건강정보이미지">
-            </a>
-          </div>
-        </div>
 
-      </article>
-    </section>
-  </main>
-
+        </article>
+      </section>
+    </main>
+  </div>
 </body>
 
 </html>
