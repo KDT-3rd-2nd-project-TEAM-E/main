@@ -33,6 +33,7 @@
       <!-- gauge -->
       <article class="gauge">
         <h3 class="hidden">기초 대사량 칼로리 게이지</h3>
+
         <p>XX 님,<br>환영합니다 &#58;&#41;</p>
 
         <div class="progress">
@@ -132,17 +133,6 @@
   </div>
 
   <script>
-    $.ajax({
-      url: "http://www.myfitnesspal.com/ko/nutrition-facts-calories/",
-      dataType: 'jsonp',
-      success: function (data) {
-        console.log('success - ', data);
-      },
-      error: function (xhr) {
-        console.log('failure - ', xhr);
-      }
-    });
-
     async function crawler() {
       axios.defaults.withCredentials = true; // withCredentials 전역 설정
 
@@ -220,6 +210,7 @@
         console.log(err);
       }
     };
+
   </script>
   </div>
 </body>
