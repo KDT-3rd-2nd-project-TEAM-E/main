@@ -15,11 +15,24 @@ app.use(
 );
 app.use(express.json());
 
-
+// intro
 app.get("/", (req, res) => {
+  res.render("index");
+});
+
+// main
+app.get("/main", (req, res) => {
   res.render("main", {activeMenu : "main"});
 });
 
+app.post("/main", async (req, res) => {
+  // console.log(req.body.search);
+  let result = await main(req.body.search);
+  console.log("aa >>> ", result);
+  res.render("main");
+});
+
+// sub
 app.get("/sub1", (req, res) => {
   res.render("sub1", {activeMenu : "sub1"});
 });
@@ -32,16 +45,9 @@ app.get("/sub3", (req, res) => {
   res.render("sub3", {activeMenu : "sub3"});
 });
 
-app.get("/sub4", (req, res) => {
-  res.render("sub4", {activeMenu : "sub4"});
-
-});
-
-app.post("/main", async (req, res) => {
-  // console.log(req.body.search);
-  let result = await main(req.body.search);
-  console.log("aa >>> ", result);
-  res.render("main");
+// login
+app.get("/login", (req, res) => {
+  res.render("login");
 });
 
 //Crawler
@@ -107,8 +113,7 @@ async function main(search) {
   }
 }
 
-
-
+// error
 app.get("*", (req, res) => {
   res.render("404");
 });

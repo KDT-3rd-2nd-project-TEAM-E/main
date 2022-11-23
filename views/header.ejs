@@ -7,6 +7,15 @@
   <header id="headerArea">
     <div class="headerInner">
       <h1 class="logo"><a href="/">Kcal-cal</a></h1>
+
+      <div class="profile_img">
+        <img src="../static/img/porfile.jpg" alt="프로필 이미지">
+        <ul>
+          <li><a href="#">로그아웃</a></li>
+          <li><a href="">정보수정</a></li>
+        </ul>
+      </div>
+     
       <nav id="gnb">
         <h2 class="hidden">Navigation</h2>
         <ul>
@@ -14,7 +23,7 @@
             <h3>
               <b class="top-curve"></b>
               <b class="bottom-curve"></b>
-              <a href="/"><i class="fas fa-fire"></i>칼로리 체크</a>
+              <a href="/main"><i class="fas fa-fire"></i>칼로리 체크</a>
             </h3>
           </li>
           <li  class="<%= activeMenu === 'sub1' ? 'active' : '' %>">

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOME | Kcal-cal</title>
   <!-- favicon -->
-  <link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
   <!-- css: reset -->
   <link rel="stylesheet" href="../static/css/reset.css">
   <!-- css: header -->
@@ -30,19 +30,19 @@
   <main>
     <section>
       <h2 class="hidden">Main Content</h2>
-      <article class="hello">
+      <!-- gauge -->
+      <article class="gauge">
         <h3 class="hidden">기초 대사량 칼로리 게이지</h3>
         <p>XX 님,<br>환영합니다 &#58;&#41;</p>
 
         <div class="progress">
           <progress value="20" max="100"></progress>
         </div>
-
       </article>
 
+      <!-- kcal search -->
       <article class="search">
-        <h3 class="hidden">음식 칼로리 체크하기</h3>
-
+        <h3 class="hidden">음식 칼로리 검색</h3>
         <form onsubmit="event.preventDefault();" role="search">
           <label for="search">음식 또는 브랜드명 검색</label>
           <input id="search" type="search" placeholder="음식 또는 브랜드명 검색" autofocus required />
@@ -65,11 +65,71 @@
             <div class="select"><i class="fas fa-check"></i></div>
             <hr>
           </li>
+          <li>
+            <dl>
+              <dt class="food-name">커피</dt>
+              <dd class="food-brand ">브랜드</dd>
+              <dd class="food-vol">1g</dd>
+            </dl>
+            <div class="cal-box clearfix">
+              <p class="food-kcal">300kcal</p>
+              <p class="food-car">탄수화물 22g</p>
+              <p class="food-protein">단백질 2g</p>
+              <p class="food-fat">지방 0g</p>
+            </div>
+            <div class="select"><i class="fas fa-check"></i></div>
+            <hr>
+          </li>
+          <li>
+            <dl>
+              <dt class="food-name">커피</dt>
+              <dd class="food-brand ">브랜드</dd>
+              <dd class="food-vol">1g</dd>
+            </dl>
+            <div class="cal-box clearfix">
+              <p class="food-kcal">300kcal</p>
+              <p class="food-car">탄수화물 22g</p>
+              <p class="food-protein">단백질 2g</p>
+              <p class="food-fat">지방 0g</p>
+            </div>
+            <div class="select"><i class="fas fa-check"></i></div>
+            <hr>
+          </li>
+          <li>
+            <dl>
+              <dt class="food-name">커피</dt>
+              <dd class="food-brand ">브랜드</dd>
+              <dd class="food-vol">1g</dd>
+            </dl>
+            <div class="cal-box clearfix">
+              <p class="food-kcal">300kcal</p>
+              <p class="food-car">탄수화물 22g</p>
+              <p class="food-protein">단백질 2g</p>
+              <p class="food-fat">지방 0g</p>
+            </div>
+            <div class="select"><i class="fas fa-check"></i></div>
+            <hr>
+          </li>
+          <li>
+            <dl>
+              <dt class="food-name">커피</dt>
+              <dd class="food-brand ">브랜드</dd>
+              <dd class="food-vol">1g</dd>
+            </dl>
+            <div class="cal-box clearfix">
+              <p class="food-kcal">300kcal</p>
+              <p class="food-car">탄수화물 22g</p>
+              <p class="food-protein">단백질 2g</p>
+              <p class="food-fat">지방 0g</p>
+            </div>
+            <div class="select"><i class="fas fa-check"></i></div>
+            <hr>
+          </li>
         </ul>
       </article>
     </section>
   </main>
-
+  </div>
 
   <script>
     $.ajax({
@@ -161,9 +221,6 @@
       }
     };
   </script>
-  <!-- <script src="../static/js/search.js"></script>
-  <script src="../static/js/header.js"></script>
-  <script src="../static/js/main.js"></script> -->
   </div>
 </body>
 

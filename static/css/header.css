@@ -1,33 +1,66 @@
 /* header common area */
 #headerArea {
-  width: 215px;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
+  width: 20%;
+  min-width: 200px;
   z-index: 100;
-  background: #f7f7f7;
-  overflow: hidden;
 }
 
 #headerArea .headerInner {
-  width: 200px;
   height: 96vh;
   background: #3dad6b;
-  margin: 15px 0 15px 15px;
   z-index: 1000;
   border-radius: 15px 0 0 15px;
 }
 
 #headerArea .logo a {
   display: block;
-  width: 200px;
+  width: 150px;
   height: 100px;
+  margin: 0 auto;
   background: url("../img/Kcal-logo.png") 0 0 no-repeat;
   background-size: 80%;
   background-position: 50%;
   text-indent: -999px;
   overflow: hidden;
+}
+
+#headerArea .profile_img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#headerArea img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+#headerArea .profile_img ul {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#headerArea .profile_img ul {
+  position: relative;
+}
+
+#headerArea .profile_img ul li a {
+  padding: 10px;
+  color: #fff;
+}
+
+#headerArea .profile_img ul:after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 2px;
+  height: 15px;
+  background: #fff;
+}
+
+#headerArea #gnb {
+  margin: 50px 0;
 }
 
 #headerArea h3 {
@@ -39,16 +72,16 @@
 }
 
 #headerArea h3 i {
-  margin-right: 10px;
+  margin-right: 5%;
 }
 
 #headerArea h3 a {
   display: block;
-  padding: 12px;
-  margin-left: 30px;
+  padding: 5%;
+  margin: 15px 20px 15px 30px;
 }
 
-#headerArea #gnb ul li{
+#headerArea #gnb ul li {
   position: relative;
   top: 0;
   left: 0;
