@@ -2,12 +2,22 @@ body {
   background: #f7f7f7;
   font-family: 'Noto Sans KR', sans-serif;
   line-height: 1.5;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#wrap {
+  width: 96vw;
+  height: 96vh;
+  margin: 2vh auto;
+  background: #fff;
+  border-radius: 15px;
+  display: flex;
 }
 
 main {
-  background: #fff;
-  height: 96vh;
-  margin: 15px 0 0 215px;
+  width: 80%;
 }
 
 .clearfix:before,
@@ -17,18 +27,18 @@ main {
   clear: both;
 }
 
-/* hello css */
-article.hello{
+/* gauge css */
+article.gauge {
   background: #d9ebdf;
-  width: 80%;
-  margin: 20px;
+  width: 90%;
+  position: relative;
+  margin: 15px auto;
   padding: 20px;
   border-radius: 15px;
 }
 
-
-article.hello p {
-  font-size: 2em;
+article.gauge p {
+  font-size: 2.2em;
   font-weight: 700;
   padding: 40px 30px;
 }
@@ -144,7 +154,7 @@ label {
   margin-right: 10px;
 }
 
-.food-list p{
+.food-list p {
   float: left;
   margin-right: 10px;
 }
