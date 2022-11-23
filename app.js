@@ -11,12 +11,10 @@ app.use("/static", express.static(__dirname + "/static"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
 // var client_id = "C3dt4QoaXUtAKOrk2Qju";
 // var client_secret = "1Ww9zMtpb5";
 // var state = "RANDOM_STATE";
 // var redirectURI = encodeURI("http://localhost:8000/naverLogin");
-
 
 const indexRouter = require("./routes");
 app.use("/", indexRouter);
@@ -32,7 +30,8 @@ app.get("/", (req, res) => {
 
 // main
 app.get("/main", (req, res) => {
-  res.render("main", {activeMenu : "main"});
+  res.render("main", { activeMenu: "main" });
+});
 
 app.get("/testlogin", (req, res) => {
   res.render("testlogin");
@@ -56,7 +55,6 @@ app.get("/buhee", (req, res) => {
 
 app.get("/", (req, res) => {
   res.render("main", { activeMenu: "main" });
-
 });
 
 app.post("/main", async (req, res) => {
