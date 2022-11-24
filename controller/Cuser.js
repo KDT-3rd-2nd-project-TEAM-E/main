@@ -106,6 +106,8 @@ exports.getsignup = (req, res) => {
 // };
 
 exports.postsignup = async (req, res) => {
+  console.log(req.body);
+
   let result1 = await models.User.create({
     userid: req.body.userid,
     userpw: req.body.userpw,
@@ -119,6 +121,8 @@ exports.postsignup = async (req, res) => {
     userid: req.body.userid,
     weight: req.body.weight,
   });
+  console.log(result1);
+  console.log(result2);
   res.render("main", {
     user: result1,
     userweight: result2,
