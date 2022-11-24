@@ -25,9 +25,9 @@ router.get("/signup", controller.getsignup);
 
 router.post("/signup", controller.postsignup);
 
-// router.post("/postsignup", controller.postsignupok);
-
 // router.post("/postsignweightup", controller.postsignweightup);
+
+// router.post("/postsignup", controller.postsignupok);
 
 router.get("/bmi", controller.bmi);
 
