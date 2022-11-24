@@ -107,6 +107,8 @@ exports.getsignup = (req, res) => {
 // };
 
 exports.postsignup = async (req, res) => {
+  console.log(req.body);
+
   let result1 = await models.User.create({
     userid: req.body.userid,
     userpw: req.body.userpw,
@@ -122,7 +124,9 @@ exports.postsignup = async (req, res) => {
   });
   console.log(result1);
   console.log(result2);
+
   res.send(true);
+
 }; // axios요청 한버튼에 두개 -> 각기 다른 DB에 저장되게끔
 
 exports.bmi = (req, res) => {
