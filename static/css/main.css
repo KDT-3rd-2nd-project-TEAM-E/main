@@ -45,15 +45,6 @@ article.gauge p {
   padding: 40px 30px;
 }
 
-progress {
-  width: 80%;
-  height: 50px;
-}
-
-.progress {
-  padding: 10px 30px;
-}
-
 /* search css */
 article.search {
   width: 400px;
@@ -171,4 +162,119 @@ label {
 
 hr {
   margin: 1em 0;
+}
+
+/* 탄단지 그래프 */
+/* 색상 바꾸기!!! */
+
+@property --p{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+.pie {
+  --b:22px;
+  --c:darkred;
+  --w:150px;
+  
+  width:var(--w);
+  aspect-ratio:1;
+  position:relative;
+  display:inline-grid;
+  margin:5px;
+  place-content:center;
+  font-size:25px;
+  font-weight:bold;
+  font-family:sans-serif;
+}
+.pie:before,
+.pie:after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+}
+.carbs:before {
+  inset:0;
+  background:
+    radial-gradient(farthest-side,red 98%,#0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(red calc(var(--p)*1%),#0000 0);
+  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+          mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+.protein:before {
+  inset:0;
+  background:
+    radial-gradient(farthest-side,green 98%,#0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(green calc(var(--p)*1%),#0000 0);
+  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+          mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+.fat:before {
+  inset:0;
+  background:
+    radial-gradient(farthest-side,blue 98%,#0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(blue calc(var(--p)*1%),#0000 0);
+  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+          mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+.carbs:after {
+  inset:calc(50% - var(--b)/2);
+  background:red;
+  transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+}
+.protein:after {
+  inset:calc(50% - var(--b)/2);
+  background:green;
+  transform: rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+}
+.fat:after {
+  inset:calc(50% - var(--b)/2);
+  background:blue;
+  transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+}
+.animate {
+  animation:p 1s .5s both;
+}
+.no-round:before {
+  background-size:0 0,auto;
+}
+.no-round:after {
+  content:none;
+}
+@keyframes p {
+  from{--p:0}
+}
+
+
+
+body {
+  background:#ddd;
+}
+
+/* kcal 그래프 바 */
+/* 색상, 디자인 바꾸기!!! */
+
+.kcal-bar-background{
+  width: 600px;
+  height: 50px;
+  background-color: white;
+  border: black 0.5px solid;
+  border-radius: 20px;
+  position: relative;
+}
+
+
+.kcal-bar{
+  width: 0px;
+  height: 50px;
+  background-color: blue;
+  border-radius: 20px;
+}
+
+.kcal-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

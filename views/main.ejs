@@ -39,8 +39,10 @@
 
         <p>XX 님,<br>환영합니다 &#58;&#41;</p>
 
-        <div class="progress">
-          <progress value="20" max="100"></progress>
+        <div class="kcal-bar-background">
+          <span class="kcal-value"></span>
+          <div class="kcal-bar">
+          </div>
         </div>
       </article>
 
@@ -49,41 +51,28 @@
         <h3 class="hidden">음식 칼로리 체크하기</h3>
         <form name="search" action="/" method="post" role="search">
           <label for="search">음식 또는 브랜드명 검색</label>
-          <input name="search" id="search" placeholder="음식 또는 브랜드명 검색" autofocus required/>
-          <button type="button" onclick="inputInformation();">Go</button>
+          <input name="search" id="search" value="커피" placeholder="음식 또는 브랜드명 검색" autofocus required/>
+          <button type="submit">Go</button>
         </form>
         <ul class="food-list">
         </ul>
       </article>
     </section>
+    탄수화물의 충분섭취량은 90g이 이상적이며, 단백질인 경우 60g이 적당합니다. 지방의 경우 충분섭취량은 25g 정도가 됩니다.
     <section class="part2">
-        <div class="screen">
-          <section class="dials">
-            <div class="dial move">
-              <div class="dial-background one"></div>
-              <div class="dial-container container1">
-                <div class="wedge"></div>
-              </div>
-              <div class="dial-container container2">
-                <div class="wedge"></div>
-              </div>
-              <div class="marker start"></div>
-              <div class="marker end"></div>
-            </div>
-              <div class="marker start"></div>
-              <div class="marker end"></div>
-            </section>
-          </div>
-        </div>
+      <div class="pie animate carbs"></div>
+      <div class="pie animate protein"></div>
+      <div class="pie animate fat"></div>
       </section>
-      </main>
-    </div>
-    <script>
-     // function crawler 크롤러 값 리스트에 작성
+    </main>
+  </div>
+  <script>
+    // function crawler 크롤러 값 리스트에 작성
     const form = document.forms["search"];
-    function inputInformation(){
-    axios({
-      method: "POST",
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      axios({
+        method: "POST",
       url: "/",
       data: {
         search: form.search.value
@@ -110,22 +99,22 @@
         <dt class="food-name">${value[0][i].title}</dt>
         <dd class="food-brand ">${value[0][i].brand}</dd>
         <dd class="food-vol">${value[0][i].amount}</dd>
-      </dl>
-      <div class="cal-box clearfix">
-        <p class="food-kcal">${value[0][i].kcal}kcal</p>
+        </dl>
+        <div class="cal-box clearfix">
+          <p class="food-kcal">${value[0][i].kcal}kcal</p>
         <p class="food-car">탄수화물 ${value[0][i].carbs}g</p>
         <p class="food-protein">단백질 ${value[0][i].protein}g</p>
         <p class="food-fat">지방 ${value[0][i].fat}g</p>
-      </div>
-      <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
-      <hr>
-    </li>
-    `;
-    
-    const foodList = document.querySelector('.food-list');
-    foodList.insertAdjacentHTML('afterbegin', html);
-    
-  }} else{
+        </div>
+        <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
+        <hr>
+        </li>
+        `;
+        
+        const foodList = document.querySelector('.food-list');
+        foodList.insertAdjacentHTML('afterbegin', html);
+        
+      }} else{
     for(let i = 0 ; i < foodsInformation.length ; i++){  
       foodsInformation[i].parentNode.removeChild(foodsInformation[i]);
     }
@@ -133,76 +122,76 @@
       const html = `
       <li class="foods-information">
         <dl>
-        <dt class="food-name">${value[0][i].title}</dt>
-        <dd class="food-brand ">${value[0][i].brand}</dd>
-        <dd class="food-vol">${value[0][i].amount}</dd>
-      </dl>
+          <dt class="food-name">${value[0][i].title}</dt>
+          <dd class="food-brand ">${value[0][i].brand}</dd>
+          <dd class="food-vol">${value[0][i].amount}</dd>
+          </dl>
       <div class="cal-box clearfix">
         <p class="food-kcal">${value[0][i].kcal}kcal</p>
         <p class="food-car">탄수화물 ${value[0][i].carbs}g</p>
         <p class="food-protein">단백질 ${value[0][i].protein}g</p>
         <p class="food-fat">지방 ${value[0][i].fat}g</p>
-      </div>
-      <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
-      <hr>
-    </li>
-    `;
+        </div>
+        <div class="select" onclick="addKcal(${value[0][i].kcal},${value[0][i].carbs},${value[0][i].protein},${value[0][i].fat});"><i class="fas fa-check"></i></div>
+        <hr>
+        </li>
+        `;
         
-    const foodList = document.querySelector('.food-list');
+        const foodList = document.querySelector('.food-list');
         foodList.insertAdjacentHTML('afterbegin', html);
       }
     }
   })}
-
+  );
   //function kcal gage  칼로리 값 게이지에 적용
-  function addKcal(kcal) {
+  function addKcal(kcal, carbs, protein, fat) {
     console.log('kcal', kcal);
+    console.log('carbs', carbs);
+    console.log('protein', protein);
+    console.log('fat', fat);
     const kcalTotal = 1700;
-    let container1Wedge = document.querySelector(".container1 .wedge");
-    let container2Wedge = document.querySelector(".container2 .wedge");
-    let markerEnd = document.querySelector(".end");
-    
-    
-    let kcalPercent = (kcal / kcalTotal) * 100;  
-    let anglePercent = kcalPercent;
-    let angle = (anglePercent / 100) * 360;
-    
-    
-    
 
+    let kcalPercent = parseInt((kcal / kcalTotal) * 100);
+    let kcalBar = document.querySelector('.kcal-bar');
+    let kcalValue = document.querySelector('.kcal-value');
+
+    let cpRecommend = kcalTotal * 0.4 / 4
+    let fRecommend = kcalTotal * 0.4 / 9
+
+    let cValue = parseInt((carbs / cpRecommend) * 100);
+    let pValue = parseInt((protein / cpRecommend) * 100);
+    let fValue = parseInt((fat / fRecommend) * 100);
+
+    let cGraph = document.querySelector('.carbs');
+    let pGraph = document.querySelector('.protein');
+    let fGraph = document.querySelector('.fat');
     
+    if(cGraph.style == "" && pGraph.style == "" && fGraph.style == ""){
+    kcalBar.style = `width: ${kcalPercent}%`
+    cGraph.style = `--p:${cValue}`
+    pGraph.style = `--p:${pValue}`
+    fGraph.style = `--p:${fValue}`
 
-    let caculate;
-    let caculate2;
-
-    if(container1Wedge.style.transform  == ""){
-      caculate = 0;
-    }else {
-      caculate = Number(String(container1Wedge.style.transform).replace(/[^0-9.]/g,""));
+    kcalValue.innerText = `${kcalPercent}%`
+    cGraph.innerText = `${cValue}%`
+    pGraph.innerText = `${pValue}%`
+    fGraph.innerText = `${fValue}%`
     }
-    
-    if(container2Wedge.style.transform  == ""){
-      caculate2 = 0;
-    }else {
-      caculate2 = Number((String(container2Wedge.style.transform).replace(/[^0-9.]/g,""))); 
+    else {
+      kcalBar.style = `width: ${kcalPercent}%`
+      cGraph.style = `--p:${cValue + cValue}`
+      pGraph.style = `--p:${pValue + pValue}`
+      fGraph.style = `--p:${fValue + fValue}`
+      
+      kcalValue.innerText = `${kcalPercent}%`
+      cGraph.innerText = `${cValue + cValue}%`
+      pGraph.innerText = `${pValue + pValue}%`
+      fGraph.innerText = `${fValue + fValue}%`
     }
-    
-    if(caculate2 >= 180){
-      container2Wedge.style.transform = 'rotateZ(180deg)';
-      container1Wedge.style.transform = 'rotateZ(180deg)';
-    }else if(caculate >= 180){
-      container1Wedge.style.transform = 'rotateZ(180deg)';
-      container2Wedge.style.transform = `rotateZ(${angle + caculate2}deg)`
-      markerEnd.style.transform =  `rotateZ(${angle + caculate + caculate2}deg)`
-    }else {
-      container1Wedge.style.transform = `rotateZ(${angle + caculate}deg)`;
-      markerEnd.style.transform =  `rotateZ(${angle + caculate}deg)`;
-    }
-  
-    console.log("caculate>>",caculate)
-    console.log("caculate2>>",caculate2)
-
-      }
+  }
+  //질문!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //클릭할때마다 숫자, 그래프 더하기 ----- if else 문을 주었는데 적용이 안되는데 다르게 해야 하는지?
+  //클릭할때 그래프 애니메이션 적용 ---- then으로 써야 적용이 되는지?
   </script>
 </body>
 
