@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const PORT = 8000;
 const axios = require("axios");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 //crawler
 const cheerio = require("cheerio");
 const { json } = require("sequelize");
@@ -9,13 +11,27 @@ const { json } = require("sequelize");
 app.set("view engine", "ejs");
 app.use("/views", express.static(__dirname + "/views"));
 app.use("/static", express.static(__dirname + "/static"));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(express.json());
+app.use(cookieParser()); // req.cookies 가능해짐
+app.use(
+  session({
+    secret: "secretKey",
+    resave: false,
+    saveUninitialized: true,
+    name: "my-session",
+  })
+);
 
-// var client_id = "C3dt4QoaXUtAKOrk2Qju";
-// var client_secret = "1Ww9zMtpb5";
-// var state = "RANDOM_STATE";
-// var redirectURI = encodeURI("http://localhost:8000/naverLogin");
+const cookieConfig = {
+  httpOnly: true, // 웹서버를 통해서만 쿠키 접근 가능 (js에서 접근 불가능)
+  maxAge: 24 * 60 * 60 * 1000, // 24시간 60분 60초 1000밀리초(1초) = 하루
+  // expires: 만료 날짜 설정
+  // secure: https에서만 쿠키 접근
+  // signed: 쿠키 암호화
+};
 
 const indexRouter = require("./routes");
 app.use("/", indexRouter);
@@ -31,6 +47,7 @@ app.get("/", (req, res) => {
 
 // main
 app.get("/main", (req, res) => {
+
   res.render("main", { activeMenu: "main" });
 });
 
@@ -54,9 +71,6 @@ app.get("/buhee", (req, res) => {
   res.render("buhee");
 });
 
-app.get("/", (req, res) => {
-  res.render("main", { activeMenu: "main" });
-});
 
 app.post("/", async (req, res) => {
   console.log("req.body.search>>", req.body.search);
@@ -65,20 +79,30 @@ app.post("/", async (req, res) => {
 });
 
 app.get("/sub1", (req, res) => {
-  res.render("sub1", { activeMenu: "sub1" });
+  res.render("sub1", {
+    activeMenu: "sub1"
+  });
 });
 
 app.get("/sub2", (req, res) => {
-  res.render("sub2", { activeMenu: "sub2" });
+  res.render("sub2", {
+    activeMenu: "sub2"
+  });
 });
 
 app.get("/sub3", (req, res) => {
-  res.render("sub3", { activeMenu: "sub3" });
+  res.render("sub3", {
+    activeMenu: "sub3"
+  });
 });
 
 app.get("/login", (req, res) => {
   res.render("login");
 });
+
+app.get("/mypage", (req, res) => {
+  res.render("mypage")
+})
 
 app.get("/signup", (req, res) => {
   res.render("signup");
@@ -143,7 +167,9 @@ async function crawler(search) {
       let proteinRegex = kcalText.match(/단백질\s:\s\d{1,3}./g);
       protein = String(proteinRegex[i]).replace(/[^0-9]/g, "");
 
+
       let array = { title, brand, kcal, amount, carbs, fat, protein };
+
 
       // console.log(">>>", brandAmountArray[i].children[0].data);
       foods.push(array);

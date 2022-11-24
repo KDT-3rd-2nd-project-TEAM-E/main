@@ -24,7 +24,7 @@ USE kcalcal;
 CREATE TABLE userweight(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     userid VARCHAR(20) NOT NULL,
-    Date DATETIME DEFAULT NOW(), 
+    date DATETIME DEFAULT NOW(), 
     weight INT
 );
 
@@ -51,7 +51,7 @@ SELECT * FROM user;
 -- SELECT * FROM member;
 SELECT * FROM userweight;
 
-INSERT INTO user (userid, userpw, useremail, nickname, gender, age, height) VALUES ('aaa', 'aaa', 'aaa@aaa.a', 'aaa', 'M', 25, 178);
+INSERT INTO user (userid, userpw, useremail, nickname, gender, age, height) VALUES ('aaa', 'aaa', 'aaa@aaa.aaa', 'aaa', 'M', 25, 178);
 
 INSERT INTO member (userid, userpw) VALUES ('aaa', 'aaa');
 INSERT INTO member (userid, userpw) VALUES ('bbb', 'bbb');
