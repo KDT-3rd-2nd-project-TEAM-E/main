@@ -109,6 +109,7 @@ exports.getsignup = (req, res) => {
 // };
 
 // exports.postsignweightup = (req, res) => {
+//   // const User = models.User;
 //   models.Userweight.create({
 //     userid: req.body.userid,
 //     weight: req.body.weight,
@@ -134,15 +135,13 @@ exports.postsignup = async (req, res) => {
   });
   console.log(result1);
   console.log(result2);
-  res.render("main", {
-    user: result1,
-    userweight: result2,
-  });
+
+  res.send(true);
 }; // axios요청 한버튼에 두개 -> 각기 다른 DB에 저장되게끔
 
 exports.bmi = (req, res) => {
-  // const query = `SELECT Date, weight FROM userweight WHERE userid=userweight.userid ORDER BY Date DESC;`;
-  const query = `SELECT Date, weight FROM userweight WHERE userid=${req.body.userid} ORDER BY Date DESC;`;
+  // const query = `SELECT date, weight FROM userweight WHERE userid=userweight.userid ORDER BY Date DESC;`;
+  const query = `SELECT date, weight FROM userweight WHERE userid=${req.body.userid} ORDER BY Date DESC;`;
   models.sequelize
     .query(query, { type: models.sequelize.QueryTypes.SELECT })
     .then((result) => {
@@ -178,7 +177,7 @@ exports.mypageEdit = async (req, res) => {
   let result2 = await models.Userweight.create(
     {
       weight: req.body.weight,
-      Date: req.body.Date,
+      date: req.body.date,
     },
     {
       where: {
