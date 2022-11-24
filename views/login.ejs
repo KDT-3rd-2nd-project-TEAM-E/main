@@ -273,8 +273,8 @@
       function login() {
         const form = document.forms["form_login"];
 
-        if (!form_login.checkValidity()) {
-          form_login.reportValidity();
+        if (!form.checkValidity()) {
+          form.reportValidity();
           return;
         }
 
@@ -282,15 +282,21 @@
           method: "POST",
           url: "/login",
           data: {
-            userid: form_login.userid.value,
-            userpw: form_login.userpw.value,
+            userid: form.id.value,
+            userpw: form.pw.value,
           },
         })
           .then((res) => {
             return res.data;
           })
           .then((data) => {
-            document.location.href = "/main";
+            if (data) {
+              document.location.href = "/main";
+              return;
+            } else {
+              alert("로그인 실패");
+              document.location.href = "/login";
+            }
           });
       }
     </script>
