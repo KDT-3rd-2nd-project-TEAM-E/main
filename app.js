@@ -11,7 +11,9 @@ const { json } = require("sequelize");
 app.set("view engine", "ejs");
 app.use("/views", express.static(__dirname + "/views"));
 app.use("/static", express.static(__dirname + "/static"));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(express.json());
 app.use(cookieParser()); // req.cookies 가능해짐
 app.use(
@@ -45,7 +47,9 @@ app.get("/", (req, res) => {
 
 // main
 app.get("/main", (req, res) => {
+
   res.render("main", { activeMenu: "main" });
+
 });
 
 app.get("/testlogin", (req, res) => {
@@ -68,9 +72,6 @@ app.get("/buhee", (req, res) => {
   res.render("buhee");
 });
 
-app.get("/", (req, res) => {
-  res.render("main", { activeMenu: "main" });
-});
 
 app.post("/", async (req, res) => {
   console.log("req.body.search>>", req.body.search);
@@ -80,20 +81,30 @@ app.post("/", async (req, res) => {
 });
 
 app.get("/sub1", (req, res) => {
-  res.render("sub1", { activeMenu: "sub1" });
+  res.render("sub1", {
+    activeMenu: "sub1"
+  });
 });
 
 app.get("/sub2", (req, res) => {
-  res.render("sub2", { activeMenu: "sub2" });
+  res.render("sub2", {
+    activeMenu: "sub2"
+  });
 });
 
 app.get("/sub3", (req, res) => {
-  res.render("sub3", { activeMenu: "sub3" });
+  res.render("sub3", {
+    activeMenu: "sub3"
+  });
 });
 
 app.get("/login", (req, res) => {
   res.render("login");
 });
+
+app.get("/mypage", (req, res) => {
+  res.render("mypage")
+})
 
 app.get("/signup", (req, res) => {
   res.render("signup");
@@ -161,7 +172,9 @@ async function crawler(search) {
       let proteinRegex = kcalText.match(/단백질\s:\s\d{1,3}./g);
       protein = String(proteinRegex[i]).replace(/[^0-9]/g, "");
 
+
       let array = { title, brand, kcal, amount, carbs, fat, protein };
+
 
       // console.log(">>>", brandAmountArray[i].children[0].data);
       foods.push(array);

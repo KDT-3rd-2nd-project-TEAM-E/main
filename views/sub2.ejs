@@ -32,19 +32,23 @@
         <h2 class="hidden">Main Content</h2>
         <article>
           <h3>건강정보</h3>
-          <p>다양한 건강정보를 확인해보세요</p>
-
           <div class="content_area">
             <div class="list_header">
+              <form method="get" name="search">
+                <input type="text" id="searchInput" placeholder="다양한 건강정보를 검색해보세요">
+                <button type="button" onclick="Search()">검색</button>
+              </form>
+
               <p>TOTAL <span>15</span></p>
               <ul>
                 <li class="showlist"><a href="#"><i class="fas fa-list"></i><span class="hidden"> 리스트</span></a></li>
                 <li class="thumb"><a href="#"><i class="fas fa-th-large"></i><span class="hidden">테이블</span></a></li>
               </ul>
             </div>
-            <hr>
+
             <div class="list_content">
-              <a href="#">
+              <div class="search"></div>
+              <!-- <a href="#">
                 <div class="news">
                   <p>NO&#46;&nbsp;<span>15</span></p>
                   <h4>제목이 들어갈겁니다ㅏㅏ</h4>
@@ -53,14 +57,56 @@
                     샐러드를 건강하게 먹으려면 가장 중요한 것은 바로 재료와 드레싱인데, 특히 소금, 설탕, 지방 등의 열량에 주의해야 한다. 샐러드 더 건강하게 먹는 법을 알아본다.</p>
                 </div>
                 <img src="../static/img/img.jpeg" alt="건강정보이미지">
-              </a>
+              </a> -->
             </div>
           </div>
-
         </article>
       </section>
     </main>
   </div>
+
+  <script>
+    function Search() {
+      let result = document.forms["search"].searchInput.value;
+      console.log(result);
+      const search = document.querySelector(".search");
+
+      $.ajax({
+        method: "GET",
+        url: "https://dapi.kakao.com/v2/search/blog?target=title",
+        data: {
+          query: result
+        },
+        // data: { query: `${result}` },
+        // data: { query: '건강' },
+        headers: {
+          Authorization: "KakaoAK a781e81dc26fc9d9edf0b4cb02c30760",
+        },
+      }).done(function (msg) {
+        console.log(msg);
+
+        let html = "";
+        for (i = 0; i < msg.documents.length; i++) {
+          html += `
+            <a href="${msg.documents[i].url}">
+              <div class="news">
+                <p>NO&#46;&nbsp;<span>${[i]}</span></p>
+                <h4>${msg.documents[i].title}</h4>
+                <p>${msg.documents[i].blogname}</p>
+                <p>${msg.documents[i].contents.substr(0, 100)}...</p>
+                <p>${msg.documents[i].datetime}</p>
+              </div>
+              <img src="../static/img/img.jpeg" alt="건강정보이미지">
+            </a>
+          `;
+        }
+        search.insertAdjacentHTML("afterbegin", html);
+        // search.innerHTML.replace(/<(\/b|b)([^>]*)>/gi,"");
+        // html.replace(/<(\/b|b)([^>]*)>/gi,"");
+
+      });
+    }
+  </script>
 </body>
 
 </html>
