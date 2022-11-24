@@ -4,6 +4,8 @@ const PORT = 8000;
 const axios = require("axios");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const crypto = require('crypto');
+
 //crawler
 const cheerio = require("cheerio");
 const { json } = require("sequelize");
@@ -65,10 +67,6 @@ app.get("/testsearchkakao", (req, res) => {
   // } else {
   //   res.send("오류");
   // }
-});
-
-app.get("/buhee", (req, res) => {
-  res.render("buhee");
 });
 
 
