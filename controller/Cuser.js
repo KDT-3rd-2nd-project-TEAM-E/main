@@ -80,8 +80,36 @@ exports.getsignup = (req, res) => {
   res.render("signup");
 };
 
-exports.postsignup = (req, res) => {
-  models.User.create({
+// exports.postsignup = (req, res) => {
+//   models.User.create({
+//     userid: req.body.userid,
+//     userpw: req.body.userpw,
+//     useremail: req.body.useremail,
+//     nickname: req.body.nickname,
+//     gender: req.body.gender,
+//     age: req.body.age,
+//     height: req.body.height,
+//   }).then((result) => {
+//     console.log("creat >>", result); //{}
+//     res.send(result);
+//   });
+// };
+
+// exports.postsignweightup = (req, res) => {
+//   // const User = models.User;
+//   models.Userweight.create({
+//     userid: req.body.userid,
+//     weight: req.body.weight,
+//   }).then((result) => {
+//     console.log("creat >>", result); //{}
+//     res.send(result);
+//   });
+// };
+
+exports.postsignup = async (req, res) => {
+  console.log(req.body);
+
+  let result1 = await models.User.create({
     userid: req.body.userid,
     userpw: req.body.userpw,
     useremail: req.body.useremail,
@@ -89,24 +117,28 @@ exports.postsignup = (req, res) => {
     gender: req.body.gender,
     age: req.body.age,
     height: req.body.height,
-  }).then((result) => {
-    console.log("creat >>", result); //{}
-    res.send(result);
   });
-};
-
-exports.postsignweightup = (req, res) => {
-  models.Userweight.create({
+  let result2 = await models.Userweight.create({
     userid: req.body.userid,
     weight: req.body.weight,
-  }).then((result) => {
-    console.log("creat >>", result); //{}
-    res.send(result);
   });
-};
+  console.log(result1);
+  console.log(result2);
+
+  res.send(true);
+}; // axios요청 한버튼에 두개 -> 각기 다른 DB에 저장되게끔
 
 exports.bmi = (req, res) => {
-  res.render("bmi");
+  // const query = `SELECT date, weight FROM userweight WHERE userid=userweight.userid ORDER BY Date DESC;`;
+  const query = `SELECT date, weight FROM userweight WHERE userid=${req.body.userid} ORDER BY Date DESC;`;
+  models.sequelize
+    .query(query, { type: models.sequelize.QueryTypes.SELECT })
+    .then((result) => {
+      // * Chrome 브라우저의 경우, JSONVue 확장프로그램 설치시 데이터 출력 결과를 가독성있게 볼 수 있음
+      // https://chrome.google.com/webstore/detail/jsonvue/chklaanhfefbnpoihckbnefhakgolnmc
+
+      res.send(result);
+    });
 };
 
 exports.testsearchkakao = (req, res) => {
@@ -134,7 +166,7 @@ exports.mypageEdit = async (req, res) => {
   let result2 = await models.Userweight.create(
     {
       weight: req.body.weight,
-      Date: req.body.Date,
+      date: req.body.date,
     },
     {
       where: {

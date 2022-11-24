@@ -37,22 +37,11 @@
         }).done(function (msg) {
           console.log(msg);
           for (i = 0; i < msg.documents.length; i++) {
-            // $("p").append("<strong>" + msg.documents[i].blogname + "</strong>");
-            // $("p").append(
-            //   "<div>" +
-            //     msg.documents[i].contents.substr(0, 20) +
-            //     "..." +
-            //     "</div>"
-            // );
-            // $("p").append("<div>" + msg.documents[i].datetime + "</div>");
-            // $("p").append("<div>" + msg.documents[i].title + "</div>");
-            // $("p").append("<div>" + msg.documents[i].url + "</div>");
-            // $("p").append("<img src='" + msg.documents[i].thumbnail + "'/>");
             const html = `
                 <h2>${msg.documents[i].title}</h2>
                 <h4>${msg.documents[i].blogname}</h4>
-                <p>${msg.documents[i].contents.substr(0, 100)}...</p>
-                <h6>${msg.documents[i].datetime}</h6>
+                <p>${msg.documents[i].contents.substr(0, 200)}...</p>
+                <h6>${msg.documents[i].datetime.substr(0, 10)}</h6>
                 <a href="${msg.documents[i].url}">자세히 보기</a>
             `;
             search.insertAdjacentHTML("afterbegin", html);

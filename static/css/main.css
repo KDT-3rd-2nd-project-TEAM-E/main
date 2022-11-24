@@ -136,6 +136,8 @@ label {
 /* food list */
 .food-list {
   padding: 20px 5px;
+  overflow-y: scroll;
+  height: 300px;
 }
 
 .food-list li {
