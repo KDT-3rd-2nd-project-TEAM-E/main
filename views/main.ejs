@@ -161,23 +161,48 @@
     let container1Wedge = document.querySelector(".container1 .wedge");
     let container2Wedge = document.querySelector(".container2 .wedge");
     let markerEnd = document.querySelector(".end");
-      let kcalPercent = (kcal / kcalTotal) * 100;
-      
-      let anglePercent = kcalPercent;
-      let angle = (anglePercent / 100) * 360;
+    
+    
+    let kcalPercent = (kcal / kcalTotal) * 100;  
+    let anglePercent = kcalPercent;
+    let angle = (anglePercent / 100) * 360;
+    
+    
+    
 
+    
 
+    let caculate;
+    let caculate2;
 
-      if(container1Wedge.style.transform == null){
-        container1Wedge.style.transform = `rotateZ(${angle}deg)`;
-        markerEnd.style.transform = `rotateZ(${angle}deg)`;
-      }else{
-        console.dir("container1Wedge.style.transform>>", container1Wedge.style.transform);
-        container1Wedge.style.transform = container1Wedge.style.transform + `rotateZ(${angle}deg)`;
-        markerEnd.style.transform = markerEnd.style.transform + `rotateZ(${angle}deg)`;
+    if(container1Wedge.style.transform  == ""){
+      caculate = 0;
+    }else {
+      caculate = Number(String(container1Wedge.style.transform).replace(/[^0-9.]/g,""));
+    }
+    
+    if(container2Wedge.style.transform  == ""){
+      caculate2 = 0;
+    }else {
+      caculate2 = Number((String(container2Wedge.style.transform).replace(/[^0-9.]/g,""))); 
+    }
+    
+    if(caculate2 >= 180){
+      container2Wedge.style.transform = 'rotateZ(180deg)';
+      container1Wedge.style.transform = 'rotateZ(180deg)';
+    }else if(caculate >= 180){
+      container1Wedge.style.transform = 'rotateZ(180deg)';
+      container2Wedge.style.transform = `rotateZ(${angle + caculate2}deg)`
+      markerEnd.style.transform =  `rotateZ(${angle + caculate + caculate2}deg)`
+    }else {
+      container1Wedge.style.transform = `rotateZ(${angle + caculate}deg)`;
+      markerEnd.style.transform =  `rotateZ(${angle + caculate}deg)`;
+    }
+  
+    console.log("caculate>>",caculate)
+    console.log("caculate2>>",caculate2)
+
       }
-      }
-
   </script>
 </body>
 
