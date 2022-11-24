@@ -31,10 +31,7 @@ app.get("/", (req, res) => {
 
 // main
 app.get("/main", (req, res) => {
-
-
   res.render("main", { activeMenu: "main" });
-
 });
 
 app.get("/testlogin", (req, res) => {
@@ -64,7 +61,6 @@ app.get("/", (req, res) => {
 app.post("/", async (req, res) => {
   console.log("req.body.search>>", req.body.search);
   let result = await crawler(req.body.search);
-  console.log("result >>>>", result);
   res.send({ data: result });
 });
 
@@ -121,9 +117,6 @@ async function crawler(search) {
     for (let i = 0; i < titleArray.length; i++) {
       let title = titleArray[i].children[0].data;
       let brand = brandAmountArray[i].children[0].data;
-
-      console.log("children.length>>>", brandAmountArray[i].children.length);
-
       let amount;
 
       if (brandAmountArray[i].children.length < 7) {
