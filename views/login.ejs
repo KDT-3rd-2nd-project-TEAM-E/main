@@ -31,89 +31,229 @@
           <span>Welcome!</span> KCAL-CAL에 오신 것을 환영합니다!
         </div>
         <hr />
-
-        <div class="id">
-          <input
-            type="text"
-            class="inputBox"
-            name="id"
-            id="id"
-            placeholder="아이디를 입력해주세요."
-            required
-          />
-          <div id="idError" class="error"></div>
-        </div>
-
-        <div class="pw">
-          <input
-            type="text"
-            class="inputBox"
-            name="pw"
-            id="pw"
-            placeholder="비밀번호를 입력해주세요."
-            required
-          />
-          <div id="pwError" class="error"></div>
-        </div>
-
-        <div class="login">
-          <button type="submit" id="loginBtn" disabled onclick="abc();">
-            로그인
-          </button>
-          <br />
-          <div class="loginEtc">
-            <ul>
-              <li><a href="#">아이디찾기</a></li>
-              <li><a href="#">비밀번호찾기</a></li>
-              <li><a href="/signup">회원가입</a></li>
-            </ul>
+        <form name="form_login">
+          <div class="id">
+            <input
+              type="text"
+              class="inputBox"
+              name="id"
+              id="id"
+              placeholder="아이디를 입력해주세요."
+              required
+            />
+            <div id="idError" class="error"></div>
           </div>
 
-          <!-- 간편 소셜로그인 연동 -->
-          <span class="hr-sect">이미 회원이신가요?</span>
-          <div class="socialLogin">
-            <ul>
-              <!-- 네이버 -->
-              <li>
-                <a id="naverIdLogin_loginButton" href="javascript:void(0)">
-                  <img
-                    src="/static/img/iconNaver.png"
-                    alt="네이버"
-                    id="naverBtn"
-                  />
-                </a>
-              </li>
-              <!-- 카카오 -->
-              <li onclick="kakaoLogin();">
-                <a href="javascript:void(0)">
-                  <img
-                    src="/static/img/kakao_login_large_narrow.png"
-                    alt="카카오"
-                    id="kakaoBtn"
-                  />
-                </a>
-              </li>
-              <!-- 구글 -->
-              <li>
-                <a id="GgCustomLogin" href="javascript:void(0)">
-                  <img
-                    src="/static/img/icon_google.png"
-                    alt="구글"
-                    id="googleBtn"
-                  />
-                </a>
-              </li>
-              <!-- <li onclick="kakaoLogout();">
+          <div class="pw">
+            <input
+              type="password"
+              class="inputBox"
+              name="pw"
+              id="pw"
+              placeholder="비밀번호를 입력해주세요."
+              required
+            />
+            <div id="pwError" class="error"></div>
+          </div>
+
+          <div class="login">
+            <button type="button" id="loginBtn" disabled onclick="login();">
+              로그인
+            </button>
+            <br />
+
+            <div class="loginEtc">
+              <ul>
+                <li>
+                  <a
+                    role="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#findId"
+                    >아이디찾기</a
+                  >
+                </li>
+                <li>
+                  <a
+                    rold="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#findPw"
+                    >비밀번호찾기</a
+                  >
+                </li>
+                <li><a href="/signup">회원가입</a></li>
+              </ul>
+            </div>
+
+            <!-- 간편 소셜로그인 연동 -->
+            <span class="hr-sect">이미 회원이신가요?</span>
+            <div class="socialLogin">
+              <ul>
+                <!-- 네이버 -->
+                <li>
+                  <a id="naverIdLogin_loginButton" href="javascript:void(0)">
+                    <img
+                      src="/static/img/iconNaver.png"
+                      alt="네이버"
+                      id="naverBtn"
+                    />
+                  </a>
+                </li>
+                <!-- 카카오 -->
+                <li onclick="kakaoLogin();">
+                  <a href="javascript:void(0)">
+                    <img
+                      src="/static/img/kakao_login_large_narrow.png"
+                      alt="카카오"
+                      id="kakaoBtn"
+                    />
+                  </a>
+                </li>
+                <!-- 구글 -->
+                <li>
+                  <a id="GgCustomLogin" href="javascript:void(0)">
+                    <img
+                      src="/static/img/icon_google.png"
+                      alt="구글"
+                      id="googleBtn"
+                    />
+                  </a>
+                </li>
+                <!-- <li onclick="kakaoLogout();">
                 <a href="javascript:void(0)">
                   <span>카카오 로그아웃</span>
                 </a>
               </li> -->
-            </ul>
+              </ul>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 아이디찾기 모달(vertically centered) -->
+    <div
+      class="modal fade"
+      id="findId"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              아이디 찾기
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="oneine">
+              <input
+                type="text"
+                id="findUseremail"
+                class="inputBox"
+                placeholder="회원가입시 등록한 이메일 입력"
+              />
+              <button type="button" id="lookupEmail" onclick="lookup(); ">
+                이메일 조회
+              </button>
+            </div>
+            <div id="showId"></div>
+            <br />
+            <div class="loginEtc">
+              <ul>
+                <li>
+                  <a
+                    rold="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#findPw"
+                  >
+                    비밀번호 찾기</a
+                  >
+                </li>
+                <li>
+                  <a href="/login">로그인 하러 가기</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button> -->
           </div>
         </div>
       </div>
     </div>
 
+    <!-- 비번찾기 모달(vertically centered) -->
+    <div
+      class="modal fade"
+      id="findPw"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              비밀번호 찾기
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="oneine">
+              <input
+                type="text"
+                id="findUseremail"
+                class="inputBox"
+                placeholder="회원가입시 등록한 이메일 입력"
+              />
+              <button type="button" id="lookupEmail" onclick="sendEmail(); ">
+                인증번호 전송
+              </button>
+            </div>
+            <!--전송완료 여부 -->
+            <div id="showResult"></div>
+            <br />
+            <div class="loginEtc">
+              <ul>
+                <li>
+                  <a
+                    role="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#findId"
+                  >
+                    아이디 찾기</a
+                  >
+                </li>
+                <li>
+                  <a href="/login">로그인 하러 가기</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- 카카오 로그인 api 스크립트 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <!-- 네이버 로그인 api 스크립트 -->
@@ -127,8 +267,33 @@
       async
       defer
     ></script>
-    <!--login.js 파일-->
-    <!-- <script src="/routes/login.js"></script> -->
+
+    <!-- 로그인 버튼 -->
+    <script>
+      function login() {
+        const form = document.forms["form_login"];
+
+        if (!form_login.checkValidity()) {
+          form_login.reportValidity();
+          return;
+        }
+
+        axios({
+          method: "POST",
+          url: "/login",
+          data: {
+            userid: form_login.userid.value,
+            userpw: form_login.userpw.value,
+          },
+        })
+          .then((res) => {
+            return res.data;
+          })
+          .then((data) => {
+            document.location.href = "/main";
+          });
+      }
+    </script>
 
     <script>
       Kakao.init("2609470f9ce5ccc0f948de565ceda807"); //발급받은 키 중 javascript키를 사용해준다.
