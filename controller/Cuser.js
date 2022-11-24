@@ -1,3 +1,4 @@
+const { User } = require("../models");
 const models = require("../models"); // ../models/index.js
 
 exports.index = (req, res) => {
@@ -47,32 +48,44 @@ exports.findId = (req, res) => {
   });
 };
 
+// exports.findPw = (req, res) => {
+//   models.User.findOne({
+//     where: {
+//       userid: req.body.userid,
+//       useremail: req.body.useremail,
+//     },
+//   }).then((result) => {
+//     console.log("PW 찾기 >>", result); // [{}]
+//     if (result === null) {
+//       res.send(false); // 해당 ID, 이메일에 대응하는 PW값 X
+//       // return
+//     } else {
+//       models.User.update(
+//         {
+//           userpw: 1111,
+//         },
+//         {
+//           where: {
+//             userid: req.body.id,
+//           },
+//         }
+//       ).then((result) => {
+//         console.log("PW초기화 >>", result); // update >> [ 1 ]
+//       });
+//       res.render("mypage"); // ID값 출력 or 다른 처리
+//     }
+//   });
+// };
+
 exports.findPw = (req, res) => {
-  models.User.findOne({
+  if (req.body.email === "") {
+    res.status(400).send("email required");
+  }
+
+  User.findOne({
     where: {
-      userid: req.body.userid,
-      useremail: req.body.useremail,
+      email: req.body.email,
     },
-  }).then((result) => {
-    console.log("PW 찾기 >>", result); // [{}]
-    if (result === null) {
-      res.send(false); // 해당 ID, 이메일에 대응하는 PW값 X
-      // return
-    } else {
-      models.User.update(
-        {
-          userpw: 1111,
-        },
-        {
-          where: {
-            userid: req.body.id,
-          },
-        }
-      ).then((result) => {
-        console.log("PW초기화 >>", result); // update >> [ 1 ]
-      });
-      res.render("mypage"); // ID값 출력 or 다른 처리
-    }
   });
 };
 
@@ -107,8 +120,6 @@ exports.getsignup = (req, res) => {
 // };
 
 exports.postsignup = async (req, res) => {
-  console.log(req.body);
-
   let result1 = await models.User.create({
     userid: req.body.userid,
     userpw: req.body.userpw,
