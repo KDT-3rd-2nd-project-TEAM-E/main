@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>건강관리 | Kcal-cal</title>
+  <title>마이페이지 | Kcal-cal</title>
   <!-- favicon -->
   <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
   <!-- css: reset -->
@@ -24,15 +24,31 @@
 
 <body>
   <div id="wrap">
-    <%- include('header.ejs') %>
+    <*%- include('header.ejs') %*>
 
     <!-- main content -->
     <main>
       <section>
         <h2 class="hidden">Main Content</h2>
-        <h3>칼로리 그래프</h3>
-        <article>
-          
+        <h3>내 정보</h3>
+        <article class="profile1">
+          <img src="https://ca.slack-edge.com/T0417T8AR8U-U0415AS4GLT-9052f3c17396-512" alt="">
+          <form>
+            <label for="nickname" name="info" id="nickname"></label>
+            <input type="text" placeholder="고정아이디값">
+            <label for=""></label>
+            <input type="text">
+            <button>수정</button>
+          </form>
+        </article>
+        <article class="profile2">
+          <form>
+            <label for="age" id="age">나이</label>
+            <input type="number">
+            <label for="weight">몸무게</label>
+            <input type="text">
+            <button>수정</button>
+          </form>
         </article>
       </section>
     </main>
