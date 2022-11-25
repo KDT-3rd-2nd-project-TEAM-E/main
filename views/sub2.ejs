@@ -1,58 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>건강정보 | Kcal-cal</title>
-    <!-- favicon -->
-    <link
-      rel="shortcut icon"
-      href="../static/img/favicon.png"
-      type="image/x-icon"
-    />
-    <!-- css: reset -->
-    <link rel="stylesheet" href="../static/css/reset.css" />
-    <!-- css: header -->
-    <link rel="stylesheet" href="../static/css/header.css" />
-    <!-- css : sub -->
-    <link rel="stylesheet" href="../static/css/sub.css" />
-    <!-- fontawsome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
-    />
-    <!-- xelcon -->
-    <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
-    />
-    <!-- jQuery CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  </head>
 
-  <body>
-    <div id="wrap">
-      <%- include('header.ejs') %>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>건강정보 | Kcal-cal</title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon" />
+  <!-- css: reset -->
+  <link rel="stylesheet" href="../static/css/reset.css" />
+  <!-- css: header -->
+  <link rel="stylesheet" href="../static/css/header.css" />
+  <!-- css : sub -->
+  <link rel="stylesheet" href="../static/css/sub.css" />
+  <!-- fontawsome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+  <!-- xelcon -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" />
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
 
-      <!-- main content -->
-      <main>
-        <section>
-          <h2 class="hidden">Main Content</h2>
-          <article>
-            <h3>건강정보</h3>
-            <div class="content_area">
-              <div class="list_header">
-                <form method="get" name="search">
-                  <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="다양한 건강정보를 검색해보세요"
-                  />
-                  <button type="button" onclick="Search()">검색</button>
-                </form>
+<body>
+  <div id="wrap">
+    <%- include('header.ejs') %>
 
-<!-- main content -->
+    <!-- main content -->
     <main>
       <section>
         <h2 class="hidden">Main Content</h2>
@@ -61,20 +35,35 @@
           <div class="content_area">
             <div class="list_header">
               <form method="get" name="search">
-                <input type="text" id="searchInput" placeholder="다양한 건강정보를 검색해보세요">
-                <button>검색</button>
+                <input type="text" id="searchInput" placeholder="다양한 건강정보를 검색해보세요" />
+                <button type="button" onclick="Search()">검색</button>
               </form>
 
-              <p>TOTAL <span>15</span></p>
-              <ul>
-                <li class="showlist"><a href="#"><i class="fas fa-list"></i><span class="hidden"> 리스트</span></a></li>
-                <li class="thumb"><a href="#"><i class="fas fa-th-large"></i><span class="hidden">테이블</span></a></li>
-              </ul>
-            </div>
+              <!-- main content -->
+              <main>
+                <section>
+                  <h2 class="hidden">Main Content</h2>
+                  <article>
+                    <h3>건강정보</h3>
+                    <div class="content_area">
+                      <div class="list_header">
+                        <form method="get" name="search">
+                          <input type="text" id="searchInput" placeholder="다양한 건강정보를 검색해보세요">
+                          <button>검색</button>
+                        </form>
 
-              <div class="list_content">
-                <div class="search"></div>
-                <!-- <a href="#">
+                        <p>TOTAL <span>15</span></p>
+                        <ul>
+                          <li class="showlist"><a href="#"><i class="fas fa-list"></i><span class="hidden">
+                                리스트</span></a></li>
+                          <li class="thumb"><a href="#"><i class="fas fa-th-large"></i><span
+                                class="hidden">테이블</span></a></li>
+                        </ul>
+                      </div>
+
+                      <div class="list_content">
+                        <div class="search"></div>
+                        <!-- <a href="#">
                 <div class="news">
                   <p>NO&#46;&nbsp;<span>15</span></p>
                   <h4>제목이 들어갈겁니다ㅏㅏ</h4>
@@ -85,38 +74,38 @@
                 <img src="../static/img/img.jpeg" alt="건강정보이미지">
               </a> -->
 
+                      </div>
+                    </div>
+                  </article>
+                </section>
+              </main>
             </div>
-          </div>
-        </article>
-      </section>
-    </main>
-  </div>
 
-  <script>
-    const form = document.forms["search"];
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      let result = document.forms["search"].searchInput.value;
-      console.log(result);
-      const search = document.querySelector(".search");
+            <script>
+              const form = document.forms["search"];
+              form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                let result = document.forms["search"].searchInput.value;
+                console.log(result);
+                const search = document.querySelector(".search");
 
-      $.ajax({
-        method: "GET",
-        url: "https://dapi.kakao.com/v2/search/blog?target=title",
-        data: {
-          query: result
-        },
-        // data: { query: `${result}` },
-        // data: { query: '건강' },
-        headers: {
-          Authorization: "KakaoAK a781e81dc26fc9d9edf0b4cb02c30760",
-        },
-      }).done(function (msg) {
-        console.log(msg);
+                $.ajax({
+                  method: "GET",
+                  url: "https://dapi.kakao.com/v2/search/blog?target=title",
+                  data: {
+                    query: result
+                  },
+                  // data: { query: `${result}` },
+                  // data: { query: '건강' },
+                  headers: {
+                    Authorization: "KakaoAK a781e81dc26fc9d9edf0b4cb02c30760",
+                  },
+                }).done(function (msg) {
+                  console.log(msg);
 
-        let html = "";
-        for (i = 0; i < msg.documents.length; i++) {
-          html += `
+                  let html = "";
+                  for (i = 0; i < msg.documents.length; i++) {
+                    html += `
             <a href="${msg.documents[i].url}">
               <div class="news">
                 <p>NO&#46;&nbsp;<span>${[i]}</span></p>
@@ -128,16 +117,16 @@
               <img src="../static/img/img.jpeg" alt="건강정보이미지">
             </a>
           `;
-        }
-        search.insertAdjacentHTML("afterbegin", html);
-        // search.innerHTML.replace(/<(\/b|b)([^>]*)>/gi,"");
-        // html.replace(/<(\/b|b)([^>]*)>/gi,"");
+                  }
+                  search.insertAdjacentHTML("afterbegin", html);
+                  // search.innerHTML.replace(/<(\/b|b)([^>]*)>/gi,"");
+                  // html.replace(/<(\/b|b)([^>]*)>/gi,"");
 
-      });
-    });
-  </script>
-  <script src="/static/js/sub2.js"></script>
+                });
+              });
+            </script>
+            <script src="/static/js/sub2.js"></script>
 </body>
 
-   
+
 </html>

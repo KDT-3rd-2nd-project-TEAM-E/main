@@ -78,7 +78,8 @@ input[type="number"]::-webkit-inner-spin-button {
 .graph {
   width: 100%;
   height: 10px;
-  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  /* background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); */
+  background: #333;
 }
 
 /* SUB2 CSS */
