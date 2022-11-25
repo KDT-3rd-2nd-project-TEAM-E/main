@@ -39,6 +39,56 @@
     <div id="wrap">
       <%- include('header.ejs') %>
 
+<<<<<<< HEAD
+    <!-- main content -->
+    <main>
+      <section class="part1">
+        <h2 class="hidden">Main Content</h2>
+
+        <!-- kcal search -->
+        <article class="search">
+          <h3 class="hidden">음식 칼로리 체크하기</h3>
+          <form name="search" action="/" method="post" role="search">
+            <label for="search">음식 또는 브랜드명 검색</label>
+            <input name="search" id="search" value="커피" placeholder="음식 또는 브랜드명 검색" autofocus required />
+            <button type="button" onclick="inputInformation();">Go</button>
+          </form>
+          <ul class="food-list">
+          </ul>
+        </article>
+      </section>
+
+    </main>
+  </div>
+  <script>
+    // function crawler 크롤러 값 리스트에 작성
+    const form = document.forms["search"];
+
+    function inputInformation() {
+      axios({
+        method: "POST",
+        url: "/",
+        data: {
+          search: form.search.value
+        },
+      }).then((res) => {
+        return data = res.data;
+      }).then((data) => {
+        const keys = Object.keys(data);
+        const value = [];
+        for (let i = 0; i < keys.length; i++) {
+          const key = keys[i]
+          value[i] = data[key]
+        }
+
+
+        const foodsInformation = document.querySelectorAll('.foods-information');
+
+        if (foodsInformation == null) {
+          for (let i = 0; i < value[0].length; i++) {
+            const html =
+              `
+=======
       <!-- main content -->
       <main>
         <section class="part1">
@@ -136,6 +186,7 @@
         for(let i = 0 ; i < value[0].length ; i++){
           const html = 
           `
+>>>>>>> main
       <li class="foods-information">
         <dl>
         <dt class="food-name">${value[0][i].title}</dt>
@@ -147,6 +198,24 @@
         <p class="food-car">탄수화물 ${value[0][i].carbs}g</p>
         <p class="food-protein">단백질 ${value[0][i].protein}g</p>
         <p class="food-fat">지방 ${value[0][i].fat}g</p>
+<<<<<<< HEAD
+      </div>
+      <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
+      <hr>
+    </li>
+    `;
+
+            const foodList = document.querySelector('.food-list');
+            foodList.insertAdjacentHTML('afterbegin', html);
+
+          }
+        } else {
+          for (let i = 0; i < foodsInformation.length; i++) {
+            foodsInformation[i].parentNode.removeChild(foodsInformation[i]);
+          }
+          for (let i = 0; i < value[0].length; i++) {
+            const html = `
+=======
         </div>
         <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
         <hr>
@@ -162,6 +231,7 @@
     }
     for(let i = 0 ; i < value[0].length ; i++){
       const html = `
+>>>>>>> main
       <li class="foods-information">
         <dl>
           <dt class="food-name">${value[0][i].title}</dt>
@@ -173,6 +243,70 @@
         <p class="food-car">탄수화물 ${value[0][i].carbs}g</p>
         <p class="food-protein">단백질 ${value[0][i].protein}g</p>
         <p class="food-fat">지방 ${value[0][i].fat}g</p>
+<<<<<<< HEAD
+      </div>
+      <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
+      <hr>
+    </li>
+    `;
+
+            const foodList = document.querySelector('.food-list');
+            foodList.insertAdjacentHTML('afterbegin', html);
+          }
+        }
+      })
+    }
+
+    //function kcal gage  칼로리 값 게이지에 적용
+    function addKcal(kcal) {
+      console.log('kcal', kcal);
+      const kcalTotal = 1700;
+      let container1Wedge = document.querySelector(".container1 .wedge");
+      let container2Wedge = document.querySelector(".container2 .wedge");
+      let markerEnd = document.querySelector(".end");
+
+
+      let kcalPercent = (kcal / kcalTotal) * 100;
+      let anglePercent = kcalPercent;
+      let angle = (anglePercent / 100) * 360;
+
+
+
+
+
+
+      let caculate;
+      let caculate2;
+
+      if (container1Wedge.style.transform == "") {
+        caculate = 0;
+      } else {
+        caculate = Number(String(container1Wedge.style.transform).replace(/[^0-9.]/g, ""));
+      }
+
+      if (container2Wedge.style.transform == "") {
+        caculate2 = 0;
+      } else {
+        caculate2 = Number((String(container2Wedge.style.transform).replace(/[^0-9.]/g, "")));
+      }
+
+      if (caculate2 >= 180) {
+        container2Wedge.style.transform = 'rotateZ(180deg)';
+        container1Wedge.style.transform = 'rotateZ(180deg)';
+      } else if (caculate >= 180) {
+        container1Wedge.style.transform = 'rotateZ(180deg)';
+        container2Wedge.style.transform = `rotateZ(${angle + caculate2}deg)`
+        markerEnd.style.transform = `rotateZ(${angle + caculate + caculate2}deg)`
+      } else {
+        container1Wedge.style.transform = `rotateZ(${angle + caculate}deg)`;
+        markerEnd.style.transform = `rotateZ(${angle + caculate}deg)`;
+      }
+
+      console.log("caculate>>", caculate)
+      console.log("caculate2>>", caculate2)
+
+    }
+=======
         </div>
         <div class="select" onclick="addKcal(${value[0][i].kcal},${value[0][i].carbs},${value[0][i].protein},${value[0][i].fat});"><i class="fas fa-check"></i></div>
         <hr>
@@ -188,6 +322,7 @@
     
   
   })}
+>>>>>>> main
   </script>
   <script src="/static/js/gage.js"></script>
 </body>
