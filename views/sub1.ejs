@@ -28,12 +28,12 @@
 
     <!-- main content -->
     <main>
-      <section class="sub1">
+      <section id="sub1">
         <h2 class="hidden">Main Content</h2>
         <article class="BMI">
           <h3>키와 몸무게로 간단하게 자신의 비만도(BMI)를 확인해 보세요.</h3>
 
-          <div class="form clearfix">
+          <div class="form">
             <form id="bmiCheckForm" name="bmiCheckForm">
               <label for="length">신장</label>
               <input type="text" id="length" name="length"><span>cm</span>
@@ -42,12 +42,14 @@
               <label for="weight">체중</label>
               <input type="text" id="weight" name="weight"><span>kg</span>
               <br>
+              
               <span class="compute">
                 <input type="button" id="btnCalc" value="계산">
                 <input type="reset" value="초기화">
               </span>
             </form>
 
+            <!-- 비만도 결과값 -->
             <ul id="result">
               <li>
                 <h4 class="text"></h4>
@@ -58,26 +60,27 @@
                 <p id="bmiNumber"></p>
               </li>
             </ul>
+          </div>
 
-            <div class="info">
-              <h4>비만도(BMI)란?</h4>
-              <p>체질량지수는 카우프지수로 비만을 평가하는 지수이며
-                세계적으로 쓰이는 공통표준 지수입니다.
-                체지방의 정도를 표준체중보다 비교적 정확하게 반영할 수 있고
-                매우 간단히 규정할 수 있는 장점이 있습니다.
-              </p>
+          <div class="info">
+            <h4>비만도(BMI)란?</h4>
+            <p>
+              체질량지수는 카우프지수로 비만을 평가하는 지수이며
+              세계적으로 쓰이는 공통표준 지수입니다.
+              체지방의 정도를 표준체중보다 비교적 정확하게 반영할 수 있고
+              매우 간단히 규정할 수 있는 장점이 있습니다.
+            </p>
 
-              <h4>비만도의 산출방법</h4>
-              <p>체질량지수 = 체중 &#40; kg &#41; / 키의 제곱 &#40; &#13217; &#41;</p>
-            </div>
+            <h4>비만도의 산출방법</h4>
+            <p>체질량지수 = 체중 &#40; kg &#41; / 키의 제곱 &#40; &#13217; &#41;</p>
+          </div>
         </article>
-
 
         <article>
           <h3 class="hidden">그래프</h3>
+          <div class="graph">
 
-          <div class="graph"></div>
-
+          </div>
           <p class="graphResult">결과가 궁금하시다면 신장과 체중을 입력해주세요!</p>
         </article>
       </section>

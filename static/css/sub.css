@@ -50,12 +50,26 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .BMI .form {
-  width: 50%;
+  width: 40%;
   float: left;
 }
 
 #bmiCheckForm {
   padding: 50px 0;
+}
+
+#bmiCheckForm label {
+  font-size: 2em;
+}
+
+#bmiCheckForm input{
+  margin: 10px;
+  outline: none;
+  width: 20%;
+}
+
+#bmiCheckForm #btnCalc {
+
 }
 
 #result {
