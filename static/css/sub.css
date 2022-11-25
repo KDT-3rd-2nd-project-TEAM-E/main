@@ -46,7 +46,6 @@ input[type="number"]::-webkit-inner-spin-button {
 } */
 
 .BMI {
-
 }
 
 .BMI .form {
@@ -119,7 +118,7 @@ input[type="number"]::-webkit-inner-spin-button {
   padding: 20px 0;
 }
 
-.content_area .list_content .search>a:hover img {
+.content_area .list_content .search > a:hover img {
   transform: scale(1.03);
 }
 
@@ -160,9 +159,8 @@ input[type="number"]::-webkit-inner-spin-button {
   position: relative;
 }
 
-
 .profile1 form button {
-  position: absolute;
+  /* position: absolute; */
   top: 50%;
   right: 20%;
   background: #3dad6b;
@@ -172,7 +170,8 @@ input[type="number"]::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
-.profile2 {}
+.profile2 {
+}
 
 .profile2 form {
   display: flex;

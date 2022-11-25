@@ -244,26 +244,26 @@ exports.mypageEdit = (req, res) => {
     }
   ).then((result) => {
     console.log("UserEdit 성공 >>", result);
-    res.send(`${req.body.nickname}님 회원정보가 변경되었습니다.`);
+    res.send(`${req.body.nickname}님의 회원정보가 성공적으로 변경되었습니다!`);
   });
 };
 
-exports.mypageEdit = (req, res) => {
-  models.Userweight.create(
-    {
-      weight: req.body.weight,
-      date: req.body.date,
-    },
-    {
-      where: {
-        userid: req.body.userid,
-      },
-    }
-  ).then((result) => {
-    console.log("UserweightEdit 성공 >>", result);
-    res.send(`${req.body.nickname}님의 체중정보가 업데이트 되었습니다.`);
-  });
-};
+// exports.mypageEdit = (req, res) => {
+//   models.Userweight.create(
+//     {
+//       weight: req.body.weight,
+//       date: req.body.date,
+//     },
+//     {
+//       where: {
+//         userid: req.body.userid,
+//       },
+//     }
+//   ).then((result) => {
+//     console.log("UserweightEdit 성공 >>", result);
+//     res.send(`${req.body.nickname}님의 체중정보가 업데이트 되었습니다.`);
+//   });
+// };
 
 exports.mypageDelete = async (req, res) => {
   let result1 = await models.User.destroy({
@@ -276,10 +276,13 @@ exports.mypageDelete = async (req, res) => {
       userid: req.body.userid,
     },
   });
-  console.log("UserDelete 성공 >>");
-  // res.send(`${req.body.nickname}님 회원탈퇴가 완료되었습니다.`);
-  res.render("index", { user: result1, userweight: result2 });
+  console.log("UserDelete 성공 >>", result1, result2);
+  res.send("회원탈퇴가 완료되었습니다. 이용해주셔서 감사합니다.");
 };
+// , {
+//   user: result1,
+//   userweight: result2,
+// }
 // 삭제 후 초기화면 렌더링, 회원정보삭제 되었습니다 라는 알림은 프론트에서 작업
 
 exports.info = (req, res) => {
