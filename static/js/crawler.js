@@ -1,64 +1,77 @@
-console.log(1);
+// function crawler 크롤러 값 리스트에 작성
+const form = document.forms["search"];
 
-//Crawler
-async function crawler(search) {
-  // ❶ HTML 로드하기
-  try {
-    const resp = await axios.get(
-      `https://cors-anywhere.herokuapp.com/https://www.myfitnesspal.com/ko/nutrition-facts-calories/${encodeURI(
-        search
-      )}`
-    );
-    const $ = cheerio.load(resp.data); // ❷ HTML을 파싱하고 DOM 생성하기
-    const titleArray = $(".css-qumjp8"); // ❸ CSS 셀렉터로 원하는 요소 찾기
-    const kcalArray = $(".css-w1kjmb");
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  axios({
+    method: "POST",
+    url: "/",
+    data: {
+      search: form.search.value,
+    },
+  })
+    .then((res) => {
+      return (data = res.data);
+    })
+    .then((data) => {
+      const keys = Object.keys(data);
+      const value = [];
+      for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        value[i] = data[key];
+      }
 
-    const brandAmountArray = $(".css-j7qwjs > .css-w1kjmb");
+      const foodsInformation = document.querySelectorAll(".foods-information");
 
-    // const brandAmountArray = $(".smallText greyText greyLink");
-    // const amountArray = $(".css-w1kjmb");
-    // ➍ 찾은 요소를 순회하면서 요소가 가진 텍스트를 출력하기
-    titleArray.each((idx, el) => {
-      return $(el).text();
+      if (foodsInformation == null) {
+        for (let i = 0; i < value[0].length; i++) {
+          const html = `
+  <li class="foods-information">
+    <dl>
+    <dt class="food-name">${value[0][i].title}</dt>
+    <dd class="food-brand ">${value[0][i].brand}</dd>
+    <dd class="food-vol">${value[0][i].amount}</dd>
+    </dl>
+    <div class="cal-box clearfix">
+      <p class="food-kcal">${value[0][i].kcal}kcal</p>
+    <p class="food-car">탄수화물 ${value[0][i].carbs}g</p>
+    <p class="food-protein">단백질 ${value[0][i].protein}g</p>
+    <p class="food-fat">지방 ${value[0][i].fat}g</p>
+    </div>
+    <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
+    <hr>
+    </li>
+    `;
+
+          const foodList = document.querySelector(".food-list");
+          foodList.insertAdjacentHTML("afterbegin", html);
+        }
+      } else {
+        for (let i = 0; i < foodsInformation.length; i++) {
+          foodsInformation[i].parentNode.removeChild(foodsInformation[i]);
+        }
+        for (let i = 0; i < value[0].length; i++) {
+          const html = `
+  <li class="foods-information">
+    <dl>
+      <dt class="food-name">${value[0][i].title}</dt>
+      <dd class="food-brand ">${value[0][i].brand}</dd>
+      <dd class="food-vol">${value[0][i].amount}</dd>
+      </dl>
+  <div class="cal-box clearfix">
+    <p class="food-kcal">${value[0][i].kcal}kcal</p>
+    <p class="food-car">탄수화물 ${value[0][i].carbs}g</p>
+    <p class="food-protein">단백질 ${value[0][i].protein}g</p>
+    <p class="food-fat">지방 ${value[0][i].fat}g</p>
+    </div>
+    <div class="select" onclick="addKcal(${value[0][i].kcal},${value[0][i].carbs},${value[0][i].protein},${value[0][i].fat});"><i class="fas fa-check"></i></div>
+    <hr>
+    </li>
+    `;
+
+          const foodList = document.querySelector(".food-list");
+          foodList.insertAdjacentHTML("afterbegin", html);
+        }
+      }
     });
-    brandAmountArray.each((idx, el) => {
-      return $(el).text();
-    });
-    kcalArray.each((idx, el) => {
-      return $(el).text();
-    });
-
-    const foods = [];
-
-    for (let i = 0; i < titleArray.length; i++) {
-      let title = titleArray[i].children[0].data;
-
-      let kcalText = kcalArray.text();
-      kcalRegex = kcalText.match(/칼로리\s:\s\d{1,3}탄수화물+./g);
-      kcal = String(kcalRegex[i]).replace(/[^0-9]/g, "");
-
-      let brand = brandAmountArray[i].children[0].data;
-      let amount =
-        brandAmountArray[i].children[2].data +
-        brandAmountArray[i].children[6].data;
-
-      let carbsRegex = kcalText.match(/탄수화물:\s\d{1,3}g+./g);
-      carbs = String(carbsRegex[i]).replace(/[^0-9]/g, "");
-
-      let fatRegex = kcalText.match(/지방\s:\s\d{1,3}g+./g);
-      fat = String(fatRegex[i]).replace(/[^0-9]/g, "");
-
-      let protienRegex = kcalText.match(/단백질\s:\s\d{1,3}./g);
-      protien = String(protienRegex[i]).replace(/[^0-9]/g, "");
-
-      let array = { title, brand, kcal, amount, carbs, fat, protien };
-
-      // console.log(">>>", brandAmountArray[i].children[0].data);
-      foods.push(array);
-    }
-
-    return foods;
-  } catch (err) {
-    console.log(err);
-  }
-}
+});

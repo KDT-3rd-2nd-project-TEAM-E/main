@@ -4,10 +4,6 @@ let addFvalue = 0;
 let addKvalue = 0;
 
 function addKcal(kcal, carbs, protein, fat) {
-  console.log("kcal", kcal);
-  console.log("carbs", carbs);
-  console.log("protein", protein);
-  console.log("fat", fat);
   const kcalTotal = 1700;
 
   let kcalPercent = parseInt((kcal / kcalTotal) * 100);
@@ -25,23 +21,32 @@ function addKcal(kcal, carbs, protein, fat) {
   let pGraph = document.querySelector(".protein");
   let fGraph = document.querySelector(".fat");
 
+  addKvalue = addKvalue + kcalPercent;
   addCvalue = addCvalue + cValue;
   addPvalue = addPvalue + pValue;
   addFvalue = addFvalue + fValue;
 
-  kcalBar.style = `width: ${kcalPercent}%`;
+  kcalBar.style = `width: ${addKvalue}%`;
   cGraph.style = `--p:${addCvalue}`;
   pGraph.style = `--p:${addPvalue}`;
   fGraph.style = `--p:${addFvalue}`;
 
-  kcalValue.innerText = `${kcalPercent}%`;
+  kcalValue.innerText = `${addKvalue}%`;
   cGraph.innerText = `${addCvalue}%`;
   pGraph.innerText = `${addPvalue}%`;
   fGraph.innerText = `${addFvalue}%`;
 
+  kcalBar.classList.add("bar-animate");
   cGraph.classList.add("animate");
   pGraph.classList.add("animate");
   fGraph.classList.add("animate");
+
+  const BKeyFrames = document.createElement("style");
+  BKeyFrames.innerHTML = `@keyframes bar{
+    from {
+      width: ${addKvalue - kcalPercent}%;
+    }
+  }`;
 
   const CkeyFrames = document.createElement("style");
   CkeyFrames.innerHTML = `@keyframes p {
@@ -56,11 +61,13 @@ function addKcal(kcal, carbs, protein, fat) {
     from{--p:${addFvalue - fValue}}
   }`;
 
+  kcalBar.appendChild(BKeyFrames);
   cGraph.appendChild(CkeyFrames);
   pGraph.appendChild(PkeyFrames);
   fGraph.appendChild(FkeyFrames);
 
   setTimeout(() => {
+    kcalBar.classList.remove("bar-animate");
     cGraph.classList.remove("animate");
     pGraph.classList.remove("animate");
     fGraph.classList.remove("animate");
