@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOME | Kcal-cal</title>
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="../static/img/favicon.png"
+      type="image/x-icon"
+    />
+    <!-- css: reset -->
+    <link rel="stylesheet" href="../static/css/reset.css" />
+    <!-- css: header -->
+    <link rel="stylesheet" href="../static/css/header.css" />
+    <!-- css : main -->
+    <link rel="stylesheet" href="../static/css/main.css" />
+    <!-- css : radial -->
+    <link rel="stylesheet" href="../static/css/radial.css" />
+    <!-- fontawsome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <!-- xelcon -->
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
+    />
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HOME | Kcal-cal</title>
 
-  <script defer>
-  
-  </script>
-  <!-- favicon -->
-  <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
-  <!-- css: reset -->
-  <link rel="stylesheet" href="../static/css/reset.css">
-  <!-- css: header -->
-  <link rel="stylesheet" href="../static/css/header.css">
-  <!-- css : main -->
-  <link rel="stylesheet" href="../static/css/main.css">
-  <!-- css : radial -->
-  <link rel="stylesheet" href="../static/css/radial.css">
-  <!-- fontawsome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-  <!-- xelcon -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-  <!-- jQuery CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
+  <body>
+    <div id="wrap">
+      <%- include('header.ejs') %>
 
-<body>
-  <div id="wrap">
-    <%- include('header.ejs') %>
+      <!-- main content -->
+      <main>
+        <section class="part1">
+          <h2 class="hidden">Main Content</h2>
+          <!-- gauge -->
+          <article class="gauge">
+            <h3 class="hidden">기초 대사량 칼로리 게이지</h3>
 
-    <!-- main content -->
-  <main>
-    <section class="part1">
-      <h2 class="hidden">Main Content</h2>
-      <!-- gauge -->
-      <article class="gauge">
-        <h3 class="hidden">기초 대사량 칼로리 게이지</h3>
+            <p>XX 님,<br />환영합니다 &#58;&#41;</p>
 
-        <p>XX 님,<br>환영합니다 &#58;&#41;</p>
+            <div class="progress">
+              <progress value="20" max="100"></progress>
+            </div>
+          </article>
 
-        <div class="kcal-bar-background">
-          <span class="kcal-value"></span>
-          <div class="kcal-bar">
-          </div>
-        </div>
-      </article>
+      
+
 
       <!-- kcal search -->
       <article class="search">
@@ -73,6 +80,37 @@
   <script>
      // function crawler 크롤러 값 리스트에 작성
      const form = document.forms["search"];
+
+    <!-- 공지사항팝업 -->
+    <div id="showimage">
+      <div>
+        <img
+          src="../static/img/popup.png"
+          alt="매일 체중을 측정해서 변화를 체감해보세요!"
+        />
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          name="Notice"
+          id="Notice"
+          title="오늘은 이창을 열지 않음 선택상자"
+        />
+        <label for="Notice">오늘은 이창을 열지 않음.</label>
+        <a
+          href="/cookie"
+          onclick="closeWin();hidebox();return false;"
+          style="color: #fff"
+        >
+          [close]
+        </a>
+      </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    // function crawler 크롤러 값 리스트에 작성
+    const form = document.forms["search"];
+
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       axios({
@@ -150,10 +188,6 @@
     
   
   })}
-    //질문!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //클릭할때마다 숫자, 그래프 더하기 ----- if else 문을 주었는데 적용이 안되는데 다르게 해야 하는지?
-  //클릭할때 그래프 애니메이션 적용 ---- then으로 써야 적용이 되는지?
-  );
   </script>
   <script src="/static/js/gage.js"></script>
 </body>

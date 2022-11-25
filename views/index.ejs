@@ -1,170 +1,183 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>START | Kal-cal</title>
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="../static/image/favicon.ico"
+      type="image/x-icon"
+    />
+    <!-- css: reset -->
+    <link rel="stylesheet" href="../static/css/reset.css" />
+    <!-- css: index  -->
+    <link rel="stylesheet" href="../static/css/index.css" />
+    <!-- fontawsome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <!-- xelcon -->
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
+    />
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>START | Kal-cal</title>
-  <!-- favicon -->
-  <link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
-  <!-- css: reset -->
-  <link rel="stylesheet" href="../static/css/reset.css">
-  <!-- css: index  -->
-  <link rel="stylesheet" href="../static/css/index.css">
-  <!-- fontawsome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-  <!-- xelcon -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-  <!-- jQuery CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-</head>
+  <body>
+    <!-- skipNav -->
+    <div id="skipNav">
+      <a href="#content">본문 바로가기</a>
+      <a href="#gnb">글로벌 네비게이션 바로가기</a>
+    </div>
 
-<body>
-  <!-- skipNav -->
-  <div id="skipNav">
-    <a href="#content">본문 바로가기</a>
-    <a href="#gnb">글로벌 네비게이션 바로가기</a>
-  </div>
+    <!-- header -->
+    <header>
+      <h1 class="logo"><a href="/" class="hidden">Kcal-cal</a></h1>
+      <ul>
+        <li><a href="/login">로그인</a></li>
+        <li><a href="/signup">회원가입</a></li>
+      </ul>
+    </header>
 
-  <!-- header -->
-  <header>
-    <h1 class="logo"><a href="/" class="hidden">Kcal-cal</a></h1>
-    <ul>
-      <li><a href="/login">로그인</a></li>
-      <li><a href="/signup">회원가입</a></li>
-    </ul>
-  </header>
+    <!-- main content -->
+    <main>
+      <section>
+        <!-- start -->
+        <article class="start">
+          <div>
+            <h2>건강한 몸은<br />음식에서 시작됩니다</h2>
+            <p>
+              음식에 더 주의를 기울이고 싶으신가요?<br />
+              KCAL-CAL과 함께 여러분의 식단을 추적하고, 습관에 대해 알아보고,
+              목표를 달성해보세요.
+            </p>
 
-  <!-- main content -->
-  <main>
-    <section>
-      <!-- start -->
-      <article class="start">
-        <div>
-          <h2>건강한 몸은<br>음식에서 시작됩니다</h2>
-          <p>
-            음식에 더 주의를 기울이고 싶으신가요?<br>
-            KCAL-CAL과 함께 여러분의 식단을 추적하고,
-            습관에 대해 알아보고, 목표를 달성해보세요.
-          </p>
-
+            <ul>
+              <li><a href="/login">로그인하기</a></li>
+              <li><a href="/main">무료로 시작하기</a></li>
+            </ul>
+          </div>
+          <img src="../static/img/index_img1.jpg" alt="음식이미지" />
+        </article>
+        <!-- record -->
+        <article class="record">
+          <div>
+            <h2>1400만 가지 음식의 기록</h2>
+            <p>
+              칼로리와 영양소 분석을 확인하고, 1인분 크기를 비교하고, 섭취하는
+              음식이 목표를 어떻게 지원할 수 있는지 알아보세요.
+            </p>
+          </div>
+          <img src="../static/img/index_img2.jpg" alt="음식이미지" />
+        </article>
+        <!-- target -->
+        <article class="target">
+          <div>
+            <h2>목표를 위한 도구</h2>
+            <p>
+              체중을 감량하거나, 삶에 활력을 주거나, BMI를 낮추거나, 전반적인
+              건강 증진을 위해 노력하고 계신가요?<br />
+              여러분의 목표를 달성하는 데 필요한 기능이 여기에 있습니다.
+            </p>
+          </div>
           <ul>
-            <li><a href="/login">로그인하기</a></li>
-            <li><a href="/main">무료로 시작하기</a></li>
+            <li>
+              <img src="../static/img/index_img3-1.svg" alt="음식이미지" />
+              <h3>배우고 추적하고 개선하세요</h3>
+              <p>
+                음식 일지를 쓰면 자신의 식습관을 쉽게 파악할 수 있어 목표를
+                달성할 가능성이 높아집니다.
+              </p>
+            </li>
+            <li>
+              <img src="../static/img/index_img3-2.svg" alt="음식이미지" />
+              <h3>간소화된 기록</h3>
+              <p>
+                바코드를 스캔하고 식사와 레시피를 저장하며 빠른 도구를 통해 쉽고
+                빠르게 음식을 추적할 수 있습니다.
+              </p>
+            </li>
+            <li>
+              <img src="../static/img/index_img3-3.svg" alt="음식이미지" />
+              <h3>지속적인 동기 부여</h3>
+              <p>
+                세계 최고의 피트니스 커뮤니티에 가입하여 365일 24시간 조언과 팁,
+                지원을 계속 받아보세요.
+              </p>
+            </li>
           </ul>
-        </div>
-        <img src="../static/img/index_img1.jpg" alt="음식이미지">
-      </article>
-      <!-- record -->
-      <article class="record">
-        <div>
-          <h2>1400만 가지 음식의 기록</h2>
-          <p>
-            칼로리와 영양소 분석을 확인하고, 1인분 크기를 비교하고, 섭취하는
-            음식이 목표를 어떻게 지원할 수 있는지 알아보세요.
-          </p>
-        </div>
-        <img src="../static/img/index_img2.jpg" alt="음식이미지">
-      </article>
-      <!-- target -->
-      <article class="target">
-        <div>
-          <h2>목표를 위한 도구</h2>
-          <p>
-            체중을 감량하거나, 삶에 활력을 주거나, BMI를 낮추거나, 전반적인
-            건강 증진을 위해 노력하고 계신가요?<br>
-            여러분의 목표를 달성하는 데 필요한 기능이 여기에 있습니다.
-          </p>
-        </div>
-        <ul>
-          <li>
-            <img src="../static/img/index_img3-1.svg" alt="음식이미지">
-            <h3>배우고 추적하고 개선하세요</h3>
+        </article>
+        <!-- idea -->
+        <article class="idea">
+          <div>
+            <h2>레시피 및 아이디어</h2>
             <p>
-              음식 일지를 쓰면 자신의 식습관을 쉽게 파악할 수 있어 목표를
-              달성할 가능성이 높아집니다.
+              MyFitnessPal 전문가들이 전하는 운동 팁과 영양사의 승인을 받은
+              레시피를 받아 보세요.
             </p>
-          </li>
-          <li>
-            <img src="../static/img/index_img3-2.svg" alt="음식이미지">
-            <h3>간소화된 기록</h3>
-            <p>
-              바코드를 스캔하고 식사와 레시피를 저장하며 빠른 도구를 통해 쉽고
-              빠르게 음식을 추적할 수 있습니다.
-            </p>
-          </li>
-          <li>
-            <img src="../static/img/index_img3-3.svg" alt="음식이미지">
-            <h3>지속적인 동기 부여</h3>
-            <p>
-              세계 최고의 피트니스 커뮤니티에 가입하여 365일 24시간 조언과 팁,
-              지원을 계속 받아보세요.
-            </p>
-          </li>
-        </ul>
-        </div>
-      </article>
-      <!-- idea -->
-      <article class="idea">
-        <div>
-          <h2>레시피 및 아이디어</h2>
-          <p>
-            MyFitnessPal 전문가들이 전하는 운동 팁과 영양사의 승인을 받은
-            레시피를 받아 보세요.
-          </p>
-        </div>
-        <ul>
-          <li>
-            <img
-              src="https://www.myfitnesspal.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fbreakfast-300-calories.d991cc82.png&w=1920&q=75"
-              alt="음식이미지">
-            <h3>미리 만들어 놓는 300칼로리 미만의 아침 식사 15가지</h3>
-            <p>MyFitnessPal 블로그</p>
-          </li>
-          <li>
-            <img
-              src="https://www.myfitnesspal.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&w=2048&q=75"
-              alt="음식이미지">
-            <h3>치팅 데이의 문제점</h3>
-            <p>MyFitnessPal 블로그</p>
-          </li>
-          <li>
-            <img
-              src="https://www.myfitnesspal.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&w=2048&q=75"
-              alt="음식이미지">
-            <h3>운동 필수 가이드</h3>
-            <p>MyFitnessPal 블로그</p>
-          </li>
-        </ul>
-      </article>
-    </section>
-  </main>
+          </div>
+          <ul>
+            <li>
+              <img
+                src="https://www.myfitnesspal.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fbreakfast-300-calories.d991cc82.png&w=1920&q=75"
+                alt="음식이미지"
+              />
+              <h3>미리 만들어 놓는 300칼로리 미만의 아침 식사 15가지</h3>
+              <p>MyFitnessPal 블로그</p>
+            </li>
+            <li>
+              <img
+                src="https://www.myfitnesspal.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcheat-days.a49e92b5.jpg&w=2048&q=75"
+                alt="음식이미지"
+              />
+              <h3>치팅 데이의 문제점</h3>
+              <p>MyFitnessPal 블로그</p>
+            </li>
+            <li>
+              <img
+                src="https://www.myfitnesspal.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgetting-moving.e3e4042a.png&w=2048&q=75"
+                alt="음식이미지"
+              />
+              <h3>운동 필수 가이드</h3>
+              <p>MyFitnessPal 블로그</p>
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
 
-  <!-- 공지사항팝업 -->
-  <div id="showimage">
-    <div>
-      <img src="../static/img/popup.png"
-        alt="본 사이트는 상업적 목적이 아닌 포트폴리오 용도로 만들어졌습니다. 홈페이지의 일부 내용과 기타 이미지 등은 그 출처가 따로 있음을 밝힙니다.">
+    <!-- 공지사항팝업 -->
+    <div id="showimage">
+      <div>
+        <img
+          src="../static/img/popup.png"
+          alt="본 사이트는 상업적 목적이 아닌 포트폴리오 용도로 만들어졌습니다. 홈페이지의 일부 내용과 기타 이미지 등은 그 출처가 따로 있음을 밝힙니다."
+        />
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          name="Notice"
+          id="Notice"
+          title="오늘은 이창을 열지 않음 선택상자"
+        />
+        <label for="Notice">오늘은 이창을 열지 않음.</label>
+        <a
+          href="/cookie"
+          onclick="closeWin();hidebox();return false;"
+          style="color: #fff"
+        >
+          [close]
+        </a>
+      </div>
     </div>
-    <div>
-      <input type="checkbox" name="Notice" id="Notice" title="오늘은 이창을 열지 않음 선택상자">
-      <label for="Notice">오늘은 이창을 열지 않음.</label>
-      <a href="/cookie" onclick="closeWin();hidebox();return false;" style="color: #fff;"> [close] </a>
-    </div>
-  </div>
 
-  <script>
-    function closeWin() {
-      var chk = document.getElementById('Notice')
-      if (chk.checked) {
-        setCookie("Notice", "done", 1);
-      }
-    }
-    if (getCookie("Notice") == "done") {
-      hidebox();
-    }
-  </script>
-</body>
-
+    <script src="/static/js/index.js"></script>
+  </body>
 </html>
