@@ -1,7 +1,8 @@
 body {
   background: #f7f7f7;
   color: #333;
-  font-family: 'Noto Sans KR', 'Roboto', "돋움", Dotum, "굴림", Gulim, sans-serif;
+  font-family: "Noto Sans KR", "Roboto", "돋움", Dotum, "굴림", Gulim,
+    sans-serif;
   line-height: 1.5;
   letter-spacing: -1px;
   width: 100vw;
@@ -80,7 +81,7 @@ input[type="number"]::-webkit-inner-spin-button {
   padding: 20px 0;
 }
 
-.content_area .list_content .search>a:hover img{
+.content_area .list_content .search > a:hover img {
   transform: scale(1.03);
 }
 
@@ -96,12 +97,13 @@ input[type="number"]::-webkit-inner-spin-button {
 .content_area .list_content img {
   width: 30%;
   padding: 2%;
-  transition: .4s ease-in-out;
+  transition: 0.4s ease-in-out;
   height: 100%;
 }
 
 /* SUB3 CSS */
-.profile1, .profile2 {
+.profile1,
+.profile2 {
   background: #f7f7f7;
   border-radius: 15px;
   display: flex;
@@ -120,7 +122,6 @@ input[type="number"]::-webkit-inner-spin-button {
   position: relative;
 }
 
-/* .profile1 form input {} */
 
 .profile1 form button {
   position: absolute;
@@ -133,11 +134,8 @@ input[type="number"]::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
-/* .profile2 {
 
-} */
-
-.profile2 form{
+.profile2 form {
   display: flex;
   flex-direction: column;
 }

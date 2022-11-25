@@ -19,7 +19,7 @@ function calculateBMI() {
     if (bmi <= 18.5) {
       result.innerHTML = `저체중: <span>${bmi}</span>`;
     } else if (bmi <= 23) {
-        result.innerHTML = `정상: <span>${bmi}</span>`;
+      result.innerHTML = `정상: <span>${bmi}</span>`;
     } else if (bmi <= 25) {
       result.innerHTML = `과체중: <span>${bmi}</span>`;
     } else if (bmi <= 30) {
