@@ -2,16 +2,15 @@ const User = function (Sequelize, DataTypes) {
   const model = Sequelize.define(
     "user",
     {
-      // userid VARCHAR(20) NOT NULL UNIQUE PRIMARY KEY
+      // userid VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY
       userid: {
-        type: DataTypes.STRING(20),
+        type: DataTypes.STRING(50),
         allowNull: false,
         primaryKey: true,
       },
-      // userpw VARCHAR(20) NOT NULL
+      // userpw VARCHAR(20)
       userpw: {
         type: DataTypes.STRING(20),
-        allowNull: false,
       },
       // useremail VARCHAR(100) NOT NULL UNIQUE
       useremail: {

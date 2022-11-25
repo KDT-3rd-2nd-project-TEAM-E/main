@@ -6,8 +6,8 @@ USE kcalcal;
 
 -- UNIQUE
     CREATE TABLE user (
-        userid VARCHAR(20) NOT NULL UNIQUE PRIMARY KEY,
-        userpw VARCHAR(20) NOT NULL,
+        userid VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY,
+        userpw VARCHAR(20),
         useremail VARCHAR(100) NOT NULL UNIQUE,
         nickname VARCHAR(10) NOT NULL,
         gender ENUM('F', 'M', '') DEFAULT '',
@@ -45,6 +45,7 @@ SHOW tables;
 
 DESC user;
 
+DROP TABLE user;
 DROP TABLE userweight;
 
 SELECT * FROM user;
@@ -60,6 +61,9 @@ INSERT INTO userweight (userid, weight) VALUES ('aaa', 72);
 INSERT INTO test (userid) VALUES ('aaa'); 
 SELECT * FROM test;
 DROP TABLE test;
+
+DELETE FROM user WHERE userid = 'archangel67@naver.com';
+
 
 SELECT Date, weight FROM userweight WHERE userid='aaa' ORDER BY Date DESC;
 
