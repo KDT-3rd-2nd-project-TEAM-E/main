@@ -42,4 +42,13 @@ function calculateBMI() {
       graphResult.innerHTML = `정상 체중에 도달하기 위해 kcal-cal과 함께해요`;
     }
   }
+
+
+  // var result;
+
+  // const low = (weight / ((length * length) / 10000)).toFixed(2);
+  // const percent = 100;
+
+  // result = low / percent * 100;
+  // console.log(result);
 }
