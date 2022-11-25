@@ -23,7 +23,7 @@ app.use(
     secret: "secretKey",
     resave: false,
     saveUninitialized: true,
-    name: "my-session",
+    name: "Kcal-cal",
   })
 );
 

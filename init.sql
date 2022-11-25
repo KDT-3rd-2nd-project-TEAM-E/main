@@ -53,6 +53,7 @@ SELECT * FROM user;
 SELECT * FROM userweight;
 
 INSERT INTO user (userid, userpw, useremail, nickname, gender, age, height) VALUES ('aaa', 'aaa', 'aaa@aaa.aaa', 'aaa', 'M', 25, 178);
+INSERT INTO user (userid, userpw, useremail, nickname, gender, age, height) VALUES ('bbb', 'bbb', 'bbb@bbb.bbb', 'bbb', 'F', 35, 168);
 
 INSERT INTO member (userid, userpw) VALUES ('aaa', 'aaa');
 INSERT INTO member (userid, userpw) VALUES ('bbb', 'bbb');
