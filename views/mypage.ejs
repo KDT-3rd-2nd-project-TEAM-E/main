@@ -24,7 +24,6 @@
 
 <body>
   <div id="wrap">
-    <*%- include('header.ejs') %*>
 
     <!-- main content -->
     <main>
@@ -35,7 +34,8 @@
           <img src="https://ca.slack-edge.com/T0417T8AR8U-U0415AS4GLT-9052f3c17396-512" alt="">
           <form>
             <label for="nickname" name="info" id="nickname"></label>
-            <input type="text" placeholder="고정아이디값">
+            <!-- id값 수정 금지 -->
+            <input type="text" readonly value="userID">
             <label for=""></label>
             <input type="text">
             <button>수정</button>

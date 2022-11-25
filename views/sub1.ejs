@@ -30,11 +30,9 @@
     <!-- jQuery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   </head>
-
   <body>
     <div id="wrap">
       <%- include('header.ejs') %>
-
       <!-- main content -->
       <main>
         <section>
@@ -68,13 +66,20 @@
           <article>
             <h3 class="hidden">그래프</h3>
 
+            <h4>비만도의 산출방법</h4>
+            <p>
+              체질량지수 = 체중 &#40; kg &#41; / 키의 제곱 &#40; &#13217; &#41;
+            </p>
+          </article>
+          <article>
+            <h3 class="hidden">그래프</h3>
+
             <p>"어쩌구저쩌구 저체중입니다ㅏㅏ"</p>
             <p>과체중입니다 운동하세요</p>
           </article>
         </section>
       </main>
     </div>
-    <!--  -->
     <!-- 비만도 측정 js -->
     <script src="/static/js/sub1.js"></script>
   </body>

@@ -120,3 +120,13 @@ function addKcal(kcal) {
   console.log("caculate>>", caculate);
   console.log("caculate2>>", caculate2);
 }
+
+function closeWin() {
+  var chk = document.getElementById("Notice");
+  if (chk.checked) {
+    setCookie("Notice", "done", 1);
+  }
+}
+if (getCookie("Notice") == "done") {
+  hidebox();
+}
