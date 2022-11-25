@@ -36,7 +36,7 @@
             <div class="list_header">
               <form method="get" name="search">
                 <input type="text" id="searchInput" placeholder="다양한 건강정보를 검색해보세요">
-                <button type="button" onclick="Search()">검색</button>
+                <button>검색</button>
               </form>
 
               <p>TOTAL <span>15</span></p>
@@ -66,7 +66,9 @@
   </div>
 
   <script>
-    function Search() {
+    const form = document.forms["search"];
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
       let result = document.forms["search"].searchInput.value;
       console.log(result);
       const search = document.querySelector(".search");
@@ -105,7 +107,7 @@
         // html.replace(/<(\/b|b)([^>]*)>/gi,"");
 
       });
-    }
+    });
   </script>
 </body>
 

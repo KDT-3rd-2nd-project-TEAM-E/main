@@ -120,7 +120,7 @@ input[type="number"]::-webkit-inner-spin-button {
   position: relative;
 }
 
-.profile1 form input {}
+/* .profile1 form input {} */
 
 .profile1 form button {
   position: absolute;
@@ -133,12 +133,18 @@ input[type="number"]::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
-.profile2 {
+/* .profile2 {
 
-}
+} */
 
 .profile2 form{
   display: flex;
   flex-direction: column;
 }
 
+/* chart js */
+
+#myChart {
+  width: 500px;
+  height: 500px;
+}
