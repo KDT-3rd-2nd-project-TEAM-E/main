@@ -45,7 +45,7 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 } */
 
-#sub1{
+#sub1 {
   position: relative;
 }
 
@@ -67,7 +67,7 @@ input[type="number"]::-webkit-inner-spin-button {
 #bmiCheckForm input {
   margin: 10px;
   outline: none;
-  width: 20%;
+  width: 50%;
 }
 
 #bmiCheckForm #btnCalc {}
@@ -89,9 +89,7 @@ input[type="number"]::-webkit-inner-spin-button {
   /* margin: 20px 0 10px; */
 }
 
-#result 
-
-.graph {
+#result .graph {
   width: 100%;
   height: 10px;
   /* background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); */
@@ -103,10 +101,10 @@ input[type="number"]::-webkit-inner-spin-button {
   position: relative;
   top: 100px;
   left: 0;
-  
+
 }
 
-.graph li li{
+.graph li li {
   float: left;
   text-align: center;
 }
@@ -141,11 +139,56 @@ input[type="number"]::-webkit-inner-spin-button {
   background: #777;
 }
 
-.BMIgraph .graphResult{
+.graph li.overObesity {
+  width: 25%;
+  /* background: linear-gradient(to right, red, orange); */
+  background: #999;
+}
+
+.BMIgraph .graphResult {
   text-align: center;
   padding: 20px;
   font-size: 1.2em;
   font-weight: 600;
+}
+
+input[type="number"] {
+  padding: 10px 20px;
+  border: solid 1px #212121;
+  background-color: #fff;
+  margin: 0;
+  --webkit-appearance: none;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.compute input {
+  padding: 11px;
+  background: #3dad6b !important;
+  color: #fff !important;
+  cursor: pointer;
+  border: 1px solid #3dad6b !important;
+  font-weight: bold;
+  transition: .3s all;
+}
+
+.compute input:hover {
+  background: transparent !important;
+  color: #3dad6b !important;
+}
+
+.graphWidth {
+  position: relative;
+}
+
+.home{
+  width: 10px;
+  height: 10px;
+  background: red;
+  position: absolute;
+  left: 0;
+  display: none;
 }
 
 /* SUB2 CSS */

@@ -36,17 +36,13 @@
           <div class="form">
             <form id="bmiCheckForm" name="bmiCheckForm">
               <h4>신체정보</h4>
-              
-              <label for="length">신장</label>
-              <input type="text" id="length" name="length"><span>cm</span>
+              <input type="number" id="length" name="length" placeholder="키를 입력하세요"><span>cm</span>
               <br>
-
-              <label for="weight">체중</label>
-              <input type="text" id="weight" name="weight"><span>kg</span>
+              <input type="number" id="weight" name="weight" placeholder="몸무게를 입력하세요"><span>kg</span>
               <br>
 
               <span class="compute">
-                <input type="button" id="btnCalc" value="계산">
+                <input type="button" id="btnCalc" value="계산하기">
                 <input type="reset" value="초기화">
               </span>
             </form>
@@ -95,11 +91,14 @@
               <label class="dv1">18.5</label>
               <label class="dv2">23</label>
               <label>25.00</label>
-              <ul class="clearfix">
+              <!-- <label>30.00</label> -->
+              <ul class="clearfix graphWidth">
                 <li class="low-weight">저체중</li>
                 <li class="regular">정상</li>
                 <li class="overweight">과체중</li>
                 <li class="obesity">비만</li>
+                <!-- <li class="overObesity">고도비만</li> -->
+                <li class="home">home</li>
               </ul>
               <label>체중</label>
             </li>
