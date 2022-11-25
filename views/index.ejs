@@ -198,23 +198,17 @@
       <div>
         <input type="checkbox" name="Notice" id="Notice" title="오늘은 이창을 열지 않음 선택상자">
         <label for="Notice">오늘은 이창을 열지 않음.</label>
-        <a href="#" onclick="closeWin();hidebox();return false;" style="color: #ccc;"> [close] </a>
+
+        <a
+          href="/"
+          onclick="closeWin();hidebox();return false;"
+          style="color: #fff"
+        >
+          [close]
+        </a>
       </div>
     </div>
-  </main>
-
-  <script>
-    function closeWin() {
-      var chk = document.getElementById('Notice')
-      if (chk.checked) {
-        setCookie("Notice", "done", 1);
-      }
-    }
-    if (getCookie("Notice") == "done") {
-      hidebox();
-    }
-  </script>
-
-</body>
-
+    <script src="/static/js/popup.js"></script>
+    <script src="/static/js/index.js"></script>
+  </body>
 </html>

@@ -105,3 +105,4 @@ function getCookie(name) {
         }
         return "";
 }
+
