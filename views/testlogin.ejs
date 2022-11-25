@@ -229,49 +229,49 @@
         console.log(t);
       }
 
-      function kakaoLogin() {
-        Kakao.Auth.login({
-          success: function (response) {
-            Kakao.API.request({
-              url: "/v2/user/me",
-              success: function (response) {
-                axios({
-                  method: "POST",
-                  url: "/kakaosignup",
-                  data: {
-                    userid: response.id,
-                    useremail: response.kakao_account.email,
-                    nickname: response.properties.nickname,
-                  },
-                })
-                  .then((response) => {
-                    return response.data;
-                  })
-                  .then((data) => {
-                    if (data) {
-                      document.location.href = "/login";
-                      return;
-                    } else {
-                      alert("이미 회원가입을 하셨습니다! 로그인 해주세요!");
-                      document.location.href = "/login";
-                    }
-                  });
-                console.log(response);
-                console.log(response.properties);
-                console.log(response.properties.nickname);
-                console.log(response.kakao_account.email);
-                console.log(response.id);
-              },
-              fail: function (error) {
-                console.log(error);
-              },
-            });
-          },
-          fail: function (error) {
-            console.log(error);
-          },
-        });
-      }
+      // function kakaoLogin() {
+      //   Kakao.Auth.login({
+      //     success: function (response) {
+      //       Kakao.API.request({
+      //         url: "/v2/user/me",
+      //         success: function (response) {
+      //           axios({
+      //             method: "POST",
+      //             url: "/kakaosignup",
+      //             data: {
+      //               userid: response.id,
+      //               useremail: response.kakao_account.email,
+      //               nickname: response.properties.nickname,
+      //             },
+      //           })
+      //             .then((response) => {
+      //               return response.data;
+      //             })
+      //             .then((data) => {
+      //               if (data) {
+      //                 document.location.href = "/login";
+      //                 return;
+      //               } else {
+      //                 alert("이미 회원가입을 하셨습니다! 로그인 해주세요!");
+      //                 document.location.href = "/login";
+      //               }
+      //             });
+      //           console.log(response);
+      //           console.log(response.properties);
+      //           console.log(response.properties.nickname);
+      //           console.log(response.kakao_account.email);
+      //           console.log(response.id);
+      //         },
+      //         fail: function (error) {
+      //           console.log(error);
+      //         },
+      //       });
+      //     },
+      //     fail: function (error) {
+      //       console.log(error);
+      //     },
+      //   });
+      // }
 
       function kakaoLogin() {
         Kakao.Auth.login({
@@ -291,7 +291,7 @@
                   })
                   .then((data) => {
                     if (data) {
-                      document.location.href = "/main";
+                      document.location.href = "/mypage";
                       return;
                     } else {
                       alert(
