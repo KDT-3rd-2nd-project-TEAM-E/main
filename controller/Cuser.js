@@ -13,8 +13,44 @@ exports.getlogin = (req, res) => {
   res.render("login");
 };
 
-exports.kakaologin = (req, res) => {
-  res.render("kakaologin");
+exports.testlogin = (req, res) => {
+  res.render("testlogin");
+};
+
+exports.kakaosignup = (req, res) => {
+  models.User.create({
+    userid: req.body.useremail,
+    useremail: req.body.useremail,
+    nickname: req.body.nickname,
+  })
+    .then((result) => {
+      console.log("성공성공~", result);
+      console.log(result.userid);
+      // DB에 저장된 userid가 없을 경우 -> 회원가입성공->./login 렌더
+      res.send(true);
+    })
+    .catch((result) => {
+      // DB에 저장된 userid가 있을경우 -> 회원가입실패(이미 가입정보가 존재합니다. 로그인해주세요)->/login으로 렌더
+      res.send(false);
+    });
+};
+
+exports.loginkakao = (req, res) => {
+  models.User.findOne({
+    where: {
+      useremail: req.body.useremail, // useremail로 DB값과 비교
+    },
+  }).then((result) => {
+    if (result === null) {
+      console.log("회원가입 기록X", result);
+      //
+      res.send(false);
+      return;
+    } else {
+      console.log("회원가입 기록O", result);
+      res.send(true);
+    }
+  });
 };
 
 exports.postlogin = (req, res) => {
@@ -27,6 +63,7 @@ exports.postlogin = (req, res) => {
     console.log("login 결과 >>", result); // [{}]
     if (result === null) {
       res.send(false); // 로그인 실패
+      return;
     } else {
       res.send(true); // 로그인 성공
     }
@@ -160,40 +197,8 @@ exports.mypage = (req, res) => {
   res.render("mypage");
 };
 
-exports.mypageEdit = async (req, res) => {
-  let result1 = await models.User.update(
-    {
-      userpw: req.body.userpw,
-      nickname: req.body.nickname,
-      age: req.body.age,
-      height: req.body.height,
-    },
-    {
-      where: {
-        userid: req.body.userid,
-      },
-    }
-  );
-  let result2 = await models.Userweight.create(
-    {
-      weight: req.body.weight,
-      date: req.body.date,
-    },
-    {
-      where: {
-        userid: req.body.userid,
-      },
-    }
-  );
-
-  res.send(`${req.body.nickname}님 회원정보가 변경되었습니다.`, {
-    user: result1,
-    userweight: result2,
-  });
-};
-
-// exports.mypageEdit = (req, res) => {
-//   models.User.update(
+// exports.mypageEdit = async (req, res) => {
+//   let result1 = await models.User.update(
 //     {
 //       userpw: req.body.userpw,
 //       nickname: req.body.nickname,
@@ -205,28 +210,60 @@ exports.mypageEdit = async (req, res) => {
 //         userid: req.body.userid,
 //       },
 //     }
-//   ).then((result) => {
-//     console.log("UserEdit 성공 >>", result);
-//     res.send(`${req.body.nickname}님 회원정보가 변경되었습니다.`);
-//   });
-// };
-
-// exports.mypageEdit = (req, res) => {
-//   models.Userweight.create(
+//   );
+//   let result2 = await models.Userweight.create(
 //     {
 //       weight: req.body.weight,
-//       Date: req.body.Date,
+//       date: req.body.date,
 //     },
 //     {
 //       where: {
 //         userid: req.body.userid,
 //       },
 //     }
-//   ).then((result) => {
-//     console.log("UserweightEdit 성공 >>", result);
-//     res.send(`${req.body.nickname}님의 체중정보가 업데이트 되었습니다.`);
+//   );
+
+//   res.send(`${req.body.nickname}님 회원정보가 변경되었습니다.`, {
+//     user: result1,
+//     userweight: result2,
 //   });
 // };
+
+exports.mypageEdit = (req, res) => {
+  models.User.update(
+    {
+      userpw: req.body.userpw,
+      nickname: req.body.nickname,
+      age: req.body.age,
+      height: req.body.height,
+    },
+    {
+      where: {
+        userid: req.body.userid,
+      },
+    }
+  ).then((result) => {
+    console.log("UserEdit 성공 >>", result);
+    res.send(`${req.body.nickname}님 회원정보가 변경되었습니다.`);
+  });
+};
+
+exports.mypageEdit = (req, res) => {
+  models.Userweight.create(
+    {
+      weight: req.body.weight,
+      date: req.body.date,
+    },
+    {
+      where: {
+        userid: req.body.userid,
+      },
+    }
+  ).then((result) => {
+    console.log("UserweightEdit 성공 >>", result);
+    res.send(`${req.body.nickname}님의 체중정보가 업데이트 되었습니다.`);
+  });
+};
 
 exports.mypageDelete = async (req, res) => {
   let result1 = await models.User.destroy({
