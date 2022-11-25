@@ -2,7 +2,7 @@ body {
   font-family: 'Noto Sans KR', 'Roboto', "돋움", Dotum, "굴림", Gulim, sans-serif;
   line-height: 1.5;
   letter-spacing: -1px;
-  width: 1200px;
+  width: 70vw;
   margin: 10px auto;
   color: #333;
 }
@@ -16,14 +16,13 @@ header {
 header .logo {
   width: 200px;
   height: 50px;
-  background: red;
 }
 
 header .logo a {
   display: block;
   width: 200px;
   height: 100px;
-  /* background: url("../img/kcal-logo.png") 0 0 no-repeat; */
+  background: url("../img/logo_c.png") 0 0 no-repeat;
   background-size: 80%;
   background-position: 50%;
   text-indent: -999px;
@@ -66,7 +65,7 @@ p {
 .start {
   display: flex;
   justify-content: space-between;
-  padding: 110px 0;
+  padding: 160px 0 100px;
 }
 
 .start div {
@@ -249,10 +248,13 @@ p {
 #showimage {
   z-index: 100;
   position: absolute;
-  width: 657px;
-  right: 430px;
-  top: 255px;
+  left: 37%;
+  bottom: 280px;
   font-size: 12px;
   text-align: center;
-  color: #fff;
+  color: #333;
+}
+
+img{
+  width: 50%;
 }
