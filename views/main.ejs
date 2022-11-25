@@ -45,9 +45,9 @@
           <article class="gauge">
             <h3 class="hidden">기초 대사량 칼로리 게이지</h3>
             <p>xx님,환영합니다 &#58;&#41;</p>
-            <p>회원님의 기초대사량은 1700kcal입니다.</p>
+            <p>회원님의 기초대사량은 <span class="kcal-total"></span> 칼로리 입니다.</p>
             <div class="kcal-bar-background">
-              <span class="kcal-value"></span>
+              <span class="kcal-value">0%</span>
               <div class="kcal-bar">
               </div>
           </article>
@@ -68,9 +68,31 @@
       </article>
     </section>
     <section class="part2">
-      <div class="pie protein"></div>
-      <div class="pie fat"></div>
-      <div class="pie carbs"></div>
+      <div class="content-box">
+        <div class="recommend-text">회원님의 하루 탄수화물 섭취 권장량은
+          <br><span class="carbs-text"></span>입니다.
+        </div>
+        <div></div>
+        <div class="pie carbs">
+          <div class="inside-pie carbs-value">0%</div>
+        </div>
+      </div>
+      <div class="content-box">
+        <div class="recommend-text">회원님의 하루 단백질 섭취 권장량은
+          <br><span class="protein-text"></span>입니다.
+        </div>
+        <div class="pie protein">
+          <div class="inside-pie protein-value">0%</div>
+        </div>
+      </div>
+      <div class="content-box">
+        <div class="recommend-text">회원님의 하루 탄수화물 섭취 권장량은
+          <br><span class="fat-text"></span>입니다.
+        </div>
+        <div class="pie fat">
+          <div class="inside-pie fat-value">0%</div>
+        </div>
+      </div>
     </section>
   </main>
 </div>
@@ -101,7 +123,7 @@
     </div>
     </div>
     <script src="/static/js/crawler.js"></script>
-    <script src="/static/js/addkcal.js"></script>
+    <script src="/static/js/Calkcal.js"></script>
   </body>
   
 </html>
