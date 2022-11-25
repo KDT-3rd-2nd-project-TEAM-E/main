@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>START | Kal-cal</title>
   <!-- favicon -->
-  <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/static/img/favicon.png" type="image/x-icon">
   <!-- css: reset -->
-  <link rel="stylesheet" href="../static/css/reset.css">
+  <link rel="stylesheet" href="/static/css/reset.css">
   <!-- css: index  -->
-  <link rel="stylesheet" href="../static/css/index.css">
+  <link rel="stylesheet" href="/static/css/index.css">
   <!-- fontawsome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
   <!-- xelcon -->
@@ -19,7 +19,7 @@
   <!-- jQuery CDN -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <!-- popup cookie js -->
-  <script src="../static/js/popup.js"></script>
+  <script src="/static/js/popup.js"></script>
 </head>
 
 <body>
@@ -31,7 +31,7 @@
 
   <!-- header -->
   <header>
-    <h1 class="logo"><a href="/" class="hidden">Kcal-cal</a></h1>
+    <h1 class="logo"><a href="/">Kcal-cal</a></h1>
     <ul>
       <li><a href="/login">로그인</a></li>
       <li><a href="/signup">회원가입</a></li>
@@ -56,7 +56,7 @@
             <li><a href="/main">무료로 시작하기</a></li>
           </ul>
         </div>
-        <img src="../static/img/index_img1.jpg" alt="음식이미지">
+        <img src="/static/img/index_img1.jpg" alt="음식이미지">
       </article>
 
       <!-- record -->
@@ -68,9 +68,9 @@
             음식이 목표를 어떻게 지원할 수 있는지 알아보세요.
           </p>
         </div>
-        <img src="../static/img/index_img2.jpg" alt="음식이미지">
+        <img src="/static/img/index_img2.jpg" alt="음식이미지">
       </article>
-      
+
       <!-- target -->
       <article class="target">
         <div>
@@ -83,7 +83,7 @@
         </div>
         <ul>
           <li>
-            <img src="../static/img/index_img3-1.svg" alt="음식이미지">
+            <img src="/static/img/index_img3-1.svg" alt="음식이미지">
             <h3>배우고 추적하고 개선하세요</h3>
             <p>
               음식 일지를 쓰면 자신의 식습관을 쉽게 파악할 수 있어 목표를
@@ -91,7 +91,7 @@
             </p>
           </li>
           <li>
-            <img src="../static/img/index_img3-2.svg" alt="음식이미지">
+            <img src="/static/img/index_img3-2.svg" alt="음식이미지">
             <h3>간소화된 기록</h3>
             <p>
               바코드를 스캔하고 식사와 레시피를 저장하며 빠른 도구를 통해 쉽고
@@ -99,7 +99,7 @@
             </p>
           </li>
           <li>
-            <img src="../static/img/index_img3-3.svg" alt="음식이미지">
+            <img src="/static/img/index_img3-3.svg" alt="음식이미지">
             <h3>지속적인 동기 부여</h3>
             <p>
               세계 최고의 피트니스 커뮤니티에 가입하여 365일 24시간 조언과 팁,
@@ -192,23 +192,20 @@
     <!-- 공지사항팝업 -->
     <div id="showimage">
       <div>
-        <img src="../static/img/popup.png"
+        <img src="/static/img/popup.png"
           alt="본 사이트는 상업적 목적이 아닌 포트폴리오 용도로 만들어졌습니다. 홈페이지의 일부 내용과 기타 이미지 등은 그 출처가 따로 있음을 밝힙니다.">
       </div>
       <div>
-        <input type="checkbox" name="Notice" id="Notice" title="오늘은 이창을 열지 않음 선택상자">
+        <input type="checkbox" name="Notice" id="Notice" title="오늘은 이 창을 열지 않음 선택상자">
         <label for="Notice">오늘은 이창을 열지 않음.</label>
 
-        <a
-          href="/"
-          onclick="closeWin();hidebox();return false;"
-          style="color: #fff"
-        >
+        <a href="/" onclick="closeWin();hidebox();return false;">
           [close]
         </a>
       </div>
     </div>
     <script src="/static/js/popup.js"></script>
     <script src="/static/js/index.js"></script>
-  </body>
+</body>
+
 </html>

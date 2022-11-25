@@ -5,7 +5,6 @@
   padding: 0px;
   box-sizing: border-box;
   font-family: "Noto Sans KR", sans-serif;
-  scale: 0.95;
 }
 
 body {
@@ -28,7 +27,7 @@ body {
   box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05);
   border: 0.2rem solid #fff;
   border-radius: 2rem;
-  padding: 0.4em;
+  padding: 40px;
 }
 
 .title {
@@ -128,36 +127,12 @@ body {
   margin-right: auto;
 } */
 
-#kkoLoginBtn {
-  width: 100%;
-  max-width: 530px;
-  height: 100%;
-  /* padding: 5px; */
-  cursor: pointer;
-  margin: 0px 10px 30px 10px;
 
-  /* scale: 0.7; */
-  /* padding-bottom: 10px; */
-  /* padding-top: 10px; */
-  scale: 0.7;
+.socialLogin img {
+    width: 100%;
+    margin: 10px 0;
+    max-width: 530px;
 }
-
-#kkoSignupBtn {
-  width: 100%;
-  max-width: 530px;
-  height: 100%;
-  /* padding: 5px; */
-  cursor: pointer;
-  margin: 0px 10px 10px 10px;
-
-  /* scale: 0.7; */
-  /* padding-bottom: 10px; */
-  /* padding-top: 10px; */
-  scale: 0.7;
-}
-
-
-
 #loginBtn:hover,
 #loginBtn:active,
 #loginBtn:focus {

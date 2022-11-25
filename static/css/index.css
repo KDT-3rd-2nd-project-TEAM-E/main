@@ -21,7 +21,7 @@ header .logo {
 header .logo a {
   display: block;
   width: 200px;
-  height: 100px;
+  height: 50px;
   background: url("../img/logo_c.png") 0 0 no-repeat;
   background-size: 80%;
   background-position: 50%;
@@ -65,7 +65,7 @@ p {
 .start {
   display: flex;
   justify-content: space-between;
-  padding: 160px 0 100px;
+  padding: 140px 0 100px;
 }
 
 .start div {
@@ -88,7 +88,9 @@ p {
   display: block;
   border-radius: 5px;
   padding: 10px;
+  border: 1px solid #3dad6b;
   font-size: 1em;
+  transition: all .3s;
 }
 
 .start ul li:nth-child(1) a {
@@ -99,7 +101,11 @@ p {
 .start ul li:nth-child(2) a {
   background: #fff;
   color: #3dad6b;
-  border: 1px solid #3dad6b;
+}
+
+.start ul li:nth-child(2) a:hover{
+  background: #3dad6b;
+  color: #fff;
 }
 
 @media (max-width: 1024px) {
@@ -250,11 +256,10 @@ p {
   position: absolute;
   left: 37%;
   bottom: 280px;
-  font-size: 12px;
   text-align: center;
   color: #333;
 }
 
-img{
+img {
   width: 50%;
 }
