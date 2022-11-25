@@ -29,15 +29,16 @@
     <%- include('header.ejs') %>
 
     <!-- main content -->
-    <main>
+    <main id="sub3">
       <section>
         <h2 class="hidden">Main Content</h2>
-        <h3>칼로리 그래프</h3>
-        <article></article>
+        <article>
+          <h3>칼로리 그래프</h3>
+          <div class="graph">
+            <canvas id="myChart"></canvas>
+          </div>
+        </article>
       </section>
-      <div>
-        <canvas id="myChart"></canvas>
-      </div>
     </main>
   </div>
   <script>

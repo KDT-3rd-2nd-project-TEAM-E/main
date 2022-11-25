@@ -1,189 +1,132 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>마이페이지 | Kcal-cal</title>
-    <!-- favicon -->
-    <link
-      rel="shortcut icon"
-      href="../static/img/favicon.png"
-      type="image/x-icon"
-    />
-    <!-- axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- css: reset -->
-    <link rel="stylesheet" href="../static/css/reset.css" />
-    <!-- css: header -->
-    <link rel="stylesheet" href="../static/css/header.css" />
-    <!-- css : sub -->
-    <link rel="stylesheet" href="../static/css/sub.css" />
-    <!-- fontawsome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
-    />
-    <!-- xelcon -->
-    <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
-    />
-    <!-- jQuery CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-    <style>
-      #userInfo {
-        /* background: #d9ebdf; */
-        width: 100%;
-        min-width: 320px;
-        /* height: 100vh; */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마이페이지 | Kcal-cal</title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/static/img/favicon.png" type="image/x-icon">
+  <!-- axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- css: reset -->
+  <link rel="stylesheet" href="/static/css/reset.css">
+  <!-- css: header -->
+  <link rel="stylesheet" href="/static/css/header.css">
+  <!-- css : mypage -->
+  <link rel="stylesheet" href="/static/css/mypage.css">
+  <!-- fontawsome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+  <!-- xelcon -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
 
-      .inputBox {
-        outline: none;
-        border: 1px solid gray;
-        border-radius: 5px;
-        box-sizing: border-box;
-        display: inline-block;
-        max-width: 530px;
-        padding: 15px;
-        width: 100%;
-        margin: 0px 0px 10px;
-      }
+<body>
+  <div id="wrap">
+    <div id="skipNav">
+      <a href="#content">본문 바로가기</a>
+      <a href="#gnb">글로벌 네비게이션 바로가기</a>
+    </div>
 
-      .inputBox:focus {
-        border: 2px solid #34945c;
-        background-color: #f7faf9;
-        border-radius: 5px;
-        box-sizing: border-box;
-        display: inline-block;
-        max-width: 530px;
-        padding: 15px;
-        width: 100%;
-        margin: 0px 0px 10px;
-      }
-      #editBtn,
-      #delBtn {
-        text-transform: uppercase;
-        outline: 0;
-        background: #3dad6b;
-        width: 100%;
-        max-width: 530px;
-        border: 0;
-        border-radius: 5px;
-        padding: 15px;
-        color: #ffffff;
-        font-size: 18px;
-        font-weight: bold;
-        -webkit-transition: all 0.3 ease;
-        transition: all 0.3 ease;
-        cursor: pointer;
-        margin-top: 20px;
-      }
+    <header id="headerArea">
+      <div class="headerInner">
+        <h1 class="logo"><a href="/">Kcal-cal</a></h1>
+        <div class="profile_img">
+          <img src="../static/img/porfile.jpg" alt="프로필 이미지">
+          <ul>
+            <li><a href="#">로그아웃</a></li>
+            <li><a href="/mypage">정보수정</a></li>
+          </ul>
+        </div>
 
-      #editBtn:hover,
-      #delBtn:hover,
-      #editBtn:active,
-      #delBtn:active,
-      #editBtn:focus,
-      #delBtn:focus {
-        background: #34945c;
-        text-decoration: underline;
-      }
-    </style>
-  </head>
+        <nav id="gnb">
+          <h2 class="hidden">Navigation</h2>
+          <ul>
+            <li>
+              <h3>
+                <b class="top-curve"></b>
+                <b class="bottom-curve"></b>
+                <a href="/main"><i class="fas fa-fire"></i>칼로리 체크</a>
+              </h3>
+            </li>
+            <li>
+              <h3>
+                <b class="top-curve"></b>
+                <b class="bottom-curve"></b>
+                <a href="/sub1"><i class="fas fa-calculator"></i>BMI 측정</a>
+              </h3>
+            </li>
+            <li>
+              <h3>
+                <b class="top-curve"></b>
+                <b class="bottom-curve"></b>
+                <a href="/sub2"><i class="fas fa-running"></i>건강 정보</a>
+              </h3>
+            </li>
+            <li>
+              <h3>
+                <b class="top-curve"></b>
+                <b class="bottom-curve"></b>
+                <a href="/sub3"><i class="far fa-meh-blank"></i>건강 상태</a>
+              </h3>
+            </li>
+          </ul>
+        </nav>
+        <a href="#" class="menu_ham">
+          <!-- <span>메뉴열고닫기</span> -->
+        </a>
+      </div>
 
-  <body>
-    <div id="wrap">
-      <!-- main content -->
-      <main>
-        <section>
-          <h2 class="hidden">Main Content</h2>
-          <h3>내 정보</h3>
-          <article class="profile1">
-            <img
-              src="https://ca.slack-edge.com/T0417T8AR8U-U0415AS4GLT-9052f3c17396-512"
-              alt=""
-            />
-            <form name="form_mypage">
-              <!-- <label for="nickname" name="info" id="nickname"></label> -->
-              <div id="userInfo">
-                <!-- id값 수정 불가 -->
-                <input
-                  type="text"
-                  class="inputBox"
-                  id="userid"
-                  placeholder="userID"
-                />
-                <!-- readonly
+    </header>
+    <!-- main content -->
+    <main>
+      <section>
+        <h2 class="hidden">Main Content</h2>
+        <h3>내 정보</h3>
+        <article class="profile1">
+          <img src="https://ca.slack-edge.com/T0417T8AR8U-U0415AS4GLT-9052f3c17396-512" alt="">
+          <form name="form_mypage">
+            <!-- <label for="nickname" name="info" id="nickname"></label> -->
+            <div id="userInfo">
+              <!-- id값 수정 불가 -->
+              <input type="text" class="inputBox" id="userid" placeholder="userID">
+              <!-- readonly
                   disabled -->
-                <!-- <label for=""></label> -->
+              <!-- <label for=""></label> -->
 
-                <!-- nickname 수정 가능 -->
-                <input
-                  type="text"
-                  class="inputBox"
-                  id="nickname"
-                  placeholder="Nickname"
-                />
+              <!-- nickname 수정 가능 -->
+              <input type="text" class="inputBox" id="nickname" placeholder="Nickname">
 
-                <!-- PW 수정가능 & 일치 확인-->
-                <input
-                  type="password"
-                  class="inputBox"
-                  id="userpw"
-                  placeholder="userPW"
-                />
-                <input type="password" class="inputBox" placeholder="checkPW" />
+              <!-- PW 수정가능 & 일치 확인-->
+              <input type="password" class="inputBox" id="userpw" placeholder="userPW">
+              <input type="password" class="inputBox" placeholder="checkPW">
 
-                <!-- email 수정 불가 -->
-                <input
-                  type="email"
-                  class="inputBox"
-                  id="useremail"
-                  placeholder="userEmail"
-                />
-                <!-- readonly
+              <!-- email 수정 불가 -->
+              <input type="email" class="inputBox" id="useremail" placeholder="userEmail">
+              <!-- readonly
                   disabled -->
 
-                <!-- 키 -->
-                <input
-                  type="number"
-                  class="inputBox"
-                  id="height"
-                  placeholder="height"
-                />
+              <!-- 키 -->
+              <input type="number" class="inputBox" id="height" placeholder="height">
 
-                <!-- 나이 -->
-                <input
-                  type="number"
-                  class="inputBox"
-                  id="age"
-                  placeholder="age"
-                />
+              <!-- 나이 -->
+              <input type="number" class="inputBox" id="age" placeholder="age">
 
-                <!-- 성별 -->
-                <input
-                  type="text"
-                  class="inputBox"
-                  id="gender"
-                  placeholder="gender(M/F)"
-                />
-              </div>
-              <button type="button" id="editBtn" onclick="editInfo();">
-                수정하기
-              </button>
-              <button type="button" id="delBtn" onclick="delInfo();">
-                회원탈퇴
-              </button>
-            </form>
-          </article>
-          <!-- <article class="profile2">
+              <!-- 성별 -->
+              <input type="text" class="inputBox" id="gender" placeholder="gender(M/F)">
+            </div>
+            <button type="button" id="editBtn" onclick="editInfo();">
+              수정하기
+            </button>
+            <button type="button" id="delBtn" onclick="delInfo();">
+              회원탈퇴
+            </button>
+          </form>
+        </article>
+        <!-- <article class="profile2">
           <form>
             <label for="age" id="age">나이</label>
             <input type="number">
@@ -192,20 +135,20 @@
             <button>수정</button>
           </form>
         </article> -->
-        </section>
-      </main>
-    </div>
+      </section>
+    </main>
+  </div>
 
-    <script>
-      const form = document.forms["form_mypage"];
+  <script>
+    const form = document.forms["form_mypage"];
 
-      function editInfo() {
-        if (!form.checkValidity()) {
-          form.reportValidity();
-          return;
-        }
+    function editInfo() {
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
 
-        axios({
+      axios({
           method: "PATCH",
           url: "/mypage/edit",
           data: {
@@ -218,17 +161,17 @@
             height: form.height.value,
           },
         })
-          .then((res) => {
-            return res.data;
-          })
-          .then((data) => {
-            alert(data);
-            window.location.href = "/main";
-          });
-      }
+        .then((res) => {
+          return res.data;
+        })
+        .then((data) => {
+          alert(data);
+          window.location.href = "/main";
+        });
+    }
 
-      function delInfo() {
-        axios({
+    function delInfo() {
+      axios({
           method: "DELETE",
           url: "/mypage/delete",
           data: {
@@ -241,14 +184,15 @@
             // height: form.height.value,
           },
         })
-          .then((res) => {
-            return res.data;
-          })
-          .then((data) => {
-            alert(data);
-            window.location.href = "/";
-          });
-      }
-    </script>
-  </body>
+        .then((res) => {
+          return res.data;
+        })
+        .then((data) => {
+          alert(data);
+          window.location.href = "/";
+        });
+    }
+  </script>
+</body>
+
 </html>

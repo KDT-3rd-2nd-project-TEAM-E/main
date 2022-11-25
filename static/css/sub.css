@@ -249,43 +249,8 @@ input[type="number"] {
 }
 
 /* SUB3 CSS */
-.profile1,
-.profile2 {
-  background: #eee;
-  border-radius: 15px;
-  display: flex;
-}
-
-.profile1 img {
-  width: 20%;
-  border-radius: 15px;
-  padding: 2%;
-}
-
-.profile1 form {
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.profile1 form button {
-  /* position: absolute; */
-  top: 50%;
-  right: 20%;
-  background: #3dad6b;
-  color: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  cursor: pointer;
-}
-
-.profile2 {
-}
-
-.profile2 form {
-  display: flex;
-  flex-direction: column;
+#sub3 .graph{
+  padding: 5% 0;
 }
 
 /* chart js */
