@@ -236,17 +236,18 @@ hr {
 .animate {
   animation:p 1s .5s both;
 }
+
+@keyframes p {
+  from{--p:0}
+}
+
+
 .no-round:before {
   background-size:0 0,auto;
 }
 .no-round:after {
   content:none;
 }
-@keyframes p {
-  from{--p:0}
-}
-
-
 
 body {
   background:#ddd;
