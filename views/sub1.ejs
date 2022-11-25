@@ -1,40 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>비만도 측정 | Kcal-cal</title>
-    <!-- favicon -->
-    <link
-      rel="shortcut icon"
-      href="../static/img/favicon.ico"
-      type="image/x-icon"
-    />
-    <!-- css: reset -->
-    <link rel="stylesheet" href="../static/css/reset.css" />
-    <!-- css: header -->
-    <link rel="stylesheet" href="../static/css/header.css" />
-    <!-- css : sub -->
-    <link rel="stylesheet" href="../static/css/sub.css" />
-    <!-- fontawsome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
-    />
-    <!-- xelcon -->
-    <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
-    />
-    <!-- jQuery CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  </head>
 
-  <body>
+  
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>비만도 측정 | Kcal-cal</title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon">
+  <!-- css: reset -->
+  <link rel="stylesheet" href="../static/css/reset.css">
+  <!-- css: header -->
+  <link rel="stylesheet" href="../static/css/header.css">
+  <!-- css : sub -->
+  <link rel="stylesheet" href="../static/css/sub.css">
+  <!-- fontawsome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+  <!-- xelcon -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <!-- 비만도 측정 js -->
+  <script src="../static/js/calculation.js"></script>
+</head>
+<body>
     <div id="wrap">
       <%- include('header.ejs') %>
-
       <!-- main content -->
       <main>
         <section>
@@ -68,13 +60,22 @@
           <article>
             <h3 class="hidden">그래프</h3>
 
-            <p>"어쩌구저쩌구 저체중입니다ㅏㅏ"</p>
-            <p>과체중입니다 운동하세요</p>
-          </article>
-        </section>
-      </main>
-    </div>
-    <!-- 비만도 측정 js -->
-    <script src="/static/js/sub1.js"></script>
-  </body>
+
+          <h4>비만도의 산출방법</h4>
+          <p>체질량지수 = 체중 &#40; kg &#41; / 키의 제곱 &#40; &#13217; &#41;</p>
+
+        </article>
+        <article>
+          <h3 class="hidden">그래프</h3>
+          
+          <p>"어쩌구저쩌구 저체중입니다ㅏㅏ"</p>
+          <p>과체중입니다 운동하세요</p>
+        </article>
+      </section>
+      
+    </main>
+  </div>
+  
+</body>
+
 </html>
