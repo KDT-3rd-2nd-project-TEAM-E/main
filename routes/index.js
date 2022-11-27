@@ -15,6 +15,8 @@ router.get("/login", controller.getlogin);
 
 router.post("/login", controller.postlogin);
 
+router.post("/login/findId", controller.findId); //ID찾기
+
 router.get("/testlogin", controller.testlogin);
 
 router.post("/kakaosignup", controller.kakaosignup);

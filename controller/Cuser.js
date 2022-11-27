@@ -76,11 +76,12 @@ exports.findId = (req, res) => {
       useremail: req.body.useremail,
     },
   }).then((result) => {
-    console.log("ID 찾기 >>", result); // [{}]
+    // console.log("ID 찾기 >>", result.userid); // [{}]
     if (result === null) {
-      res.send(false); // 해당 이메일에 대응하는 ID값 X
+      res.send(`존재하지 않는 이메일입니다!`); // 해당 이메일에 대응하는 ID값 X
     } else {
-      res.send(true); // ID값 출력 or 다른 처리
+      //res.send(true); // ID값 출력 or 다른 처리
+      res.send(result.userid);
     }
   });
 };

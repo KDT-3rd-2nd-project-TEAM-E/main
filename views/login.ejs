@@ -34,26 +34,26 @@
         </div>
         <hr />
         <form name="form_login">
-           <!-- 카카오 -->
-           <div class="socialLogin">
+          <!-- 카카오 -->
+          <div class="socialLogin">
             <div class="loginText">
-            <h2>카카오로 로그인</h2>
-            <!-- <p>아이디와 비밀번호 입력하기 귀찮으시죠? <br>
-               카카오로 1초 만에 로그인 하세요! -->
-            </p>
-          </div>
+              <h2>카카오로 로그인</h2>
+              <!-- <p>아이디와 비밀번호 입력하기 귀찮으시죠? <br>
+               카카오로 1초 만에 로그인 하세요! 
+            </p>-->
+            </div>
 
-          <a href="javascript:void(0)">
-            <img
-              src="/static/img/kakao_login_large_narrow.png"
-              alt="카카오"
-              id="kkoLoginBtn"
-              onclick="kakaoLogin();"
-            />
-          </a>
-          <div class="loginText">
-            <h2>카카오로 회원가입</h2>
-          </div>
+            <a href="javascript:void(0)">
+              <img
+                src="/static/img/kakao_login_large_narrow.png"
+                alt="카카오"
+                id="kkoLoginBtn"
+                onclick="kakaoLogin();"
+              />
+            </a>
+            <div class="loginText">
+              <h2>카카오로 회원가입</h2>
+            </div>
             <a href="javascript:void(0)">
               <img
                 src="/static/img/kakao_login_medium_wide.png"
@@ -62,14 +62,9 @@
                 onclick="kakaoLogin();"
               />
             </a>
-
-
-
           </div>
 
           <span class="hr-sect">또는</span>
-
-
 
           <div class="id">
             <input
@@ -122,13 +117,11 @@
                 <li><a href="/signup">회원가입</a></li>
               </ul>
             </div>
-                <!-- <li onclick="kakaoLogout();">
+            <!-- <li onclick="kakaoLogout();">
                 <a href="javascript:void(0)">
                   <span>카카오 로그아웃</span>
                 </a>
               </li> -->
-              </ul>
-            </div>
           </div>
         </form>
       </div>
@@ -158,18 +151,20 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div class="oneine">
-              <input
-                type="text"
-                id="findUseremail"
-                class="inputBox"
-                placeholder="회원가입시 등록한 이메일 입력"
-              />
-              <button type="button" id="lookupEmail" onclick="lookup(); ">
-                이메일 조회
-              </button>
-            </div>
-            <div id="showId"></div>
+            <form name="form_findId">
+              <div class="oneine">
+                <input
+                  type="text"
+                  id="findUseremail"
+                  class="inputBox"
+                  placeholder="회원가입시 등록한 이메일 입력"
+                />
+                <button type="button" id="lookupEmail" onclick="lookup(); ">
+                  이메일 조회
+                </button>
+              </div>
+              <div id="showId"></div>
+            </form>
             <br />
             <div class="loginEtc">
               <ul>
@@ -260,20 +255,39 @@
     </div>
     <!-- 카카오 로그인 api 스크립트 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <!-- 네이버 로그인 api 스크립트 -->
-    <!-- <script
-      src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
-      charset="utf-8"
-    ></script> -->
-    <!-- 구글 로그인 api 스크립트 -->
-    <!-- <script
-      src="https://apis.google.com/js/platform.js?onload=init"
-      async
-      defer
-    ></script> -->
 
     <!-- 로그인 버튼 -->
     <script src="/static/js/login.js"></script>
+
+    <!--아이디 찾기 -->
+    <script>
+      function lookup() {
+        // findUseremail 인풋박스 id
+        const form = document.forms["form_findId"];
+        //console.log(form.findUseremail.value);
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        axios({
+          method: "POST",
+          url: "/login/findId",
+          data: {
+            useremail: form.findUseremail.value,
+          },
+        })
+          .then((res) => {
+            return res.data;
+          })
+          .then((data) => {
+            document.querySelector("#showId").textContent = `${data}`;
+            //document.getElementById("findUseremail").value = "";
+          });
+      }
+    </script>
+
+    <!-- 비밀번호 찾기 -->
 
     <script>
       // Kakao.init("2609470f9ce5ccc0f948de565ceda807"); //발급받은 키 중 javascript키를 사용해준다.
@@ -403,8 +417,6 @@
       //   function onSignInFailure(t) {
       //     console.log(t);
       //   }
-    
-    
     </script>
   </body>
 </html>
