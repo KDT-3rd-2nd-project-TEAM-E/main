@@ -200,6 +200,7 @@ function register() {
     },
   }).then((res) => {
     if (true) {
+      alert("회원가입이 완료되었습니다! 로그인을 해서 서비스를 즐겨보세요!!");
       window.location.href = "/login";
       return;
     } else {

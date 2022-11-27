@@ -68,6 +68,11 @@ DELETE FROM user WHERE userid = 'archangel67@naver.com';
 
 SELECT Date, weight FROM userweight WHERE userid='aaa' ORDER BY Date DESC;
 
+SELECT *
+FROM user
+    INNER JOIN userweight
+    ON user.userid = userweight.userid;
+    
 -- 예시들
 SELECT id, address FROM user; -- id, 주소 컬럼 조회
 -- ASC: 오름차순 (기본값)
@@ -93,6 +98,8 @@ UPDATE user SET address = '서울특별시 강북구' WHERE id = 1; -- 권장되
 -- 데이터 삭제
 -- 주의)) delete에서 where절 미사용시, 모든 행의 데이터가 삭제됨
 DELETE FROM user WHERE id = 11;
+
+-- [WHERE 검색_조건]
 
 -- DCL
 -- mysql 사용자 추가 (user 계정)

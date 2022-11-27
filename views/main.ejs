@@ -43,9 +43,13 @@
           <!-- gauge -->
           <article class="gauge">
             <h3 class="hidden">기초 대사량 칼로리 게이지</h3>
-
-            <p>XX 님,<br />환영합니다 &#58;&#41;</p>
-
+            <% if (isLogin) { %>
+            <p><%= nickname %> 님,<br />환영합니다 &#58;&#41;</p>
+            <% } else if (isLogin && userid === useremail) {%>
+            <p>정보수정에서 회원님의 정보를 입력해주세요!</p>
+            <% } else { %>
+            <p>로그인 후 조회 가능합니다!</p>
+            <% } %>
             <div class="kcal-bar-background">
               <span class="kcal-value"></span>
               <div class="kcal-bar"></div>

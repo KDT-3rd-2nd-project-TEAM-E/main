@@ -118,10 +118,12 @@
                   type="text"
                   class="inputBox"
                   id="userid"
+                  readonly
+                  disabled
                   placeholder="userID"
+                  value="<%= userid %>"
                 />
-                <!-- readonly
-                  disabled -->
+
                 <!-- <label for=""></label> -->
 
                 <!-- nickname 수정 가능 -->
@@ -130,6 +132,7 @@
                   class="inputBox"
                   id="nickname"
                   placeholder="Nickname"
+                  value="<%= nickname %>"
                 />
 
                 <!-- PW 수정가능 & 일치 확인-->
@@ -138,18 +141,26 @@
                   class="inputBox"
                   id="userpw"
                   placeholder="userPW"
+                  value="<%= userpw %>"
                 />
-                <input type="password" class="inputBox" placeholder="checkPW" />
+
+                <input
+                  type="password"
+                  class="inputBox"
+                  placeholder="checkPW"
+                  value="<%= userpw %>"
+                />
 
                 <!-- email 수정 불가 -->
                 <input
                   type="email"
                   class="inputBox"
                   id="useremail"
+                  readonly
+                  disabled
                   placeholder="userEmail"
+                  value="<%= useremail %>"
                 />
-                <!-- readonly
-                  disabled -->
 
                 <!-- 키 -->
                 <input
@@ -157,6 +168,7 @@
                   class="inputBox"
                   id="height"
                   placeholder="height"
+                  value="<%= height %>"
                 />
 
                 <!-- 나이 -->
@@ -165,6 +177,7 @@
                   class="inputBox"
                   id="age"
                   placeholder="age"
+                  value="<%= age %>"
                 />
 
                 <!-- 성별 -->
@@ -173,6 +186,7 @@
                   class="inputBox"
                   id="gender"
                   placeholder="gender(M/F)"
+                  value="<%= gender %>"
                 />
               </div>
               <button type="button" id="editBtn" onclick="editInfo();">
@@ -206,7 +220,7 @@
         }
 
         axios({
-          method: "PATCH",
+          method: "POST",
           url: "/mypage/edit",
           data: {
             userid: form.userid.value,
@@ -222,8 +236,14 @@
             return res.data;
           })
           .then((data) => {
-            alert(data);
-            window.location.href = "/main";
+            if (data) {
+              console.log(data);
+              alert(
+                `${data.nickname}님의 회원정보가 성공적으로 변경되었습니다!`
+              );
+              document.location.href = "/main";
+              return;
+            }
           });
       }
 
