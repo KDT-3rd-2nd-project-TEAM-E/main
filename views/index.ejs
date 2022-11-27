@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>START | Kal-cal</title>
   <!-- favicon -->
-  <link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
   <!-- css: reset -->
   <link rel="stylesheet" href="../static/css/reset.css">
   <!-- css: index  -->
@@ -18,6 +18,8 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
   <!-- jQuery CDN -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <!-- popup cookie js -->
+  <script src="../static/js/popup.js"></script>
 </head>
 
 <body>
@@ -45,7 +47,7 @@
           <h2>건강한 몸은<br>음식에서 시작됩니다</h2>
           <p>
             음식에 더 주의를 기울이고 싶으신가요?<br>
-            KCAL-CAL과 함께 여러분의 식단을 추적하고,
+            KCAL - CAL과 함께 여러분의 식단을 추적하고,
             습관에 대해 알아보고, 목표를 달성해보세요.
           </p>
 
@@ -56,6 +58,7 @@
         </div>
         <img src="../static/img/index_img1.jpg" alt="음식이미지">
       </article>
+
       <!-- record -->
       <article class="record">
         <div>
@@ -67,6 +70,7 @@
         </div>
         <img src="../static/img/index_img2.jpg" alt="음식이미지">
       </article>
+      
       <!-- target -->
       <article class="target">
         <div>
@@ -105,6 +109,51 @@
         </ul>
         </div>
       </article>
+
+      <!-- slide -->
+      <article class="slide">
+        <div class="flexslider">
+          <ul class="slides">
+            <li>
+              <a href="#">
+                <img src="./images/store1.jpg" alt="상품이미지">
+                <p><span>무선충전이 필요할 땐</span>
+                  벨킨 무선 충전스텐드</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/store2.jpg" alt="상품이미지">
+                <p><span>춘식이 칫솔꽂이</span>
+                  양치템 더 보러가기</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/store3.jpg" alt="상품이미지">
+                <p><span>죠르디 심쿵 필로우</span>
+                  죠르디 인형 더 보러가기</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/store4.jpg" alt="상품이미지">
+                <p><span>건강한 하루의 시작</span>
+                  요거트 메이커 라이언 &amp; 춘식이</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./images/store4.jpg" alt="상품이미지">
+                <p><span>라이언 &amp; 춘식이와 불멍해요</span>
+                  벽난로 불멍 무드등</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <a href="/login">지금 바로 시작하기</a>
+      </article>
+
       <!-- idea -->
       <article class="idea">
         <div>
@@ -139,20 +188,20 @@
         </ul>
       </article>
     </section>
-  </main>
 
-  <!-- 공지사항팝업 -->
-  <div id="showimage">
-    <div>
-      <img src="../static/img/popup.png"
-        alt="본 사이트는 상업적 목적이 아닌 포트폴리오 용도로 만들어졌습니다. 홈페이지의 일부 내용과 기타 이미지 등은 그 출처가 따로 있음을 밝힙니다.">
+    <!-- 공지사항팝업 -->
+    <div id="showimage">
+      <div>
+        <img src="../static/img/popup.png"
+          alt="본 사이트는 상업적 목적이 아닌 포트폴리오 용도로 만들어졌습니다. 홈페이지의 일부 내용과 기타 이미지 등은 그 출처가 따로 있음을 밝힙니다.">
+      </div>
+      <div>
+        <input type="checkbox" name="Notice" id="Notice" title="오늘은 이창을 열지 않음 선택상자">
+        <label for="Notice">오늘은 이창을 열지 않음.</label>
+        <a href="#" onclick="closeWin();hidebox();return false;" style="color: #ccc;"> [close] </a>
+      </div>
     </div>
-    <div>
-      <input type="checkbox" name="Notice" id="Notice" title="오늘은 이창을 열지 않음 선택상자">
-      <label for="Notice">오늘은 이창을 열지 않음.</label>
-      <a href="/cookie" onclick="closeWin();hidebox();return false;" style="color: #fff;"> [close] </a>
-    </div>
-  </div>
+  </main>
 
   <script>
     function closeWin() {
@@ -165,6 +214,7 @@
       hidebox();
     }
   </script>
+
 </body>
 
 </html>

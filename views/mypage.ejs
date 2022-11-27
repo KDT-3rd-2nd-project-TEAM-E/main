@@ -20,11 +20,73 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
   <!-- jQuery CDN -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<style>
+#userInfo {
+  /* background: #d9ebdf; */
+  width: 100%;
+  min-width: 320px;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+  .inputBox {
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 530px;
+  padding: 15px;
+  width: 100%;
+  margin: 0px 0px 10px;
+}
+
+.inputBox:focus {
+  border: 2px solid #34945c;
+  background-color: #f7faf9;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 530px;
+  padding: 15px;
+  width: 100%;
+  margin: 0px 0px 10px;
+}
+#editBtn, #delBtn{
+  text-transform: uppercase;
+  outline: 0;
+  background: #3dad6b;
+  width: 100%;
+  max-width: 530px;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#editBtn:hover, #delBtn:hover,
+#editBtn:active, #delBtn:active,
+#editBtn:focus, #delBtn:focus {
+  background: #34945c;
+  text-decoration: underline;
+}
+
+</style>
+
 </head>
 
 <body>
   <div id="wrap">
-    <*%- include('header.ejs') %*>
 
     <!-- main content -->
     <main>
@@ -33,15 +95,37 @@
         <h3>내 정보</h3>
         <article class="profile1">
           <img src="https://ca.slack-edge.com/T0417T8AR8U-U0415AS4GLT-9052f3c17396-512" alt="">
-          <form>
-            <label for="nickname" name="info" id="nickname"></label>
-            <input type="text" placeholder="고정아이디값">
-            <label for=""></label>
-            <input type="text">
-            <button>수정</button>
+          <form name="form_mypage">
+            <!-- <label for="nickname" name="info" id="nickname"></label> -->
+            <div id="userInfo">
+            <!-- id값 수정 불가 -->
+            <input type="text" class="inputBox" id = "userid" readonly disabled placeholder="userID">
+            <!-- <label for=""></label> -->
+            
+            <!-- nickname 수정 가능 -->
+            <input type="text" class="inputBox" id="nickname" placeholder="Nickname">
+            
+            <!-- PW 수정가능 & 일치 확인-->
+            <input type="password" class="inputBox" id="userpw" placeholder="userPW">
+            <input type="password" class="inputBox" placeholder="checkPW">
+
+            <!-- email 수정 불가 -->
+            <input type="email" class="inputBox" id="useremail"readonly disabled placeholder="userEmail">
+
+            <!-- 키 -->
+            <input type="number" class="inputBox" id="userheight" placeholder="height">
+
+            <!-- 나이 -->
+            <input type="number" class="inputBox" id="userage" placeholder="age">
+
+            <!-- 성별 -->
+            <input type="text" class="inputBox" id="gender" placeholder="gender(M/F)">
+          </div>
+            <button type="button" id="editBtn" onclick="editInfo();">수정하기</button>
+            <button type="button" id="delBtn" onclick="delInfo();">회원탈퇴</button>
           </form>
         </article>
-        <article class="profile2">
+        <!-- <article class="profile2">
           <form>
             <label for="age" id="age">나이</label>
             <input type="number">
@@ -49,10 +133,64 @@
             <input type="text">
             <button>수정</button>
           </form>
-        </article>
+        </article> -->
       </section>
     </main>
   </div>
+
+
+
+  <script>
+    
+  const form = document.forms["form_mypage"];
+
+  function editInfo() {
+
+    if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+    axios({
+      method: "PATCH",
+      url: "/mypage/edit",
+      data: {
+        userid: form.userid.value,
+        userpw: form.userpw.value,
+        useremail: form.useremail.value,
+        nickname: form.nickname.value,
+        gender: form.gender.value,
+        age: form.userage.value,
+        height: form.userheight.value,
+      },
+    })
+    .then((res) => {
+      return res.data;
+      alert('수정 완료!');
+    });
+  }
+
+  function delInfo(){
+    axios({
+      method: "DELETE",
+      url: "/mypage/delete",
+      data: {
+        userid: form.userid.value,
+        userpw: form.userpw.value,
+        useremail: form.useremail.value,
+        nickname: form.nickname.value,
+        gender: form.gender.value,
+        age: form.userage.value,
+        height: form.userheight.value,
+      },
+    })
+    .then((res) => {
+      alert('정상적으로 회원 탈퇴 되었습니다.');
+      document.location.href="/";
+    });
+  }
+
+  </script>
 </body>
 
 </html>

@@ -15,7 +15,11 @@ router.get("/login", controller.getlogin);
 
 router.post("/login", controller.postlogin);
 
-router.get("/kakaologin", controller.kakaologin);
+router.get("/testlogin", controller.testlogin);
+
+router.post("/kakaosignup", controller.kakaosignup);
+
+router.post("/loginkakao", controller.loginkakao);
 
 // router.get("/empty", controller.findId);
 

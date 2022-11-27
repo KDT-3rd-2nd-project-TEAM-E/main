@@ -1,12 +1,13 @@
 body {
   background: #f7f7f7;
   color: #333;
-  font-family: 'Noto Sans KR', 'Roboto', "돋움", Dotum, "굴림", Gulim, sans-serif;
+  font-family: "Noto Sans KR", "Roboto", "돋움", Dotum, "굴림", Gulim,
+    sans-serif;
   line-height: 1.5;
   letter-spacing: -1px;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 #wrap {
@@ -20,7 +21,7 @@ body {
 
 main {
   width: 80%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 article {
@@ -29,6 +30,7 @@ article {
   margin: 20px;
   /* box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .05); */
   padding: 30px 40px;
+  overflow: hidden;
 }
 
 h3 {
@@ -37,10 +39,54 @@ h3 {
 
 /* SUB1 CSS */
 /* input 창 카운트 업 없애기 */
-input[type="number"]::-webkit-outer-spin-button,
+/* input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+} */
+
+.BMI {
+}
+
+.BMI .form {
+  width: 50%;
+  float: left;
+}
+
+#bmiCheckForm {
+  padding: 50px 0;
+}
+
+#result {
+  padding: 10px 0;
+}
+
+#result ul li {
+  display: flex;
+}
+
+#result h4 {
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+.BMI h4 {
+  margin: 20px 0 10px;
+}
+
+.graph {
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
 }
 
 /* SUB2 CSS */
@@ -80,7 +126,7 @@ input[type="number"]::-webkit-inner-spin-button {
   padding: 20px 0;
 }
 
-.content_area .list_content .search>a:hover img{
+.content_area .list_content .search > a:hover img {
   transform: scale(1.03);
 }
 
@@ -96,12 +142,13 @@ input[type="number"]::-webkit-inner-spin-button {
 .content_area .list_content img {
   width: 30%;
   padding: 2%;
-  transition: .4s ease-in-out;
+  transition: 0.4s ease-in-out;
   height: 100%;
 }
 
 /* SUB3 CSS */
-.profile1, .profile2 {
+.profile1,
+.profile2 {
   background: #f7f7f7;
   border-radius: 15px;
   display: flex;
@@ -120,9 +167,7 @@ input[type="number"]::-webkit-inner-spin-button {
   position: relative;
 }
 
-.profile1 form input {}
-
-.profile1 form button {
+/* .profile1 form button {
   position: absolute;
   top: 50%;
   right: 20%;
@@ -131,14 +176,17 @@ input[type="number"]::-webkit-inner-spin-button {
   padding: 20px;
   border-radius: 15px;
   cursor: pointer;
-}
+} */
 
-.profile2 {
+/* .profile2 {} */
 
-}
-
-.profile2 form{
+.profile2 form {
   display: flex;
   flex-direction: column;
 }
 
+/* chart js */
+#myChart {
+  width: 500px;
+  height: 500px;
+}

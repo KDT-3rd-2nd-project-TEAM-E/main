@@ -8,16 +8,18 @@
       name="google-signin-client_id"
       content="578171222361-iaustilvoe8n5qeuj5j1fvap70gs2a35.apps.googleusercontent.com"
     />
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>소셜로그인 test</title>
   </head>
   <body>
     <h1>카카오</h1>
     <ul>
-      <li onclick="kakaoLogin();">
+      <!-- <li onclick="kakaoLogin();">
         <a href="javascript:void(0)">
           <span>카카오 로그인</span>
         </a>
-      </li>
+      </li> -->
       <li onclick="kakaoLogout();">
         <a href="javascript:void(0)">
           <span>카카오 로그아웃</span>
@@ -48,6 +50,21 @@
         </a>
       </li>
     </ul>
+
+    <h1>카카오로 회원가입</h1>
+    <ul>
+      <li id="kakaosignup">
+        <button type="button" onclick="kakaoLogin()">카카오로 회원가입</button>
+      </li>
+    </ul>
+
+    <h1>카카오로 로그인</h1>
+    <ul>
+      <li id="loginkakao">
+        <button type="button" onclick="kakaoLogin()">카카오로 로그인</button>
+      </li>
+    </ul>
+
     <!-- 카카오 로그인 api 스크립트 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <!-- 네이버 로그인 api 스크립트 -->
@@ -65,26 +82,37 @@
       Kakao.init("2609470f9ce5ccc0f948de565ceda807"); //발급받은 키 중 javascript키를 사용해준다.
       console.log(Kakao.isInitialized()); // sdk초기화여부판단
       //카카오로그인
-      function kakaoLogin() {
-        Kakao.Auth.login({
-          success: function (response) {
-            Kakao.API.request({
-              url: "/v2/user/me",
-              success: function (response) {
-                console.log(response);
-                console.log(response.properties);
-                console.log(response.properties.nickname);
-              },
-              fail: function (error) {
-                console.log(error);
-              },
-            });
-          },
-          fail: function (error) {
-            console.log(error);
-          },
-        });
-      }
+      // function kakaoLogin() {
+      //   Kakao.Auth.login({
+      //     success: function (response) {
+      //       Kakao.API.request({
+      //         url: "/v2/user/me",
+      //         success: function (response) {
+      //           axios({
+      //             method: "POST",
+      //             url: "/posttestsignup",
+      //             data: {
+      //               userid: response.id,
+      //               useremail: response.kakao_account.email,
+      //               nickname: response.properties.nickname,
+      //             },
+      //           });
+      //           console.log(response);
+      //           console.log(response.properties);
+      //           console.log(response.properties.nickname);
+      //           console.log(response.kakao_account.email);
+      //           console.log(response.id);
+      //         },
+      //         fail: function (error) {
+      //           console.log(error);
+      //         },
+      //       });
+      //     },
+      //     fail: function (error) {
+      //       console.log(error);
+      //     },
+      //   });
+      // }
       //카카오로그아웃
       function kakaoLogout() {
         if (Kakao.Auth.getAccessToken()) {
@@ -199,6 +227,94 @@
       }
       function onSignInFailure(t) {
         console.log(t);
+      }
+
+      function kakaoLogin() {
+        Kakao.Auth.login({
+          success: function (response) {
+            Kakao.API.request({
+              url: "/v2/user/me",
+              success: function (response) {
+                axios({
+                  method: "POST",
+                  url: "/kakaosignup",
+                  data: {
+                    userid: response.id,
+                    useremail: response.kakao_account.email,
+                    nickname: response.properties.nickname,
+                  },
+                })
+                  .then((response) => {
+                    return response.data;
+                  })
+                  .then((data) => {
+                    if (data) {
+                      document.location.href = "/login";
+                      return;
+                    } else {
+                      alert("이미 회원가입을 하셨습니다! 로그인 해주세요!");
+                      document.location.href = "/login";
+                    }
+                  });
+                console.log(response);
+                console.log(response.properties);
+                console.log(response.properties.nickname);
+                console.log(response.kakao_account.email);
+                console.log(response.id);
+              },
+              fail: function (error) {
+                console.log(error);
+              },
+            });
+          },
+          fail: function (error) {
+            console.log(error);
+          },
+        });
+      }
+
+      function kakaoLogin() {
+        Kakao.Auth.login({
+          success: function (response) {
+            Kakao.API.request({
+              url: "/v2/user/me",
+              success: function (response) {
+                axios({
+                  method: "POST",
+                  url: "/loginkakao",
+                  data: {
+                    useremail: response.kakao_account.email,
+                  },
+                })
+                  .then((response) => {
+                    return response.data;
+                  })
+                  .then((data) => {
+                    if (data) {
+                      document.location.href = "/main";
+                      return;
+                    } else {
+                      alert(
+                        "로그인이 실패했습니다! 회원이 아니시라면 회원가입을 먼저 해주세요!"
+                      );
+                      document.location.href = "/signup";
+                    }
+                  });
+                console.log(response);
+                console.log(response.properties);
+                console.log(response.properties.nickname);
+                console.log(response.kakao_account.email);
+                console.log(response.id);
+              },
+              fail: function (error) {
+                console.log(error);
+              },
+            });
+          },
+          fail: function (error) {
+            console.log(error);
+          },
+        });
       }
     </script>
   </body>
