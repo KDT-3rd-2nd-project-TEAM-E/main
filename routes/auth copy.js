@@ -36,6 +36,4 @@ router.get(
   }
 );
 
-// 이메일 인증
-
 module.exports = router;

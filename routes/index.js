@@ -31,6 +31,8 @@ router.get("/signup", controller.getsignup);
 
 router.post("/signup", controller.postsignup);
 
+router.post("/login/mail", controller.sendEmail);
+
 // router.post("/postsignweightup", controller.postsignweightup);
 
 // router.post("/postsignup", controller.postsignupok);

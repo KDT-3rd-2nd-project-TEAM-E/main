@@ -1,5 +1,9 @@
 const { User } = require("../models");
 const models = require("../models"); // ../models/index.js
+const nodemailer = require("nodemailer");
+const ejs = require("ejs");
+const { callbackPromise } = require("nodemailer/lib/shared");
+const { renderFile } = require("ejs");
 
 exports.index = (req, res) => {
   res.render("index");
@@ -115,15 +119,55 @@ exports.findId = (req, res) => {
 //   });
 // };
 
-exports.findPw = (req, res) => {
-  if (req.body.email === "") {
-    res.status(400).send("email required");
-  }
+// exports.findPw = (req, res) => {
+//   if (req.body.email === "") {
+//     res.status(400).send("email required");
+//   }
 
-  User.findOne({
+//   User.findOne({
+//     where: {
+//       email: req.body.email,
+//     },
+//   });
+// };
+
+//PW찾기
+
+exports.sendEmail = (req, res) => {
+  models.User.findOne({
     where: {
-      email: req.body.email,
+      useremail: req.body.useremail,
     },
+  }).then((result) => {
+    if (result === null) {
+      return res.send(false);
+    }
+    const mailPoster = nodemailer.createTransport({
+      service: "Naver",
+      host: "smtp.naver.com",
+      port: 587,
+      auth: {
+        user: "uxbetter@naver.com",
+        pass: "kcalcal123!!!",
+      },
+    });
+    // let authNum = Math.random().toString().slice(2, 8);
+    // const content = ejs
+    //   .renderFile("./views/authMail.ejs", { authcode: authNum })
+    //   .toString();
+
+    const mailOpt = {
+      from: "uxbetter@naver.com",
+      to: `${req.body.useremail}`,
+      subject: "[kcalcal] 비밀번호 재설정을 위한 인증코드 발송",
+      html:
+        ' <p style="color: black">비밀번호 찾기를 위한 인증번호 입니다.</p>' +
+        '<p style="color: black"> 아래의 인증번호를 입력하여 인증을 완료해 주세요. </p>' +
+        `${result.userpw}` +
+        '<hr> <button type="button"><a href="http://localhost:8000/login">로그인 하러 가기</a> </button>',
+    };
+    mailPoster.sendMail(mailOpt, res);
+    res.send(true);
   });
 };
 

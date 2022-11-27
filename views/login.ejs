@@ -25,6 +25,12 @@
     <!-- axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="/static/css/login.css" />
+    <!-- jQuery CDN-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="container">
@@ -155,7 +161,7 @@
               <div class="oneine">
                 <input
                   type="text"
-                  id="findUseremail"
+                  id="findUseremailID"
                   class="inputBox"
                   placeholder="회원가입시 등록한 이메일 입력"
                 />
@@ -215,19 +221,23 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div class="oneine">
-              <input
-                type="text"
-                id="findUseremail"
-                class="inputBox"
-                placeholder="회원가입시 등록한 이메일 입력"
-              />
-              <button type="button" id="lookupEmail" onclick="sendEmail(); ">
-                인증번호 전송
-              </button>
-            </div>
-            <!--전송완료 여부 -->
-            <div id="showResult"></div>
+            <form name="form_findPw">
+              <div class="oneine">
+                <input
+                  type="text"
+                  id="findUseremailPW"
+                  class="inputBox"
+                  placeholder="회원가입시 등록한 이메일 입력"
+                />
+                <button type="button" id="lookupEmail" onclick="sendEmail(); ">
+                  인증번호 전송
+                </button>
+              </div>
+              <!--전송완료 여부 -->
+              <div id="showResult">
+                <input type="number" id="authNumber" />
+              </div>
+            </form>
             <br />
             <div class="loginEtc">
               <ul>
@@ -262,8 +272,8 @@
     <!--아이디 찾기 -->
     <script>
       function lookup() {
-        // findUseremail 인풋박스 id
         const form = document.forms["form_findId"];
+        // findUseremail 인풋박스 id
         //console.log(form.findUseremail.value);
         if (!form.checkValidity()) {
           form.reportValidity();
@@ -274,7 +284,7 @@
           method: "POST",
           url: "/login/findId",
           data: {
-            useremail: form.findUseremail.value,
+            useremail: form.findUseremailID.value,
           },
         })
           .then((res) => {
@@ -285,9 +295,44 @@
             //document.getElementById("findUseremail").value = "";
           });
       }
-    </script>
 
-    <!-- 비밀번호 찾기 -->
+      //비밀번호 찾기
+
+      function sendEmail() {
+        const form = document.forms["form_findPw"];
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        axios({
+          method: "POST",
+          url: "/login/mail",
+          data: {
+            useremail: form.findUseremailPW.value,
+          },
+        })
+          .then((res) => {
+            return res.data;
+          })
+          .then((data) => {
+            if (data) {
+              document.querySelector("#showResult").textContent =
+                "인증번호가 발송되었습니다";
+            } else {
+              document.querySelector("#showResult").textContent =
+                "해당하는 이메일을 찾을 수 없습니다.";
+            }
+          });
+      }
+
+      //모달창 닫았을 때 input값 초기화
+      $(".modal").on("hidden.bs.modal", function (e) {
+        console.log("modal close");
+        $(this).find("form")[0].reset();
+      });
+    </script>
 
     <script>
       // Kakao.init("2609470f9ce5ccc0f948de565ceda807"); //발급받은 키 중 javascript키를 사용해준다.
