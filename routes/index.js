@@ -30,6 +30,8 @@ router.post("/loginkakao", controller.loginkakao);
 router.get("/signup", controller.getsignup);
 
 router.post("/signup", controller.postsignup);
+router.post("/signup/checkid", controller.checkid);
+router.post("/signup/firstValidation", controller.signupCheckId);
 
 router.post("/login/mail", controller.sendEmail);
 

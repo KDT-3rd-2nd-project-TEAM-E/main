@@ -61,7 +61,7 @@ body {
 }
 
 .inputBox:focus {
-  border: 2px solid #34945c;
+  border: 1px solid #34945c;
   background-color: #f7faf9;
   border-radius: 5px;
   box-sizing: border-box;
@@ -105,9 +105,7 @@ body {
   margin-top: 20px;
 }
 
-
-
-.loginText > h2{
+.loginText > h2 {
   padding: 5px;
   padding-left: 20%;
   text-align: left;
@@ -155,8 +153,6 @@ body {
   /* padding-top: 10px; */
   scale: 0.7;
 }
-
-
 
 #loginBtn:hover,
 #loginBtn:active,
@@ -251,8 +247,6 @@ body {
   margin: 1px;
   padding: 0;
 } */
-
-
 
 /* 모달 */
 
