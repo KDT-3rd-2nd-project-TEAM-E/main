@@ -28,6 +28,7 @@ body {
   border: 0.2rem solid #fff;
   border-radius: 2rem;
   padding: 40px;
+  min-width: 530px;
 }
 
 .title {
@@ -210,10 +211,6 @@ body {
   text-decoration: none;
   vertical-align: baseline;
   cursor: pointer;
-}
-
-.loginEtc a:hover {
-  text-decoration: underline;
 }
 
 /* .socialLogin ul {

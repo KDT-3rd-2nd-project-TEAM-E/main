@@ -18,266 +18,29 @@ body {
   display: flex;
 }
 
-.clearfix:before,
-.clearfix:after {
-  display: block;
-  content: '';
-  clear: both;
-}
-
 main {
   width: 80%;
   display: flex;
-  justify-content: space-around;
   /* 탄단지 테마 색상 */
   --carbs: red;
   --protein: green;
   --fat: blue;
 }
 
-article {
-  padding: 20px;
-  border-radius: 15px;
-}
-
-/* part1 --------------------*/
-main .part1 {
-  width: 75%;
+.part2 {
   display: flex;
+  justify-content: space-around;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 20px;
-}
-
-/* gauge css */
-article.gauge {
-  background: #d9ebdf;
-  margin-bottom: 20px;
-}
-
-article.gauge p {
-  font-size: 2.1em;
-  font-weight: 700;
-  padding: 3%;
-}
-
-article.gauge .kcal-bar-background {
-  margin: 0 2% 1%;
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .05);
-
-}
-
-/* kcal-bar */
-.kcal-bar-background {
-  height: 40px;
-  background-color: white;
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-.kcal-bar {
-  width: 0px;
-  height: 40px;
-  background-color: #34945c;
-}
-
-.kcal-value {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.bar-animate {
-  animation: bar 1s .5s both;
-}
-
-@keyframes bar {
-  from {
-    width: 0%;
-  }
-}
-
-
-/* search css */
-article.search {
-  background: #f7f7f7;
-  height: 65%;
-  overflow: hidden;
-}
-
-.search form {
-  width: 60%;
-  position: relative;
-}
-
-.search label {
-  position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
-  padding: 0;
-  border: 0;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-}
-
-.search input {
-  outline: none;
-  border: 1px solid gray;
-  border-radius: 5px;
-  box-sizing: border-box;
-  display: inline-block;
-  padding: 15px;
-  width: 100%;
-}
-
-.search input:focus {
-  border: 2px solid #34945c;
-  background-color: #f7faf9;
-  border-radius: 5px;
-  box-sizing: border-box;
-  display: inline-block;
-  padding: 15px;
-  width: 100%;
-}
-
-.search button {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translate(-50%, -50%);
-}
-
-/* food list */
-.food-list-box {
-  height: 80%;
-}
-
-.food-list {
-  padding: 20px 5px;
-  overflow-y: scroll;
-  height: 100%;
-}
-
-.food-list li {
-  position: relative;
-}
-
-.food-list dl {
-  line-height: 1.5;
-}
-
-.food-list dt {
-  font-size: 2em;
-}
-
-.food-list dd {
-  float: left;
-  font-size: 1.4em;
-  margin-right: 10px;
-}
-
-.food-list p {
-  float: left;
-  margin-right: 10px;
-}
-
-.food-list .button-box {
-  position: absolute;
-  top: 40%;
-  right: 2%;
-  font-size: 2em;
-  display: flex;
-  width: 10%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-}
-
-.food-list .select {
-  margin-right: 20px;
-}
-
-/* 스켈레톤 */
-.skeleton {
-  opacity: .7;
-  ;
-  animation: skeletion-loading 1s linear infinite alternate;
-}
-
-.skeleton-text1 {
-  height: 40px;
-  width: 140px;
-  margin-bottom: .5rem;
-  border-radius: .25rem;
-  animation: skeleton-loading 1s linear infinite alternate;
-  background: #d9d9d9;
-}
-
-.skeleton-text2 {
-  height: 30px;
-  width: 90%;
-  margin-bottom: .25rem;
-  border-radius: .25rem;
-  animation: skeleton-loading 1s linear infinite alternate;
-  background: #d9d9d9;
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-color: hsl(200, 20%, 70%);
-  }
-
-  100% {
-    background-color: hsl(200, 20%, 95%);
-  }
-}
-
-/* food-list scroll-bar */
-/* 스크롤바 전체 */
-.food-list::-webkit-scrollbar {
-  width: 10px;
-  border-radius: 5px;
-  background: #ddd;
-}
-
-/* 스크롤 막대 */
-.food-list::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background: #34945c;
-}
-
-/* 스크롤 막대 외부 */
-.food-list::-webkit-scrollbar-track {}
-
-/* part2 --------------------*/
-main .part2 {
-  margin: 20px;
-}
-
-.part2 article {
-  padding: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.part2 article p {
-  text-align: center;
-  font-size: 1.5em;
-  font-weight: 500;
 }
 
 .content-box {
   display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
 }
 
 .content-box .recommend-text {
   display: flex;
   align-items: center;
+  flex-direction: column;
   text-align: center;
 }
 
@@ -303,6 +66,175 @@ main .part2 {
 
 .fat-value:first-child {
   color: var(--fat)
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+/* gauge css */
+article.gauge {
+  background: #d9ebdf;
+  width: 90%;
+  /* position: relative; */
+  margin: 15px auto;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+article.gauge p {
+  font-size: 2.2em;
+  font-weight: 700;
+  padding: 20px 30px;
+}
+
+/* search css */
+article.search {
+  padding: 30px;
+  background: #2f2f2f;
+}
+
+/* search box */
+form {
+  position: relative;
+  /* width: 30rem; */
+  background: var(--color-brand);
+  border-radius: var(--rad);
+}
+
+input,
+button {
+  height: var(--height);
+  font-family: var(--font-fam);
+  border: 0;
+  color: var(--color-dark);
+  font-size: 1.8rem;
+}
+
+input[type="search"] {
+  outline: 0;
+  width: 100%;
+  background: var(--color-light);
+  padding: 0 1.6rem;
+  border-radius: var(--rad);
+  appearance: none;
+  transition: all var(--dur) var(--bez);
+  transition-property: width, border-radius;
+  z-index: 1;
+  position: relative;
+  background: #eee;
+}
+
+:root {
+  --rad: .7rem;
+  --dur: .3s;
+  --color-dark: #2f2f2f;
+  --color-light: #fff;
+  --color-brand: #57bd84;
+  --height: 5rem;
+  --btn-width: 6rem;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+
+button {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--btn-width);
+  font-weight: bold;
+  background: var(--color-brand);
+  border-radius: 0 var(--rad) var(--rad) 0;
+}
+
+input:not(:placeholder-shown) {
+  border-radius: var(--rad) 0 0 var(--rad);
+  width: calc(100% - var(--btn-width));
+  background: #eee;
+}
+
+button {
+  display: block;
+}
+
+label {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+/* food list */
+.food-list {
+  padding: 20px 5px;
+  overflow-y: scroll;
+  height: 300px;
+}
+
+.food-list li {
+  position: relative;
+}
+
+.food-list dl {
+  line-height: 1.5;
+}
+
+.food-list dt {
+  font-size: 2em;
+}
+
+.food-list dd {
+  float: left;
+  font-size: 1.4em;
+  margin-right: 10px;
+}
+
+.food-list p {
+  float: left;
+  margin-right: 10px;
+}
+
+.button-box {
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  position: absolute;
+  right: 2%;
+  top: 30%;
+  color: black;
+  font-size: 30px;
+}
+
+.select i {
+  cursor: pointer;
+  color: #3dad6b;
+  transition: all 0.1s ease-in-out;
+}
+
+.select i:hover {
+  color: blue;
+  transition: all 0.1s ease-in-out;
+}
+
+.delete i {
+  cursor: pointer;
+  color: #3dad6b;
+  transition: all 0.1s ease-in-out;
+}
+
+.delete i:hover {
+  color: red;
+  transition: all 0.1s ease-in-out;
+}
+
+hr {
+  margin: 1em 0;
 }
 
 /* 탄단지 그래프 */
@@ -349,6 +281,7 @@ main .part2 {
   border-radius: 50%;
   background-color: white;
   transform: scale(0.7);
+  position: absolute;
 }
 
 .pie:before,
@@ -389,21 +322,18 @@ main .part2 {
   inset: calc(50% - var(--b)/2);
   background: var(--carbs);
   transform: rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .1);
 }
 
 .protein:after {
   inset: calc(50% - var(--b)/2);
   background: var(--protein);
   transform: rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .1);
 }
 
 .fat:after {
   inset: calc(50% - var(--b)/2);
   background: var(--fat);
   transform: rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .1);
 }
 
 .cAnimation {
@@ -433,16 +363,53 @@ main .part2 {
   content: none;
 }
 
+/* kcal 그래프 바 */
+/* 색상, 디자인 바꾸기!!! */
+
+.kcal-bar-background {
+  height: 40px;
+  background-color: white;
+  border: black 0.5px solid;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.kcal-bar {
+  width: 0px;
+  height: 40px;
+  background-color: blue;
+  border-radius: 20px;
+}
+
+.kcal-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bar-animate {
+  animation: bar 1s .5s both;
+}
+
+@keyframes bar {
+  from {
+    width: 0%;
+  }
+}
+
 /* 몸무게 팝업창 */
-#showimage {
+/* #showimage {
   z-index: 100;
   position: absolute;
-  right: 8%;
-  top: 5%;
+  left: 37%;
+  bottom: 280px;
   text-align: center;
   color: #333;
 }
 
 img {
   width: 50%;
-}
+} */

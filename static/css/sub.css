@@ -1,13 +1,12 @@
 body {
   background: #eee;
   color: #333;
-  font-family: "Noto Sans KR", "Roboto", "돋움", Dotum, "굴림", Gulim,
-    sans-serif;
+  font-family: 'Noto Sans KR', 'Roboto', "돋움", Dotum, "굴림", Gulim, sans-serif;
   line-height: 1.5;
   letter-spacing: -1px;
   width: 100vw;
   height: 100vh;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 #wrap {
@@ -37,7 +36,7 @@ h3 {
   font-size: 2em;
 }
 
-/* SUB1 CSS */
+/* SUB1 CSS ------------------------------*/
 /* input 창 카운트 업 없애기 */
 /* input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -45,32 +44,30 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 } */
 
-#sub1 {
+/* #sub1 {
   position: relative;
-}
-
-.BMI {}
+} */
 
 .BMI .form {
   width: 40%;
   float: left;
+  background: #eee;
+  margin: 20px 0;
+  padding: 30px 40px;
+  border-radius: 20px;
 }
 
-#bmiCheckForm {
-  padding: 50px 0 20px;
+.BMI .form #bmiCheckForm {
+  padding: 20px 0;
 }
 
-#bmiCheckForm label {
-  font-size: 2em;
-}
-
-#bmiCheckForm input {
+.BMI .form #bmiCheckForm input {
   margin: 10px;
   outline: none;
-  width: 50%;
+  width: 80%;
 }
 
-#bmiCheckForm #btnCalc {}
+.BMI .form #bmiCheckForm #btnCalc {}
 
 #result {
   padding: 10px 0;
@@ -101,7 +98,6 @@ input[type="number"]::-webkit-inner-spin-button {
   position: relative;
   top: 100px;
   left: 0;
-
 }
 
 .graph li li {
@@ -191,10 +187,13 @@ input[type="number"] {
   display: none;
 }
 
-/* SUB2 CSS */
+/* SUB2 CSS ------------------------------*/
+#sub2 {
+  overflow: visible;
+}
+
 .content_area {
   padding-top: 20px;
-  overflow: hidden;
 }
 
 .content_area .list_header p {
@@ -220,7 +219,8 @@ input[type="number"] {
 }
 
 .content_area .list_content {
-  overflow-y: scroll;
+  height: 68vh;
+  overflow: hidden;
 }
 
 .content_area .list_content a {
@@ -232,8 +232,14 @@ input[type="number"] {
   transform: scale(1.03);
 }
 
+.content_area .list_content .search {
+  overflow-y: scroll;
+  height: 100%;
+}
+
 .content_area .list_content .news {
-  width: 70%;
+  width: 60%;
+  margin-right: 20px;
 }
 
 .content_area .list_content .news h4 {
@@ -248,7 +254,22 @@ input[type="number"] {
   height: 100%;
 }
 
-/* SUB3 CSS */
+/* list_content scroll-bar */
+/* 스크롤바 전체 */
+.content_area .list_content .search::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px;
+  background: #ddd;
+}
+
+/* 스크롤 막대 */
+.content_area .list_content .search::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #34945c;
+}
+
+
+/* SUB3 CSS ------------------------------*/
 #sub3 .graph{
   padding: 5% 0;
 }

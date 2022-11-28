@@ -1,3 +1,27 @@
+body {
+  background: #eee;
+  color: #333;
+  font-family: 'Noto Sans KR', 'Roboto', "돋움", Dotum, "굴림", Gulim, sans-serif;
+  line-height: 1.5;
+  letter-spacing: -1px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#wrap {
+  width: 96vw;
+  height: 96vh;
+  margin: 2vh auto;
+  background: #fff;
+  border-radius: 15px;
+  display: flex;
+}
+
+main{
+  width: 80%;
+}
+
 #userInfo {
   /* background: #d9ebdf; */
   width: 100%;

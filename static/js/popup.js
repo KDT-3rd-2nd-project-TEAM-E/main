@@ -106,3 +106,13 @@ function getCookie(name) {
         return "";
 }
 
+// 하루동안 쿠키적용 팝업
+function closeWin() {
+  var chk = document.getElementById("Notice");
+  if (chk.checked) {
+    setCookie("Notice", "done", 1);
+  }
+}
+if (getCookie("Notice") == "done") {
+  hidebox();
+}
