@@ -23,11 +23,7 @@ function Search() {
       html += `
         <a href="${msg.documents[i].url}">
           <div class="news">
-          `
-          for(let n = 10 ; n >= 0 ; n --) {
-            `<p>NO&#46;&nbsp;<span>${n}</span></p>`
-          }
-          `
+            <p>NO&#46;&nbsp;<span>${msg.document.length - i}</span></p>
             <h4>${msg.documents[i].title}</h4>
             <p>${msg.documents[i].blogname}</p>
             <p>${msg.documents[i].contents.substr(0, 100)}...</p>
@@ -70,7 +66,7 @@ window.onload = (event) => {
       html += `
                     <a href="${msg.documents[i].url}">
                       <div class="news">
-                        <p>NO&#46;&nbsp;<span>${[i]}</span></p>
+                        <p>NO&#46;&nbsp;<span>${msg.documents.length - i}</span></p>
                         <h4>${msg.documents[i].title}</h4>
                         <p>${msg.documents[i].blogname}</p>
                         <p>${msg.documents[i].contents.substr(0, 100)}</p>

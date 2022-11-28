@@ -201,7 +201,7 @@ input[type="number"] {
 }
 
 .content_area .list_header form input {
-  width: 80%;
+  width: 100%;
 }
 
 .content_area .list_header ul {
@@ -269,7 +269,7 @@ input[type="number"] {
 }
 
 
-/* SUB3 CSS ------------------------------*/
+/* SUB3 CSS -----------------------------*/
 #sub3 .graph{
   padding: 5% 0;
 }

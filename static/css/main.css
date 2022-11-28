@@ -1,16 +1,17 @@
 body {
   background: #eee;
   color: #333;
-  font-family: 'Noto Sans KR', 'Roboto', "돋움", Dotum, "굴림", Gulim, sans-serif;
+  font-family: "Noto Sans KR", "Roboto", "돋움", Dotum, "굴림", Gulim,
+    sans-serif;
   line-height: 1.5;
   letter-spacing: -1px;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
 }
 
 #wrap {
-  width: 96vw;
+  width: 96%;
   height: 96vh;
   margin: 2vh auto;
   background: #fff;
@@ -21,7 +22,7 @@ body {
 .clearfix:before,
 .clearfix:after {
   display: block;
-  content: '';
+  content: "";
   clear: both;
 }
 
@@ -63,8 +64,7 @@ article.gauge p {
 
 article.gauge .kcal-bar-background {
   margin: 0 2% 1%;
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .05);
-
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05);
 }
 
 /* kcal-bar */
@@ -90,7 +90,7 @@ article.gauge .kcal-bar-background {
 }
 
 .bar-animate {
-  animation: bar 1s .5s both;
+  animation: bar 1s 0.5s both;
 }
 
 @keyframes bar {
@@ -98,7 +98,6 @@ article.gauge .kcal-bar-background {
     width: 0%;
   }
 }
-
 
 /* search css */
 article.search {
@@ -157,6 +156,7 @@ article.search {
   padding: 20px 5px;
   overflow-y: scroll;
   height: 100%;
+  margin-top: 20px;
 }
 
 .food-list li {
@@ -199,16 +199,15 @@ article.search {
 
 /* 스켈레톤 */
 .skeleton {
-  opacity: .7;
-  ;
+  opacity: 0.7;
   animation: skeletion-loading 1s linear infinite alternate;
 }
 
 .skeleton-text1 {
   height: 40px;
   width: 140px;
-  margin-bottom: .5rem;
-  border-radius: .25rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
   animation: skeleton-loading 1s linear infinite alternate;
   background: #d9d9d9;
 }
@@ -216,8 +215,8 @@ article.search {
 .skeleton-text2 {
   height: 30px;
   width: 90%;
-  margin-bottom: .25rem;
-  border-radius: .25rem;
+  margin-bottom: 0.25rem;
+  border-radius: 0.25rem;
   animation: skeleton-loading 1s linear infinite alternate;
   background: #d9d9d9;
 }
@@ -293,22 +292,22 @@ main .part2 {
 }
 
 .carbs-value:first-child {
-  color: var(--carbs)
+  color: var(--carbs);
 }
 
 .protein-value {
-  color: var(--protein)
+  color: var(--protein);
 }
 
 .fat-value:first-child {
-  color: var(--fat)
+  color: var(--fat);
 }
 
 /* 탄단지 그래프 */
 /* 색상 바꾸기!!! */
 
 @property --p {
-  syntax: '<number>';
+  syntax: "<number>";
   inherits: true;
   initial-value: 0;
 }
@@ -359,70 +358,78 @@ main .part2 {
 
 .carbs:before {
   inset: 0;
-  background:
-    radial-gradient(farthest-side, var(--carbs) 98%, #0000) top/var(--b) var(--b) no-repeat,
-    conic-gradient(var(--carbs) calc(var(--p)*1%), #0000 0);
-  -webkit-mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
-  mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+  background: radial-gradient(farthest-side, var(--carbs) 98%, #0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--carbs) calc(var(--p) * 1%), #0000 0);
+  -webkit-mask: radial-gradient(farthest-side,
+      #0000 calc(99% - var(--b)),
+      #000 calc(100% - var(--b)));
+  mask: radial-gradient(farthest-side,
+      #0000 calc(99% - var(--b)),
+      #000 calc(100% - var(--b)));
 }
 
 .protein:before {
   inset: 0;
-  background:
-    radial-gradient(farthest-side, var(--protein) 98%, #0000) top/var(--b) var(--b) no-repeat,
-    conic-gradient(var(--protein) calc(var(--p)*1%), #0000 0);
-  -webkit-mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
-  mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+  background: radial-gradient(farthest-side, var(--protein) 98%, #0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--protein) calc(var(--p) * 1%), #0000 0);
+  -webkit-mask: radial-gradient(farthest-side,
+      #0000 calc(99% - var(--b)),
+      #000 calc(100% - var(--b)));
+  mask: radial-gradient(farthest-side,
+      #0000 calc(99% - var(--b)),
+      #000 calc(100% - var(--b)));
 }
 
 .fat:before {
   inset: 0;
-  background:
-    radial-gradient(farthest-side, var(--fat) 98%, #0000) top/var(--b) var(--b) no-repeat,
-    conic-gradient(var(--fat) calc(var(--p)*1%), #0000 0);
-  -webkit-mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
-  mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+  background: radial-gradient(farthest-side, var(--fat) 98%, #0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--fat) calc(var(--p) * 1%), #0000 0);
+  -webkit-mask: radial-gradient(farthest-side,
+      #0000 calc(99% - var(--b)),
+      #000 calc(100% - var(--b)));
+  mask: radial-gradient(farthest-side,
+      #0000 calc(99% - var(--b)),
+      #000 calc(100% - var(--b)));
 }
 
 .carbs:after {
-  inset: calc(50% - var(--b)/2);
+  inset: calc(50% - var(--b) / 2);
   background: var(--carbs);
-  transform: rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .1);
+  transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
 .protein:after {
-  inset: calc(50% - var(--b)/2);
+  inset: calc(50% - var(--b) / 2);
   background: var(--protein);
-  transform: rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .1);
+  transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
 .fat:after {
-  inset: calc(50% - var(--b)/2);
+  inset: calc(50% - var(--b) / 2);
   background: var(--fat);
-  transform: rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, .1);
+  transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
 .cAnimation {
-  animation: cAnimation 1s .5s both;
+  animation: cAnimation 1s 0.5s both;
 }
 
 .pAnimation {
-  animation: pAnimation 1s .5s both;
+  animation: pAnimation 1s 0.5s both;
 }
 
 .fAnimation {
-  animation: fAnimation 1s .5s both;
+  animation: fAnimation 1s 0.5s both;
 }
 
 @keyframes p {
   from {
-    --p: 0
+    --p: 0;
   }
 }
-
 
 .no-round:before {
   background-size: 0 0, auto;
