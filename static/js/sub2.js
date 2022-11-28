@@ -18,11 +18,16 @@ function Search() {
     console.log(msg);
 
     let html = "";
+    console.log(msg.document.length);
     for (i = 0; i < msg.documents.length; i++) {
       html += `
         <a href="${msg.documents[i].url}">
           <div class="news">
-            <p>NO&#46;&nbsp;<span>${[i]}</span></p>
+          `
+          for(let n = 10 ; n >= 0 ; n --) {
+            `<p>NO&#46;&nbsp;<span>${n}</span></p>`
+          }
+          `
             <h4>${msg.documents[i].title}</h4>
             <p>${msg.documents[i].blogname}</p>
             <p>${msg.documents[i].contents.substr(0, 100)}...</p>
@@ -33,6 +38,7 @@ function Search() {
       `;
     }
     search.insertAdjacentHTML("afterbegin", html);
+
     // search.innerHTML.replace(/<(\/b|b)([^>]*)>/gi,"");
     // html.replace(/<(\/b|b)([^>]*)>/gi,"");
   });
