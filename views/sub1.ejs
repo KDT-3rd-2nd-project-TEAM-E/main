@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>비만도 측정 | Kcal-cal</title>
   <!-- favicon -->
-  <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/static/img/favicon.png" type="image/x-icon">
   <!-- css: reset -->
-  <link rel="stylesheet" href="../static/css/reset.css">
+  <link rel="stylesheet" href="/static/css/reset.css">
   <!-- css: header -->
-  <link rel="stylesheet" href="../static/css/header.css">
+  <link rel="stylesheet" href="/static/css/header.css">
   <!-- css : sub -->
-  <link rel="stylesheet" href="../static/css/sub.css">
+  <!-- <link rel="stylesheet" href="/static/css/sub.css"> -->
+  <link rel="stylesheet" href="/static/css/sub1.css">
   <!-- fontawsome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
   <!-- xelcon -->
@@ -27,27 +28,26 @@
     <%- include('header.ejs') %>
 
     <!-- main content -->
-    <main>
-      <section class="sub1">
+    <main id="sub1">
+      <section>
         <h2 class="hidden">Main Content</h2>
+        <h3>키와 몸무게로 간단하게 자신의 비만도(BMI)를 확인해 보세요.</h3>
         <article class="BMI">
-          <h3>키와 몸무게로 간단하게 자신의 비만도(BMI)를 확인해 보세요.</h3>
-
-          <div class="form clearfix">
+          <div class="form">
             <form id="bmiCheckForm" name="bmiCheckForm">
-              <label for="length">신장</label>
-              <input type="text" id="length" name="length"><span>cm</span>
+              <h4>신체정보</h4>
+              <input type="number" id="length" name="length" placeholder="키를 입력하세요"><span>cm</span>
+              <br>
+              <input type="number" id="weight" name="weight" placeholder="몸무게를 입력하세요"><span>kg</span>
               <br>
 
-              <label for="weight">체중</label>
-              <input type="text" id="weight" name="weight"><span>kg</span>
-              <br>
               <span class="compute">
-                <input type="button" id="btnCalc" value="계산">
-                <input type="reset" value="초기화">
+                <input type="button" id="btnCalc" value="계산하기">
+                <!-- <input type="reset" value="초기화"> -->
               </span>
             </form>
 
+            <!-- 비만도 결과값 -->
             <ul id="result">
               <li>
                 <h4 class="text"></h4>
@@ -58,27 +58,51 @@
                 <p id="bmiNumber"></p>
               </li>
             </ul>
+          </div>
 
-            <div class="info">
-              <h4>비만도(BMI)란?</h4>
-              <p>체질량지수는 카우프지수로 비만을 평가하는 지수이며
-                세계적으로 쓰이는 공통표준 지수입니다.
-                체지방의 정도를 표준체중보다 비교적 정확하게 반영할 수 있고
-                매우 간단히 규정할 수 있는 장점이 있습니다.
-              </p>
+          <div class="info">
+            <h4>비만도(BMI)란?</h4>
+            <p>
+              체질량지수는 카우프지수로 비만을 평가하는 지수이며
+              세계적으로 쓰이는 공통표준 지수입니다.<br>
+              체지방의 정도를 표준체중보다 비교적 정확하게 반영할 수 있고
+              매우 간단히 규정할 수 있는 장점이 있습니다.
+            </p>
 
-              <h4>비만도의 산출방법</h4>
-              <p>체질량지수 = 체중 &#40; kg &#41; / 키의 제곱 &#40; &#13217; &#41;</p>
-            </div>
+            <h4>비만도의 산출방법</h4>
+            <p>체질량지수 = 체중 &#40; kg &#41; / 키의 제곱 &#40; &#13217; &#41;</p>
+          </div>
         </article>
 
-
-        <article>
-          <h3 class="hidden">그래프</h3>
-
-          <div class="graph"></div>
+        <article class="BMIgraph">
+          <h3 class="hidden">BMI 그래프로 확인하기</h3>
+          <!-- <ul class="graph">
+            <li>저체중</li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul> -->
 
           <p class="graphResult">결과가 궁금하시다면 신장과 체중을 입력해주세요!</p>
+
+          <ul class="graph">
+            <li>
+              <label>BMI</label>
+              <label class="dv1">18.5</label>
+              <label class="dv2">23</label>
+              <label>25.00</label>
+              <!-- <label>30.00</label> -->
+              <ul class="clearfix graphWidth">
+                <li class="low-weight">저체중</li>
+                <li class="regular">정상</li>
+                <li class="overweight">과체중</li>
+                <li class="obesity">비만</li>
+                <!-- <li class="overObesity">고도비만</li> -->
+                <li class="home">home</li>
+              </ul>
+              <label>체중</label>
+            </li>
+          </ul>
         </article>
       </section>
     </main>
