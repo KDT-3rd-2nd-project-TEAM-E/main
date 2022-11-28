@@ -20,6 +20,12 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
+    <!-- jQuery CDN-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="/static/css/signup.css" />
   </head>
 
@@ -53,7 +59,7 @@
                 중복 확인
               </button>
             </div>
-            <div id="idError" class="error"></div>
+            <div id="idError" class=""></div>
 
             <div class="signupPw">
               <input
@@ -79,7 +85,15 @@
               <div id="pwError" class="error"></div>
             </div>
 
-            <div class="next">
+            <div class="direction">
+              <button
+                type="button"
+                class="btn"
+                id="preBtn"
+                onclick="location.href='/login'"
+              >
+                &lt; 로그인 페이지
+              </button>
               <button
                 type="button"
                 class="btn"
@@ -169,7 +183,15 @@
               </div>
             </div>
 
-            <div class="next">
+            <div class="direction">
+              <button
+                type="button"
+                class="btn"
+                id="preBtn"
+                onclick="firstBack();"
+              >
+                &lt; 이전
+              </button>
               <button
                 type="button"
                 class="btn"
@@ -198,6 +220,16 @@
             </div>
             <img src="/static/img/yoga.png" id="exImg" alt="설명대체이미지" />
             <div class="login">
+              <div class="direction">
+                <button
+                  type="button"
+                  class="btn"
+                  id="preBtn"
+                  onclick="secondBack();"
+                >
+                  &lt; 이전
+                </button>
+              </div>
               <button type="button" id="loginBtn" onclick="register();">
                 가입완료!
               </button>

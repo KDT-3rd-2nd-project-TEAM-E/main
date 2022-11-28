@@ -1,5 +1,9 @@
 const { User } = require("../models");
 const models = require("../models"); // ../models/index.js
+const nodemailer = require("nodemailer");
+const ejs = require("ejs");
+const { callbackPromise } = require("nodemailer/lib/shared");
+const { renderFile } = require("ejs");
 
 exports.index = (req, res) => {
   res.render("index");
@@ -76,53 +80,70 @@ exports.findId = (req, res) => {
       useremail: req.body.useremail,
     },
   }).then((result) => {
-    console.log("ID 찾기 >>", result); // [{}]
+    // console.log("ID 찾기 >>", result.userid); // [{}]
     if (result === null) {
-      res.send(false); // 해당 이메일에 대응하는 ID값 X
+      res.send(`존재하지 않는 이메일입니다!`); // 해당 이메일에 대응하는 ID값 X
     } else {
-      res.send(true); // ID값 출력 or 다른 처리
+      //res.send(true); // ID값 출력 or 다른 처리
+      res.send(result.userid);
     }
   });
 };
 
-// exports.findPw = (req, res) => {
-//   models.User.findOne({
-//     where: {
-//       userid: req.body.userid,
-//       useremail: req.body.useremail,
-//     },
-//   }).then((result) => {
-//     console.log("PW 찾기 >>", result); // [{}]
-//     if (result === null) {
-//       res.send(false); // 해당 ID, 이메일에 대응하는 PW값 X
-//       // return
-//     } else {
-//       models.User.update(
-//         {
-//           userpw: 1111,
-//         },
-//         {
-//           where: {
-//             userid: req.body.id,
-//           },
-//         }
-//       ).then((result) => {
-//         console.log("PW초기화 >>", result); // update >> [ 1 ]
-//       });
-//       res.render("mypage"); // ID값 출력 or 다른 처리
-//     }
-//   });
-// };
-
-exports.findPw = (req, res) => {
-  if (req.body.email === "") {
-    res.status(400).send("email required");
-  }
-
-  User.findOne({
+//ID 중복확인
+exports.checkid = (req, res) => {
+  models.User.findOne({
     where: {
-      email: req.body.email,
+      userid: req.body.userid,
     },
+  }).then((result) => {
+    // console.log(req.body);
+    // console.log(result);
+    if (result === null) {
+      res.send(true);
+    } else {
+      return res.send(false);
+    }
+  });
+};
+
+//PW찾기
+
+exports.sendEmail = (req, res) => {
+  models.User.findOne({
+    where: {
+      useremail: req.body.useremail,
+    },
+  }).then((result) => {
+    if (result === null) {
+      return res.send(false);
+    }
+    const mailPoster = nodemailer.createTransport({
+      service: "Naver",
+      host: "smtp.naver.com",
+      port: 587,
+      auth: {
+        user: "kcal-cal@naver.com",
+        pass: "KcalcalE2",
+      },
+    });
+    // let authNum = Math.random().toString().slice(2, 8);
+    // const content = ejs
+    //   .renderFile("./views/authMail.ejs", { authcode: authNum })
+    //   .toString();
+
+    const mailOpt = {
+      from: "kcal-cal@naver.com",
+      to: `${req.body.useremail}`,
+      subject: "[kcalcal] 이메일 인증을 통한 비밀번호 찾기",
+      html:
+        ' <p style="color: black"><b>안녕하세요, Kcal-cal 입니다.<br> 회원님의 비밀번호는</b></p><br>' +
+        `<p style = "color: blue">${result.userpw} </p>` +
+        "<br> <b>입니다</b><br><br>" +
+        '<hr> <button type="button"><a href="http://localhost:8000/login">로그인 하러 가기</a> </button>',
+    };
+    mailPoster.sendMail(mailOpt, res);
+    res.send(true);
   });
 };
 
@@ -175,6 +196,22 @@ exports.postsignup = async (req, res) => {
 
   res.send(true);
 }; // axios요청 한버튼에 두개 -> 각기 다른 DB에 저장되게끔
+
+exports.signupCheckId = (req, res) => {
+  models.User.findOne({
+    where: {
+      userid: req.body.userid,
+    },
+  }).then((result) => {
+    // console.log(req.body);
+    // console.log(result);
+    if (result === null) {
+      res.send(true);
+    } else {
+      return res.send(false);
+    }
+  });
+};
 
 exports.bmi = (req, res) => {
   // const query = `SELECT date, weight FROM userweight WHERE userid=userweight.userid ORDER BY Date DESC;`;
@@ -244,26 +281,26 @@ exports.mypageEdit = (req, res) => {
     }
   ).then((result) => {
     console.log("UserEdit 성공 >>", result);
-    res.send(`${req.body.nickname}님의 회원정보가 성공적으로 변경되었습니다!`);
+    res.send(`${req.body.nickname}님 회원정보가 변경되었습니다.`);
   });
 };
 
-// exports.mypageEdit = (req, res) => {
-//   models.Userweight.create(
-//     {
-//       weight: req.body.weight,
-//       date: req.body.date,
-//     },
-//     {
-//       where: {
-//         userid: req.body.userid,
-//       },
-//     }
-//   ).then((result) => {
-//     console.log("UserweightEdit 성공 >>", result);
-//     res.send(`${req.body.nickname}님의 체중정보가 업데이트 되었습니다.`);
-//   });
-// };
+exports.mypageEdit = (req, res) => {
+  models.Userweight.create(
+    {
+      weight: req.body.weight,
+      date: req.body.date,
+    },
+    {
+      where: {
+        userid: req.body.userid,
+      },
+    }
+  ).then((result) => {
+    console.log("UserweightEdit 성공 >>", result);
+    res.send(`${req.body.nickname}님의 체중정보가 업데이트 되었습니다.`);
+  });
+};
 
 exports.mypageDelete = async (req, res) => {
   let result1 = await models.User.destroy({
@@ -276,13 +313,10 @@ exports.mypageDelete = async (req, res) => {
       userid: req.body.userid,
     },
   });
-  console.log("UserDelete 성공 >>", result1, result2);
-  res.send("회원탈퇴가 완료되었습니다. 이용해주셔서 감사합니다.");
+  console.log("UserDelete 성공 >>");
+  // res.send(`${req.body.nickname}님 회원탈퇴가 완료되었습니다.`);
+  res.render("index", { user: result1, userweight: result2 });
 };
-// , {
-//   user: result1,
-//   userweight: result2,
-// }
 // 삭제 후 초기화면 렌더링, 회원정보삭제 되었습니다 라는 알림은 프론트에서 작업
 
 exports.info = (req, res) => {
