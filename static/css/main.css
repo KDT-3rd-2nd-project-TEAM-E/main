@@ -157,6 +157,7 @@ article.search {
   padding: 20px 5px;
   overflow-y: scroll;
   height: 100%;
+  margin-top: 20px;
 }
 
 .food-list li {
