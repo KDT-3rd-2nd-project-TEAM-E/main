@@ -18,70 +18,163 @@ function idCheck() {
     alert("아이디를 입력해주세요.");
     userid.focus();
     msg.textContent = "";
-
     return;
   }
-
   if (!regId.test(data.userid)) {
     alert(
       "아이디는 최소 5자 최대 12자 이내의 숫자, 영문 조합으로 만들어주세요."
     );
-    userid.focus();
+    document.querySelector("#userid").focus();
     msg.textContent = "";
-
-    return;
-  } else {
-    msg.textContent = "아이디 사용이 가능합니다!";
     return;
   }
+
+  axios({
+    method: "POST",
+    url: "/signup/checkid",
+    data: {
+      userid: data.userid,
+    },
+  })
+    .then((res) => {
+      return res.data;
+    })
+    .then((data) => {
+      if (data) {
+        document.getElementById("idError").classList.remove("error");
+        document.getElementById("idError").classList.add("correct");
+        msg.textContent = "아이디 사용이 가능합니다!";
+        //document.getElementById("idError").setAttribute("style", "color:green");
+
+        userid.focus();
+      } else {
+        // document.getElementById("idError").classList.add("error");
+        document.getElementById("idError").classList.remove("correct");
+        document.getElementById("idError").classList.add("error");
+        msg.textContent = "이미 존재하는 아이디입니다.";
+        //document.getElementById("idError").setAttribute("style", "color:red");
+        return;
+      }
+    });
 }
 
 // 회원가입 first Section 다음 버튼 눌렀을 때 유효성 검사
 function firstNext() {
-  const data = {
-    userid: form.userid.value,
-    userpw: form.userpw.value,
-    checkpw: form.checkpw.value,
-  };
+  // const data = {
+  //   userid: form.userid.value,
+  //   userpw: form.userpw.value,
+  //   checkpw: form.checkpw.value,
+  // };
+  let regPw =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
   // 1. ID ) 중복확인 검사 X
   if (msg.innerHTML == "") {
     alert("아이디 중복검사를 해주세요.");
     return;
   }
-
-  // 2. PW) 비밀번호 or 비밀번호확인 input 입력 X
-  if (data.userpw == "") {
+  if (form.userpw.value == "") {
     alert("비밀번호를 입력해주세요.");
     userpw.focus();
-    return;
-  } else if (data.checkpw == "") {
-    alert("비밀번호 확인이 필요합니다.");
-    checkpw.focus();
-  }
-
-  //3. PW ) 비밀번호 유효성 검사
-  // (숫자, 영문, 특수문자 조합 8~16자리), (공백 space X)
-  let regPw =
-    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
-
-  if (!regPw.test(data.userpw)) {
+    return false;
+  } else if (!regPw.test(form.userpw.value)) {
     alert(
       "비밀번호는 공백을 제외한 최소 8자 최대 16자 이내 숫자, 영문, 특수문자를 모두 포함하여 작성해주세요."
     );
     userpw.focus();
-    return;
+    return false;
   }
 
-  // 4. 비밀번호 != 비밀번호 확인 (불일치)
-  if (data.userpw !== data.checkpw) {
+  if (form.checkpw.value == "") {
+    alert("비밀번호 확인이 필요합니다.");
+    checkpw.focus();
+    return false;
+  }
+  if (form.userpw.value !== form.checkpw.value) {
     alert("비밀번호가 일치하지 않습니다.");
     checkpw.focus();
-    return;
-  } else {
-    console.log("다음으로 넘어간닷!!!!!");
-    document.getElementById("firstSection").classList.add("d-none");
-    document.getElementById("secondSection").classList.remove("d-none");
+    return false;
   }
+
+  axios({
+    method: "POST",
+    url: "/signup/firstValidation",
+    data: {
+      userid: form.userid.value,
+    },
+  })
+    .then((res) => {
+      return res.data;
+    })
+    .then((data) => {
+      if (data) {
+        console.log("다음으로 넘어간닷!!!!!");
+        alert("다음단계로 넘어갑니다.");
+        document.getElementById("idError").classList.remove("error");
+        document.getElementById("idError").classList.add("correct");
+        msg.textContent = "아이디 사용이 가능합니다!";
+        document.getElementById("firstSection").classList.add("d-none");
+        document.getElementById("secondSection").classList.remove("d-none");
+      } else {
+        alert("다른 아이디를 입력해주세요.");
+        document.getElementById("idError").classList.remove("correct");
+        document.getElementById("idError").classList.add("error");
+        msg.textContent = "이미 존재하는 아이디입니다.";
+        return false;
+      }
+    });
+  //3. PW ) 비밀번호 유효성 검사
+  // (숫자, 영문, 특수문자 조합 8~16자리), (공백 space X)
+  // console.log("다음으로 넘어간닷!!!!!");
+  // document.getElementById("firstSection").classList.add("d-none");
+  // document.getElementById("secondSection").classList.remove("d-none");
+
+  // 2. PW) 비밀번호 or 비밀번호확인 input 입력 X, 불일치
+  // axios({
+  //   method: "POST",
+  //   url: "/signup/firstValidation",
+  //   data: {
+  //     userid: form.userid.value,
+  //     userpw: form.userpw.value,
+  //     checkpw: form.checkpw.value,
+  //   },
+  // })
+  //   .then((res) => {
+  //     return res.data;
+  //   })
+  //   .then((data) => {
+  //     if (form.userpw.value == "") {
+  //       alert("비밀번호를 입력해주세요.");
+  //       userpw.focus();
+  //       return false;
+  //     } else if (!regPw.test(form.userpw.value)) {
+  //       alert(
+  //         "비밀번호는 공백을 제외한 최소 8자 최대 16자 이내 숫자, 영문, 특수문자를 모두 포함하여 작성해주세요."
+  //       );
+  //       userpw.focus();
+  //       return false;
+  //     }
+
+  //     if (form.checkpw.value == "") {
+  //       alert("비밀번호 확인이 필요합니다.");
+  //       checkpw.focus();
+  //       return false;
+  //     }
+  //     if (form.userpw.value !== form.checkpw.value) {
+  //       alert("비밀번호가 일치하지 않습니다.");
+  //       checkpw.focus();
+  //       return false;
+  //     }
+  //     if (form.userid.value !== data.userid) {
+  //       alert("아이디 중복 확인이 필요합니다.");
+  //       userid.focus();
+  //       return;
+  //     }
+  //     //3. PW ) 비밀번호 유효성 검사
+  //     // (숫자, 영문, 특수문자 조합 8~16자리), (공백 space X)
+  //     console.log("다음으로 넘어간닷!!!!!");
+  //     document.getElementById("firstSection").classList.add("d-none");
+  //     document.getElementById("secondSection").classList.remove("d-none");
+  //   });
 }
 
 // 닉네임 글자수 제한 (16Byte)
@@ -115,6 +208,18 @@ function fnChkByte(obj, maxByte) {
   } else {
     return;
   }
+}
+
+function firstBack() {
+  console.log("이전으로 호잇!");
+  document.getElementById("firstSection").classList.remove("d-none");
+  document.getElementById("secondSection").classList.add("d-none");
+}
+
+function secondBack() {
+  console.log("이전으로 호잇!");
+  document.getElementById("secondSection").classList.remove("d-none");
+  document.getElementById("thirdSection").classList.add("d-none");
 }
 
 function secondNext() {
@@ -200,6 +305,7 @@ function register() {
     },
   }).then((res) => {
     if (true) {
+      alert("회원가입이 완료되었습니다! 로그인을 해서 서비스를 즐겨보세요!!");
       window.location.href = "/login";
       return;
     } else {

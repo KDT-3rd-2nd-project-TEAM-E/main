@@ -105,9 +105,7 @@ body {
   margin-top: 20px;
 }
 
-
-
-.loginText > h2{
+.loginText > h2 {
   padding: 5px;
   padding-left: 20%;
   text-align: left;
@@ -127,7 +125,6 @@ body {
   margin-left: auto;
   margin-right: auto;
 } */
-
 
 .socialLogin img {
     width: 100%;
@@ -218,15 +215,12 @@ body {
   flex-direction: row;
   justify-content: center;
 }
-
 .socialLogin li {
   float: left;
   justify-content: center;
   margin: 1px;
   padding: 0;
 } */
-
-
 
 /* 모달 */
 

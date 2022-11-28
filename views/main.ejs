@@ -23,28 +23,35 @@
   <!-- axios CDN -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
-
 <body>
   <div id="wrap">
     <%- include('header.ejs') %>
 
     <!-- main content -->
-    <main>
-      <section class="part1">
-        <h2 class="hidden">Main Content</h2>
-
-        <!-- kcal gauge -->
-        <article class="gauge">
-          <h3 class="hidden">기초 대사량 칼로리 게이지</h3>
-          <p>
-            xx님, 환영합니다 &#58;&#41;<br>
-            회원님의 기초대사량은 <span class="kcal-total"></span> 칼로리 입니다.
-          </p>
-          <div class="kcal-bar-background">
-            <span class="kcal-value">0%</span>
-            <div class="kcal-bar"></div>
-          </div>
-        </article>
+      <main>
+        <section class="part1">
+          <h2 class="hidden">Main Content</h2>
+          <!-- gauge -->
+          <article class="gauge">
+            <h3 class="hidden">기초 대사량 칼로리 게이지</h3>
+            <% if (isLogin) { %>
+            <p><%= result.nickname %> 님,<br />환영합니다 &#58;&#41;</p>
+            <% } else if (isLogin && result.height === undefined) {%>
+            <p>
+              정보수정에서 <%= result.nickname %>님의 정보를 추가 입력해주세요!
+            </p>
+            <% } else if (isLogin && result.weight === undefined) {%>
+            <p>
+              건강상태에서 <%= result.nickname %>님의 체중정보를 입력해주세요!
+            </p>
+            <% } else { %>
+            <p>로그인 후 조회 가능합니다!</p>
+            <% } %>
+            <div class="kcal-bar-background">
+              <span class="kcal-value"></span>
+              <div class="kcal-bar"></div>
+            </div>
+          </article>
 
         <!-- kcal search -->
         <article class="search">

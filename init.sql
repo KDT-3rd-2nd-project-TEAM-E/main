@@ -66,7 +66,19 @@ DROP TABLE test;
 DELETE FROM user WHERE userid = 'archangel67@naver.com';
 
 
-SELECT Date, weight FROM userweight WHERE userid='aaa' ORDER BY Date DESC;
+SELECT Date, weight FROM userweight WHERE userid='aaa' ORDER BY date DESC;
+
+SELECT user.nickname as nickname, user.height, userweight.weight
+FROM user
+    INNER JOIN userweight
+    ON user.userid = userweight.userid;
+    WHERE user.userid = '${req.body.userid}' ORDER BY date ASC LIMIT 1
+
+SELECT user.userid as userid, userweight.date, userweight.weight
+FROM user
+    INNER JOIN userweight
+    ON user.userid = userweight.userid;
+    WHERE user.userid = '${req.body.userid}' ORDER BY date ASC LIMIT 1
 
 -- 예시들
 SELECT id, address FROM user; -- id, 주소 컬럼 조회
@@ -93,6 +105,8 @@ UPDATE user SET address = '서울특별시 강북구' WHERE id = 1; -- 권장되
 -- 데이터 삭제
 -- 주의)) delete에서 where절 미사용시, 모든 행의 데이터가 삭제됨
 DELETE FROM user WHERE id = 11;
+
+-- [WHERE 검색_조건]
 
 -- DCL
 -- mysql 사용자 추가 (user 계정)
