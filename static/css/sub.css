@@ -1,0 +1,331 @@
+body {
+  background: #eee;
+  color: #333;
+  font-family: "Noto Sans KR", "Roboto", "돋움", Dotum, "굴림", Gulim,
+    sans-serif;
+  line-height: 1.5;
+  letter-spacing: -1px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#wrap {
+  width: 96vw;
+  height: 96vh;
+  margin: 2vh auto;
+  background: #fff;
+  border-radius: 15px;
+  display: flex;
+}
+
+main {
+  width: 80%;
+}
+
+article {
+  background: #fff;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 30px 40px;
+  overflow: hidden;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+#sub1 section {
+  height: 96vh;
+  position: relative;
+}
+
+#sub1 h3 {
+  padding: 30px 40px 0;
+  margin: 20px 0 0 20px;
+}
+
+#sub1 h4 {
+  margin-bottom: 10px;
+}
+
+#sub1 .BMI {
+  display: flex;
+  margin-bottom: 0;
+}
+
+.BMI h4 {
+  font-size: 1.2em;
+}
+
+.BMI .form {
+  background: #eee;
+  border-radius: 20px;
+  padding: 30px 40px;
+  width: 40%;
+  margin-right: 20px;
+  overflow: hidden;
+}
+
+.BMI .info {
+  width: 60%;
+  background: #eee;
+  border-radius: 20px;
+  padding: 30px 40px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.BMI .info:nth-child(2) p {
+  margin-bottom: 40px;
+}
+
+.BMIgraph {
+  position: relative;
+  left: 0;
+}
+
+#result li {
+  display: flex;
+}
+
+#result .graph {
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  height: 200px;
+  overflow: hidden;
+}
+
+.graph li li {
+  float: left;
+  text-align: center;
+}
+
+.graph li label {
+  display: inline-block;
+  width: 24.5%;
+}
+
+.graph li.low-weight {
+  width: 25%;
+  /* background: linear-gradient(to right, #d9ebdf, #3dad6b); */
+}
+
+.graph li.regular {
+  width: 25%;
+  /* background: linear-gradient(to right, #3dad6b, #094321); */
+}
+
+.graph li.overweight {
+  width: 25%;
+  /* background: linear-gradient(to right, #094321, #dda15e); */
+}
+
+.graph li.obesity {
+  width: 25%;
+  /* background: linear-gradient(to right, #dda15e, #bc6c25); */
+}
+
+.BMIgraph .graphResult {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+/* sub2 */
+.BMI .form #bmiCheckForm {
+  padding: 20px 0;
+}
+
+.BMI .form #bmiCheckForm input {
+  margin: 10px;
+  outline: none;
+  width: 80%;
+}
+
+#result {
+  padding: 10px 0;
+}
+
+#result li {
+  display: flex;
+}
+
+#result h4 {
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+#result .graph {
+  width: 100%;
+  height: 10px;
+  /* background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); */
+  height: 200px;
+  overflow: hidden;
+}
+
+.BMIgraph {
+  position: relative;
+  top: 100px;
+  left: 0;
+}
+
+.graph li li {
+  float: left;
+  text-align: center;
+}
+
+.graph li label {
+  display: inline-block;
+  width: 25%;
+  float: left;
+}
+
+.BMIgraph .graphResult {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+input[type="number"] {
+  padding: 10px 20px;
+  border: solid 1px #212121;
+  background-color: #fff;
+  margin: 0;
+  --webkit-appearance: none;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.compute input {
+  padding: 11px;
+  background: #3dad6b !important;
+  color: #fff !important;
+  cursor: pointer;
+  border: 1px solid #3dad6b !important;
+  font-weight: bold;
+  transition: 0.3s all;
+}
+
+.compute input:hover {
+  background: transparent !important;
+  color: #3dad6b !important;
+}
+
+.graphWidth {
+  position: relative;
+}
+.home {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: 0;
+  display: none;
+  color: red;
+  bottom: 10%;
+}
+
+/* SUB2 CSS ------------------------------*/
+#sub2 {
+  overflow: hidden;
+}
+
+.content_area {
+  padding-top: 20px;
+}
+
+.content_area .list_header p {
+  display: inline-block;
+}
+
+.content_area .list_header form input {
+  width: 100%;
+}
+
+.content_area .list_header ul {
+  display: flex;
+  font-size: 2em;
+  width: 10%;
+}
+
+.content_area .list_header ul li {
+  margin-left: 20px;
+}
+
+.content_area .list_header p {
+  font-size: 1.2em;
+}
+
+.content_area .list_content {
+  height: 68vh;
+  overflow: hidden;
+}
+
+.content_area .list_content a {
+  display: flex;
+  padding: 20px 0;
+}
+
+.content_area .list_content .search > a:hover img {
+  transform: scale(1.03);
+}
+
+.content_area .list_content .search {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.content_area .list_content .news {
+  width: 60%;
+  margin-right: 20px;
+}
+
+.content_area .list_content .news h4 {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.content_area .list_content img {
+  width: 30%;
+  padding: 2%;
+  transition: 0.4s ease-in-out;
+  height: 100%;
+}
+
+/* list_content scroll-bar */
+/* 스크롤바 전체 */
+.content_area .list_content .search::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px;
+  background: #ddd;
+}
+
+/* 스크롤 막대 */
+.content_area .list_content .search::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #34945c;
+}
+
+/* SUB3 CSS -----------------------------*/
+#sub3 .graph {
+  padding: 5% 0;
+}
+
+/* chart js */
+#myChart {
+  width: 500px;
+  height: 500px;
+}

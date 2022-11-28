@@ -1,0 +1,56 @@
+@media screen and (max-width: 1080px) {
+    #responsive {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 96vw;
+        height: 10%;
+        background-color: #3dad6b;
+        border-radius: 15px 15px 0 0px;
+        color: white;
+        font-size: 30px;
+      }
+      #responsive h1, #responsive div{
+        margin: 0 40px;
+      }
+@media screen and (min-width: 1080px){
+    #responsive {
+        display: none;
+    }
+}
+}
+
+.click-nav {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 90%;
+    background-color: #3dad6b;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    bottom: 0;
+}
+
+.click-nav ul {
+    width: 100%;
+    height: 100%;
+}
+
+.click-nav ul:first-child{
+    border-top: 5px solid white;
+}
+
+.click-nav li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25%;
+    border-bottom: 5px solid white;
+}
+
+.none{
+    display: none;
+}

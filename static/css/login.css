@@ -1,0 +1,306 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@100;300;400&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  background: #d9ebdf;
+  width: 100%;
+  min-width: 320px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #666;
+}
+
+.container {
+  background-color: #ffffff;
+  border: 0px solid black;
+  border-radius: 20px;
+  width: 50%;
+  height: auto;
+  text-align: center;
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05);
+  border: 0.2rem solid #fff;
+  border-radius: 2rem;
+  padding: 40px;
+  min-width: 530px;
+}
+
+.title {
+  margin-top: 8px;
+  text-align: center;
+  padding: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 18px;
+  color: #777;
+}
+
+.title h2 {
+  margin: 0;
+}
+
+.title span {
+  color: #3dad6b;
+}
+
+.inputBox {
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 530px;
+  padding: 15px;
+  width: 100%;
+  margin: 0px 0px 10px;
+}
+
+.inputBox:focus {
+  border: 1px solid #34945c;
+  background-color: #f7faf9;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 530px;
+  padding: 15px;
+  width: 100%;
+  margin: 0px 0px 10px;
+}
+
+.id input {
+  margin-top: 20px;
+}
+
+.id input:focus {
+  margin-top: 20px;
+}
+
+.id,
+.pw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loginBtn {
+  text-transform: uppercase;
+  outline: 0;
+  background: #3dad6b;
+  width: 100%;
+  max-width: 530px;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.loginText > h2 {
+  padding: 5px;
+  padding-left: 20%;
+  text-align: left;
+}
+
+/* .socialLogin a {
+  text-align: center;
+} */
+
+/* .socialLogin{
+  display: flex;
+  background-color: yellow;
+  border-radius: 5px;
+  justify-content: center;
+  width: 80%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+} */
+
+.socialLogin img {
+  width: 100%;
+  margin: 10px 0;
+  max-width: 530px;
+  border-radius: 5px;
+}
+
+#loginBtn:hover,
+#loginBtn:active,
+#loginBtn:focus {
+  background: #34945c;
+  text-decoration: underline;
+}
+
+.hr-sect {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 16px;
+  margin: 30px 110px 20px 110px;
+}
+
+.hr-sect::before,
+.hr-sect::after {
+  content: "";
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0px 16px;
+}
+
+.loginEtc {
+  box-sizing: border-box;
+  max-width: 570px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login ul {
+  display: table;
+  width: 100%;
+  list-style: none;
+  margin-top: 20px;
+  text-align: center;
+  padding: 0;
+}
+
+.login li {
+  text-align: -webkit-match-parent;
+}
+
+.loginEtc ul li a {
+  display: block;
+  font-size: 16px;
+  height: 100%;
+  line-height: 54px;
+  box-sizing: border-box;
+  float: left;
+  width: 33.3%;
+  justify-content: center;
+}
+
+.loginEtc > ul > li ::after {
+  content: "|";
+  float: right;
+  display: block;
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.loginEtc > ul > li:last-child ::after {
+  content: "";
+}
+
+.loginEtc a {
+  color: #666;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  vertical-align: baseline;
+  cursor: pointer;
+}
+
+/* .socialLogin ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.socialLogin li {
+  float: left;
+  justify-content: center;
+  margin: 1px;
+  padding: 0;
+} */
+
+/* 모달 */
+
+.modal-dialog .modal-dialog-centered {
+  /* width: auto; */
+  height: 100%;
+  min-height: 200px;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content {
+  /* width: auto; */
+  text-align: center;
+  height: auto;
+  min-height: 200px;
+  border-radius: 0;
+}
+
+.oneline {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#findUseremail {
+  width: 70%;
+  margin-top: 10px;
+}
+
+#lookupEmail {
+  width: 20%;
+  height: 100%;
+  font-size: 1em;
+  display: inline;
+  box-sizing: border-box;
+  background: #3dad6b;
+  color: white;
+  padding: 15px;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#lookupEmail:hover {
+  /* width: 30%; */
+  background: #34945c;
+  color: white;
+  text-decoration: underline;
+  margin-top: 10px;
+}
+
+.modal-body ul {
+  display: table;
+  width: 100%;
+  list-style: none;
+  margin-top: 20px;
+  text-align: center;
+  padding: 0;
+}
+
+.modal-body li {
+  text-align: -webkit-match-parent;
+}
+
+.modal-body ul li a {
+  display: block;
+  font-size: 16px;
+  height: 100%;
+  line-height: 54px;
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  justify-content: center;
+}

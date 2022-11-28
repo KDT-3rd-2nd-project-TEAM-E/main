@@ -1,0 +1,469 @@
+body {
+  background: #eee;
+  color: #333;
+  font-family: "Noto Sans KR", "Roboto", "돋움", Dotum, "굴림", Gulim,
+    sans-serif;
+  line-height: 1.5;
+  letter-spacing: -1px;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#wrap {
+  width: 96%;
+  height: 96vh;
+  margin: 2vh auto;
+  background: #fff;
+  border-radius: 15px;
+  display: flex;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+main {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  /* 탄단지 테마 색상 */
+  --carbs: red;
+  --protein: green;
+  --fat: blue;
+}
+
+article {
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* part1 --------------------*/
+main .part1 {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+/* gauge css */
+article.gauge {
+  background: #d9ebdf;
+  margin-bottom: 20px;
+}
+
+article.gauge p {
+  font-size: 2.1em;
+  font-weight: 700;
+  padding: 3%;
+}
+
+article.gauge .kcal-bar-background {
+  margin: 0 2% 1%;
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* kcal-bar */
+.kcal-bar-background {
+  height: 40px;
+  background-color: white;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kcal-bar {
+  width: 0px;
+  height: 40px;
+  background-color: #34945c;
+}
+
+.kcal-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bar-animate {
+  animation: bar 1s 0.5s both;
+}
+
+@keyframes bar {
+  from {
+    width: 0%;
+  }
+}
+
+/* search css */
+article.search {
+  background: #f7f7f7;
+  height: 65%;
+  overflow: hidden;
+}
+
+.search form {
+  position: relative;
+}
+
+.search label {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.search input {
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 15px;
+  width: 100%;
+}
+
+.search input:focus {
+  border: 2px solid #34945c;
+  background-color: #f7faf9;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 15px;
+  width: 100%;
+}
+
+.search button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+
+/* food list */
+.food-list-box {
+  height: 80%;
+}
+
+.food-list {
+  padding: 20px 5px;
+  overflow-y: scroll;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.food-list li {
+  position: relative;
+}
+
+.food-list dl {
+  line-height: 1.5;
+}
+
+.food-list dt {
+  font-size: 2em;
+}
+
+.food-list dd {
+  float: left;
+  font-size: 1.4em;
+  margin-right: 10px;
+}
+
+.food-list p {
+  float: left;
+  margin-right: 10px;
+}
+
+.food-list .button-box {
+  position: absolute;
+  top: 40%;
+  right: 2%;
+  font-size: 2em;
+  display: flex;
+  width: 10%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.food-list .select {
+  margin-right: 20px;
+}
+
+/* 스켈레톤 */
+.skeleton {
+  opacity: 0.7;
+  animation: skeletion-loading 1s linear infinite alternate;
+}
+
+.skeleton-text1 {
+  height: 40px;
+  width: 140px;
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
+  animation: skeleton-loading 1s linear infinite alternate;
+  background: #d9d9d9;
+}
+
+.skeleton-text2 {
+  height: 30px;
+  width: 90%;
+  margin-bottom: 0.25rem;
+  border-radius: 0.25rem;
+  animation: skeleton-loading 1s linear infinite alternate;
+  background: #d9d9d9;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+/* food-list scroll-bar */
+/* 스크롤바 전체 */
+.food-list::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px;
+  background: #ddd;
+}
+
+/* 스크롤 막대 */
+.food-list::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #34945c;
+}
+
+/* part2 --------------------*/
+main .part2 {
+  margin: 20px;
+}
+
+.part2 article {
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.part2 article p {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.content-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-box .recommend-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.carbs-text {
+  color: var(--carbs);
+}
+
+.protein-text {
+  color: var(--protein);
+}
+
+.fat-text {
+  color: var(--fat);
+}
+
+.carbs-value:first-child {
+  color: var(--carbs);
+}
+
+.protein-value {
+  color: var(--protein);
+}
+
+.fat-value:first-child {
+  color: var(--fat);
+}
+
+/* 탄단지 그래프 */
+/* 색상 바꾸기!!! */
+
+@property --p {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.pie {
+  /* --d ==== 채워지는 원 크기 */
+  --b: 30px;
+  --c: darkred;
+
+  /* --w ===== 전체 원 크기 */
+  --w: 200px;
+
+  width: var(--w);
+  aspect-ratio: 1;
+  position: relative;
+  display: inline-grid;
+  margin: 5px;
+  place-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: sans-serif;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+.inside-pie {
+  --w: 200px;
+
+  width: var(--w);
+  aspect-ratio: 1;
+  position: relative;
+  display: inline-grid;
+  place-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: sans-serif;
+  border-radius: 50%;
+  background-color: white;
+  transform: scale(0.7);
+}
+
+.pie:before,
+.pie:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.carbs:before {
+  inset: 0;
+  background: radial-gradient(farthest-side, var(--carbs) 98%, #0000)
+      top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--carbs) calc(var(--p) * 1%), #0000 0);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    #0000 calc(99% - var(--b)),
+    #000 calc(100% - var(--b))
+  );
+  mask: radial-gradient(
+    farthest-side,
+    #0000 calc(99% - var(--b)),
+    #000 calc(100% - var(--b))
+  );
+}
+
+.protein:before {
+  inset: 0;
+  background: radial-gradient(farthest-side, var(--protein) 98%, #0000)
+      top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--protein) calc(var(--p) * 1%), #0000 0);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    #0000 calc(99% - var(--b)),
+    #000 calc(100% - var(--b))
+  );
+  mask: radial-gradient(
+    farthest-side,
+    #0000 calc(99% - var(--b)),
+    #000 calc(100% - var(--b))
+  );
+}
+
+.fat:before {
+  inset: 0;
+  background: radial-gradient(farthest-side, var(--fat) 98%, #0000) top/var(--b)
+      var(--b) no-repeat,
+    conic-gradient(var(--fat) calc(var(--p) * 1%), #0000 0);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    #0000 calc(99% - var(--b)),
+    #000 calc(100% - var(--b))
+  );
+  mask: radial-gradient(
+    farthest-side,
+    #0000 calc(99% - var(--b)),
+    #000 calc(100% - var(--b))
+  );
+}
+
+.carbs:after {
+  inset: calc(50% - var(--b) / 2);
+  background: var(--carbs);
+  transform: rotate(calc(var(--p) * 3.6deg))
+    translateY(calc(50% - var(--w) / 2));
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.protein:after {
+  inset: calc(50% - var(--b) / 2);
+  background: var(--protein);
+  transform: rotate(calc(var(--p) * 3.6deg))
+    translateY(calc(50% - var(--w) / 2));
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.fat:after {
+  inset: calc(50% - var(--b) / 2);
+  background: var(--fat);
+  transform: rotate(calc(var(--p) * 3.6deg))
+    translateY(calc(50% - var(--w) / 2));
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cAnimation {
+  animation: cAnimation 1s 0.5s both;
+}
+
+.pAnimation {
+  animation: pAnimation 1s 0.5s both;
+}
+
+.fAnimation {
+  animation: fAnimation 1s 0.5s both;
+}
+
+@keyframes p {
+  from {
+    --p: 0;
+  }
+}
+
+.no-round:before {
+  background-size: 0 0, auto;
+}
+
+.no-round:after {
+  content: none;
+}
+
+/* 몸무게 팝업창 */
+#showimage {
+  z-index: 100;
+  position: absolute;
+  right: 8%;
+  top: 5%;
+  text-align: center;
+  color: #333;
+}
+
+img {
+  width: 50%;
+}

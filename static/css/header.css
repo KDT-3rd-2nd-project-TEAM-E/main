@@ -1,0 +1,144 @@
+/* header common area */
+#headerArea {
+  width: 20%;
+  min-width: 200px;
+  z-index: 100;
+}
+
+#headerArea .headerInner {
+  height: 96vh;
+  background: #3dad6b;
+  z-index: 1000;
+  border-radius: 15px 0 0 15px;
+}
+
+#headerArea .logo a {
+  display: block;
+  width: 150px;
+  height: 100px;
+  margin: 0 auto;
+  background: url("../img/logo_w.png") 0 0 no-repeat;
+  background-size: 80%;
+  background-position: 50%;
+  text-indent: -999px;
+  overflow: hidden;
+}
+
+#headerArea .profile_img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#headerArea img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+#headerArea .profile_img ul {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+#headerArea .profile_img ul li a {
+  padding: 10px;
+  color: #fff;
+}
+
+#headerArea .profile_img ul:after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 2px;
+  height: 15px;
+  background: #fff;
+}
+
+#headerArea #gnb {
+  margin: 50px 0;
+}
+
+#headerArea h3 {
+  color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+#headerArea h3 i {
+  margin-right: 5%;
+}
+
+#headerArea h3 a {
+  color: #fff;
+  display: block;
+  padding: 5%;
+  margin: 15px 20px 15px 30px;
+}
+
+#headerArea #gnb ul li {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+#headerArea #gnb ul li.active {
+  background: #fff;
+  border-radius: 20px;
+  margin-left: 20px;
+}
+
+#headerArea #gnb ul li.active a {
+  color: #3dad6b;
+  margin-left: 11px;
+}
+
+#headerArea #gnb ul li b.top-curve {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  width: 20px;
+  height: 50px;
+  background: #fff;
+  display: none;
+}
+
+#headerArea #gnb ul li b.top-curve::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-bottom-right-radius: 20px;
+  background: #3dad6b;
+}
+
+#headerArea #gnb ul li b.bottom-curve {
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  width: 20px;
+  height: 55px;
+  background: #fff;
+  display: none;
+}
+
+#headerArea #gnb ul li b.bottom-curve::before {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  border-top-right-radius: 20px;
+  height: 20px;
+  background: #3dad6b;
+}
+
+#headerArea #gnb ul li.active b.top-curve,
+#headerArea #gnb ul li.active b.bottom-curve {
+  display: block;
+}
