@@ -1,4 +1,4 @@
-const { default: axios } = require("axios");
+// const { default: axios } = require("axios");
 
 function homeloginpage() {
   const form = document.forms["form_login"];

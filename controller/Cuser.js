@@ -2,7 +2,16 @@ const { User } = require("../models");
 const models = require("../models"); // ../models/index.js
 
 exports.index = (req, res) => {
-  res.render("index");
+  const userSession = req.session.user;
+  console.log("Session 출력 >> ", userSession);
+
+  if (userSession !== undefined) {
+    res.render("index", {
+      isLogin: true,
+    });
+  } else {
+    res.render("index", { isLogin: false });
+  }
 };
 
 exports.main = (req, res) => {
