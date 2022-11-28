@@ -428,6 +428,47 @@ exports.mypage = (req, res) => {
   }
 };
 
+exports.mypageEdit = (req, res) => {
+  models.User.update(
+    {
+      userid: req.body.userid,
+      userpw: req.body.userpw,
+      useremail: req.body.useremail,
+      nickname: req.body.nickname,
+      gender: req.body.gender,
+      age: req.body.age,
+      height: req.body.height,
+    },
+    {
+      where: {
+        userid: req.body.userid,
+      },
+    }
+  ).then((result) => {
+    console.log("UserEdit 성공 >>", result);
+    console.log("전", req.session.user);
+    if (result) {
+      if (result === null) {
+        res.send(false);
+        return;
+      } else {
+        req.session.user = {
+          isLogin: true,
+          userid: req.body.userid,
+          userpw: req.body.userpw,
+          useremail: req.body.useremail,
+          nickname: req.body.nickname,
+          gender: req.body.gender,
+          age: req.body.age,
+          height: req.body.height,
+        };
+      }
+      console.log("후", req.session.user);
+      res.send(req.session.user);
+    }
+  });
+};
+
 exports.myweightEdit = (req, res) => {
   models.Userweight.create(
     {
