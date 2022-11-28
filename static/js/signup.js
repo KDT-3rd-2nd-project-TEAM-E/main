@@ -2,6 +2,19 @@
 const form = document.forms["form_register"];
 const msg = document.querySelector("#idError");
 
+document.querySelector("#domainList").addEventListener("change", (e) => {
+  //option에 있는 도메인 선택시
+  if (e.target.value !== "type") {
+    //선택한 도메인을 input에 입력하고 disabled
+    document.querySelector("#domainTxt").value = e.target.value;
+    document.getElementById("domainTxt").setAttribute("disabled", true);
+  } else {
+    //직접입력하고 input disabled
+    document.querySelector("#domainTxt").value = "";
+    document.getElementById("domainTxt").removeAttribute("disabled");
+  }
+});
+
 function idCheck() {
   console.log("중복확인 클릭");
   //console.log(data.userid.value);
@@ -223,53 +236,69 @@ function secondBack() {
 }
 
 function secondNext() {
-  const data = {
-    useremail: form.useremail.value,
-    gender: form.gender.value,
-    nickname: form.nickname.value,
-    age: form.userage.value,
-    height: form.userheight.value,
-  };
-
-  if (data.useremail == "") {
+  const emailId = form.useremail.value.trim();
+  const emailHost = form.domainTxt.value.trim();
+  const useremail = emailId + "@" + emailHost;
+  if (emailId == "" || emailHost == "") {
     alert("이메일을 입력해주세요.");
     useremail.focus();
     return;
   }
-  if (data.nickname == "") {
+  if (form.nickname.value == "") {
     alert("닉네임을 입력해주세요.");
     document.querySelector("#nickname").focus();
     return;
   }
-
-  if (data.age == "") {
+  if (form.userage.value == "") {
     alert("나이를 입력해주세요.");
     document.querySelector("#userage").focus();
     return;
-  } else if (data.age < 14 || data.age > 99) {
+  } else if (form.userage.value < 14 || form.userage.value > 99) {
     alert("나이는 14세 이상 99세 이하로 입력가능합니다.");
     document.querySelector("#userage").focus();
     return;
   }
-
-  if (data.height == "") {
+  if (form.userheight.value == "") {
     alert("키를 입력해주세요.");
     document.querySelector("#userheight").focus();
     return;
-  } else if (data.height < 100 || data.height > 230) {
+  } else if (form.userheight.value < 100 || form.userheight.value > 230) {
     alert("키는 100cm 이상 230cm 이하로 입력 가능합니다");
     document.querySelector("#userheight").focus();
     return;
   }
-
-  if (data.gender == "") {
+  if (form.gender.value == "") {
     alert("성별을 선택해주세요.");
     return;
-  } else {
-    console.log("가보자고!!!!!");
-    document.getElementById("secondSection").classList.add("d-none");
-    document.getElementById("thirdSection").classList.remove("d-none");
   }
+  axios({
+    method: "POST",
+    url: "/signup/secondValidation",
+    data: {
+      useremail: useremail,
+    },
+  })
+    .then((res) => {
+      return res.data;
+    })
+    .then((data) => {
+      if (data) {
+        console.log("가보자고!!!!!");
+        document.getElementById("emailError").classList.remove("error");
+        document.getElementById("emailError").classList.add("correct");
+        document.querySelector("#emailError").textContent =
+          "이메일 사용이 가능합니다!";
+        document.getElementById("secondSection").classList.add("d-none");
+        document.getElementById("thirdSection").classList.remove("d-none");
+      } else {
+        // alert("이미 존재하는 이메일입니다.");
+        document.getElementById("emailError").classList.add("error");
+        document.getElementById("emailError").classList.remove("correct");
+        document.querySelector("#emailError").textContent =
+          "이미 존재하는 이메일입니다!";
+        return false;
+      }
+    });
 }
 
 function register() {

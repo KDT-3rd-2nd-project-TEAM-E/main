@@ -47,7 +47,7 @@
 }
 
 #headerArea .profile_img ul:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 6px;
   left: 50%;
@@ -62,7 +62,7 @@
 
 #headerArea h3 {
   color: #fff;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 1.2em;
   font-weight: 500;
   line-height: 1.5;
@@ -107,7 +107,7 @@
 }
 
 #headerArea #gnb ul li b.top-curve::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -129,7 +129,7 @@
 
 #headerArea #gnb ul li b.bottom-curve::before {
   position: absolute;
-  content: '';
+  content: "";
   bottom: 0;
   right: 0;
   width: 20px;

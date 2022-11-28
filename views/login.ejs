@@ -31,7 +31,7 @@
     <div class="container">
       <div class="wrap">
         <div class="title">
-          <span>Welcome!</span> KCAL-CAL에 오신 것을 환영합니다!
+          <a href="/"><span>Welcome!</span> KCAL-CAL에 오신 것을 환영합니다!</a>
         </div>
         <hr />
         <form action="/login" name="form_login" method="post">
@@ -85,158 +85,138 @@
               </ul>
             </div>
           </div>
-          <span class="hr-sect">또는</span>
         </form>
 
-        <!-- 카카오 -->
-        <div class="socialLogin">
-          <a href="javascript:void(0)">
-            <img
-              src="/static/img/kakao_login.png"
-              alt="카카오"
-              id="kkoLoginBtn"
-              onclick="kakaoLogin();"
-            />
-          </a>
-          <a href="javascript:void(0)">
-            <img
-              src="/static/img/kakao_start.png"
-              alt="카카오"
-              id="kkoSignupBtn"
-              onclick="kakaoSignup();"
-            />
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 아이디찾기 모달(vertically centered) -->
-    <div
-      class="modal fade"
-      id="findId"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">
-              아이디 찾기
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="oneine">
-              <input
-                type="text"
-                id="findUseremail"
-                class="inputBox"
-                placeholder="회원가입시 등록한 이메일 입력"
-              />
-              <button type="button" id="lookupEmail" onclick="lookup(); ">
-                이메일 조회
-              </button>
-            </div>
-            <div id="showId"></div>
-            <br />
-            <div class="loginEtc">
-              <ul>
-                <li>
-                  <a
-                    rold="button"
-                    data-bs-toggle="modal"
-                    data-bs-target="#findPw"
-                  >
-                    비밀번호 찾기</a
-                  >
-                </li>
-                <li>
-                  <a href="/login">로그인 하러 가기</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- 아이디찾기 모달(vertically centered) -->
+        <div
+          class="modal fade"
+          id="findId"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                  아이디 찾기
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="oneine">
+                  <input
+                    type="text"
+                    id="findUseremail"
+                    class="inputBox"
+                    placeholder="회원가입시 등록한 이메일 입력"
+                  />
+                  <button type="button" id="lookupEmail" onclick="lookup(); ">
+                    이메일 조회
+                  </button>
+                </div>
+                <div id="showId"></div>
+                <br />
+                <div class="loginEtc">
+                  <ul>
+                    <li>
+                      <a
+                        rold="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#findPw"
+                      >
+                        비밀번호 찾기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/login">로그인 하러 가기</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Understood</button> -->
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- 비번찾기 모달(vertically centered) -->
-    <div
-      class="modal fade"
-      id="findPw"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">
-              비밀번호 찾기
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="oneine">
-              <input
-                type="text"
-                id="findUseremail"
-                class="inputBox"
-                placeholder="회원가입시 등록한 이메일 입력"
-              />
-              <button type="button" id="lookupEmail" onclick="sendEmail(); ">
-                인증번호 전송
-              </button>
-            </div>
-            <!--전송완료 여부 -->
-            <div id="showResult"></div>
-            <br />
-            <div class="loginEtc">
-              <ul>
-                <li>
-                  <a
-                    role="button"
-                    data-bs-toggle="modal"
-                    data-bs-target="#findId"
+        <!-- 비번찾기 모달(vertically centered) -->
+        <div
+          class="modal fade"
+          id="findPw"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                  비밀번호 찾기
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="oneine">
+                  <input
+                    type="text"
+                    id="findUseremail"
+                    class="inputBox"
+                    placeholder="회원가입시 등록한 이메일 입력"
+                  />
+                  <button
+                    type="button"
+                    id="lookupEmail"
+                    onclick="sendEmail(); "
                   >
-                    아이디 찾기</a
-                  >
-                </li>
-                <li>
-                  <a href="/login">로그인 하러 가기</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    인증번호 전송
+                  </button>
+                </div>
+                <!--전송완료 여부 -->
+                <div id="showResult"></div>
+                <br />
+                <div class="loginEtc">
+                  <ul>
+                    <li>
+                      <a
+                        role="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#findId"
+                      >
+                        아이디 찾기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/login">로그인 하러 가기</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Understood</button> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- 카카오 로그인 api 스크립트 -->
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-
     <!-- 로그인 버튼 -->
     <script src="/static/js/login.js"></script>
   </body>

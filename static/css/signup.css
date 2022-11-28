@@ -1,12 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@100;300;400&display=swap");
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   font-family: "Noto Sans KR", sans-serif;
-  scale: 0.95;
 }
 
 body {
@@ -55,10 +53,11 @@ body {
   padding: 15px;
   width: 100%;
   margin: 0px 0px 10px;
+  width: 600px;
 }
 
 .inputBox:focus {
-  border: 2px solid #34945c;
+  border: 1px solid #34945c;
   background-color: #f7faf9;
   border-radius: 5px;
   box-sizing: border-box;
@@ -69,23 +68,27 @@ body {
   margin: 0px 0px 10px;
 }
 
+.btn-outline-secondary {
+  width: 100px;
+}
+
 .signupId input {
-  width: 70%;
-  height: 100%;
   font-size: 1em;
   display: inline;
   box-sizing: border-box;
   margin-top: 10px;
+  width: 420px;
+  margin-right: 10px;
 }
 
 .signupId input:focus {
   margin-top: 10px;
-  width: 70%;
+  margin-right: 10px;
+  width: 420px;
 }
 
 #checkId {
   width: auto;
-  height: 100%;
   font-size: 1em;
   display: inline;
   box-sizing: border-box;
@@ -139,9 +142,15 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 .signupId {
   flex-direction: row;
   justify-content: center;
+  margin: 0 auto;
+}
+
+#firstSection {
+  margin: 0 auto;
 }
 
 #loginBtn {
@@ -184,7 +193,7 @@ span {
 [type="radio"] {
   vertical-align: middle;
   appearance: none;
-  border: max(2px, 0.1em) solid #777;
+  border: max(1px, 0.1em) solid #777;
   border-radius: 50%;
   width: 1.25em;
   height: 1.25em;
@@ -197,7 +206,7 @@ span {
 
 [type="radio"]:focus-visible {
   outline-offset: max(2px, 0.1em);
-  outline: max(2px, 0.1em) dotted #3dad6b;
+  outline: max(1px, 0.1em) dotted #3dad6b;
 }
 
 [type="radio"]:hover {
@@ -222,22 +231,27 @@ span {
   width: 60%;
   margin-bottom: 10px;
 }
+
 .nicknameBox #nickname {
   width: 75%;
 }
+
 /* gender */
 .genderBox {
   width: 40%;
   margin-top: 5px;
 }
+
 /* age */
 .ageBox {
   width: 50%;
   margin-bottom: 10px;
 }
+
 .ageBox #userage {
   width: 58%;
 }
+
 /* height */
 .heightBox {
   width: 50%;
@@ -252,6 +266,7 @@ span {
 .weightBox {
   margin-bottom: 10px;
 }
+
 .weightBox #userweight {
   width: 30%;
 }
@@ -272,6 +287,7 @@ span {
 .error {
   color: red;
 }
+
 .correct {
   color: green;
 }

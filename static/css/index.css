@@ -1,5 +1,6 @@
 body {
-  font-family: 'Noto Sans KR', 'Roboto', "돋움", Dotum, "굴림", Gulim, sans-serif;
+  font-family: "Noto Sans KR", "Roboto", "돋움", Dotum, "굴림", Gulim,
+    sans-serif;
   line-height: 1.5;
   letter-spacing: -1px;
   width: 70vw;
@@ -52,13 +53,13 @@ h2 {
   font-size: 3em;
   font-weight: 700;
   line-height: 1.2;
-  word-break: keep-all
+  word-break: keep-all;
 }
 
 p {
   padding: 30px 0;
   font-weight: 400;
-  word-break: keep-all
+  word-break: keep-all;
 }
 
 /* start ---------------------- */
@@ -90,7 +91,7 @@ p {
   padding: 10px;
   border: 1px solid #3dad6b;
   font-size: 1em;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .start ul li:nth-child(1) a {
@@ -103,7 +104,7 @@ p {
   color: #3dad6b;
 }
 
-.start ul li:nth-child(2) a:hover{
+.start ul li:nth-child(2) a:hover {
   background: #3dad6b;
   color: #fff;
 }

@@ -23,7 +23,7 @@ exports.main = (req, res) => {
   console.log("Session 출력 >> ", userSession);
 
   if (userSession !== undefined && userSession.height !== undefined) {
-    const query = `SELECT user.userid as userid, user.nickname as nickname, user.useremail, user.height, userweight.weight
+    const query = `SELECT user.userid as userid, user.nickname as nickname, user.age as age, user.gender as gender, user.height as height, userweight.weight as weight
   FROM user
       INNER JOIN userweight
       ON user.userid = userweight.userid
@@ -34,6 +34,8 @@ exports.main = (req, res) => {
         // * Chrome 브라우저의 경우, JSONVue 확장프로그램 설치시 데이터 출력 결과를 가독성있게 볼 수 있음
         // https://chrome.google.com/webstore/detail/jsonvue/chklaanhfefbnpoihckbnefhakgolnmc
         console.log("로그인 데이터", result);
+        console.log("로그인 유저 나이", result[0].age);
+        console.log("로그인 유저 성별", result[0].gender);
         console.log("로그인 유저 키", result[0].height);
         console.log("로그인 유저 몸무게", result[0].weight);
         res.render("main", {
@@ -53,81 +55,6 @@ exports.main = (req, res) => {
     return;
   } else {
     res.render("main", { activeMenu: "main", isLogin: false });
-  }
-};
-
-exports.crawler = async (req, res) => {
-  let result = await crawler(req.body.search);
-  res.send({ data: result });
-
-  async function crawler(search) {
-    // ❶ HTML 로드하기
-    try {
-      const resp = await axios.get(
-        `https://www.myfitnesspal.com/ko/nutrition-facts-calories/${encodeURIComponent(
-          search
-        )}`
-      );
-      const $ = cheerio.load(resp.data); // ❷ HTML을 파싱하고 DOM 생성하기
-      const titleArray = $(".css-qumjp8"); // ❸ CSS 셀렉터로 원하는 요소 찾기
-      const kcalArray = $(".css-w1kjmb");
-
-      const brandAmountArray = $(".css-j7qwjs > .css-w1kjmb");
-
-      // const brandAmountArray = $(".smallText greyText greyLink");
-      // const amountArray = $(".css-w1kjmb");
-      // ➍ 찾은 요소를 순회하면서 요소가 가진 텍스트를 출력하기
-      titleArray.each((idx, el) => {
-        return $(el).text();
-      });
-      brandAmountArray.each((idx, el) => {
-        return $(el).text();
-      });
-      kcalArray.each((idx, el) => {
-        return $(el).text();
-      });
-
-      const foods = [];
-
-      for (let i = 0; i < titleArray.length; i++) {
-        let title = titleArray[i].children[0].data;
-        let brand = brandAmountArray[i].children[0].data;
-        let amount;
-
-        if (brandAmountArray[i].children.length < 7) {
-          brand = "브랜드 정보없음";
-          amount =
-            brandAmountArray[i].children[0].data +
-            brandAmountArray[i].children[4].data;
-        } else {
-          amount =
-            brandAmountArray[i].children[2].data +
-            brandAmountArray[i].children[6].data;
-        }
-
-        let kcalText = kcalArray.text();
-        kcalRegex = kcalText.match(/칼로리\s:\s\d{1,3}탄수화물+./g);
-        kcal = String(kcalRegex[i]).replace(/[^0-9]/g, "");
-
-        let carbsRegex = kcalText.match(/탄수화물:\s\d{1,3}g+./g);
-        carbs = String(carbsRegex[i]).replace(/[^0-9]/g, "");
-
-        let fatRegex = kcalText.match(/지방\s:\s\d{1,3}g+./g);
-        fat = String(fatRegex[i]).replace(/[^0-9]/g, "");
-
-        let proteinRegex = kcalText.match(/단백질\s:\s\d{1,3}./g);
-        protein = String(proteinRegex[i]).replace(/[^0-9]/g, "");
-
-        let array = { title, brand, kcal, amount, carbs, fat, protein };
-
-        // console.log(">>>", brandAmountArray[i].children[0].data);
-        foods.push(array);
-      }
-
-      return foods;
-    } catch (err) {
-      console.log(err);
-    }
   }
 };
 
@@ -157,11 +84,28 @@ exports.sub2 = (req, res) => {
 
 exports.sub3 = (req, res) => {
   const userSession = req.session.user;
-  if (userSession !== undefined) {
-    res.render("sub3", {
-      activeMenu: "sub3",
-      isLogin: true,
-    });
+  if (userSession !== undefined && userSession.height !== undefined) {
+    const query = `SELECT user.userid as userid, userweight.date as date, userweight.weight as weight
+  FROM user
+      INNER JOIN userweight
+      ON user.userid = userweight.userid
+      WHERE user.userid = '${userSession.userid}' ORDER BY date DESC LIMIT 10;`;
+    models.sequelize
+      .query(query, { type: models.sequelize.QueryTypes.SELECT })
+      .then((result) => {
+        // * Chrome 브라우저의 경우, JSONVue 확장프로그램 설치시 데이터 출력 결과를 가독성있게 볼 수 있음
+        // https://chrome.google.com/webstore/detail/jsonvue/chklaanhfefbnpoihckbnefhakgolnmc
+        console.log("로그인 데이터", result);
+        console.log("로그인 유저 ID", result[0].userid);
+        console.log("로그인 유저 몸무게", result[0].weight);
+        res.render("sub3", {
+          activeMenu: "sub3",
+          result: result,
+          isLogin: true,
+          userid: userSession.userid,
+        });
+        return;
+      });
   } else {
     res.render("sub3", { activeMenu: "sub3", isLogin: false });
   }

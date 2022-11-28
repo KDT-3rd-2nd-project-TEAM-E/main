@@ -5,12 +5,12 @@ window.onload = (event) => {
   event.preventDefault();
   console.log(1);
   axios({
-      method: "POST",
-      url: "/",
-      data: {
-        search: "스타벅스",
-      },
-    })
+    method: "POST",
+    url: "/main",
+    data: {
+      search: "스타벅스",
+    },
+  })
     .then((res) => {
       return (data = res.data);
     })
@@ -85,12 +85,12 @@ window.onload = (event) => {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   axios({
-      method: "POST",
-      url: "/",
-      data: {
-        search: form.search.value,
-      },
-    })
+    method: "POST",
+    url: "/main",
+    data: {
+      search: form.search.value,
+    },
+  })
     .then((res) => {
       return (data = res.data);
     })

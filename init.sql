@@ -58,7 +58,7 @@ INSERT INTO user (userid, userpw, useremail, nickname, gender, age, height) VALU
 INSERT INTO member (userid, userpw) VALUES ('aaa', 'aaa');
 INSERT INTO member (userid, userpw) VALUES ('bbb', 'bbb');
 
-INSERT INTO userweight (userid, weight) VALUES ('aaa', 72); 
+INSERT INTO userweight (userid, weight) VALUES ('aaa', 80); 
 INSERT INTO test (userid) VALUES ('aaa'); 
 SELECT * FROM test;
 DROP TABLE test;

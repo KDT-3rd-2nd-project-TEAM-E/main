@@ -11,7 +11,7 @@ router.get("/", controller.index); // intro => index
 
 router.get("/main", controller.main);
 
-router.post("/main", controller.crawler);
+// router.post("/main", controller.crawler);
 
 router.get("/sub1", controller.sub1);
 

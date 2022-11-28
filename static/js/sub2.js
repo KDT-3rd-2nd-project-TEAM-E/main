@@ -51,7 +51,7 @@ window.onload = (event) => {
     method: "GET",
     url: "https://dapi.kakao.com/v2/search/blog?target=title",
     data: {
-      query: '건강',
+      query: "건강",
     },
     // data: { query: `${result}` },
     // data: { query: '건강' },
@@ -66,7 +66,9 @@ window.onload = (event) => {
       html += `
                     <a href="${msg.documents[i].url}">
                       <div class="news">
-                        <p>NO&#46;&nbsp;<span>${msg.documents.length - i}</span></p>
+                        <p>NO&#46;&nbsp;<span>${
+                          msg.documents.length - i
+                        }</span></p>
                         <h4>${msg.documents[i].title}</h4>
                         <p>${msg.documents[i].blogname}</p>
                         <p>${msg.documents[i].contents.substr(0, 100)}</p>
@@ -79,10 +81,9 @@ window.onload = (event) => {
     search.insertAdjacentHTML("afterbegin", html);
     // search.innerHTML.replace(/<(\/b|b)([^>]*)>/gi,"");
     // html.replace(/<(\/b|b)([^>]*)>/gi,"");
-
-  })
+  });
 };
-form.addEventListener('submit', (event) => {
+form.addEventListener("submit", (event) => {
   event.preventDefault();
   let result = document.forms["search"].searchInput.value;
   console.log(result);
@@ -92,7 +93,7 @@ form.addEventListener('submit', (event) => {
     method: "GET",
     url: "https://dapi.kakao.com/v2/search/blog?target=title",
     data: {
-      query: result
+      query: result,
     },
     // data: { query: `${result}` },
     // data: { query: '건강' },

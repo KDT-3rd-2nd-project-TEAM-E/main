@@ -17,6 +17,12 @@ body {
   align-items: center;
 }
 
+a {
+  display: block;
+  text-decoration: none;
+  color: #666;
+}
+
 .container {
   background-color: #ffffff;
   border: 0px solid black;
@@ -61,7 +67,7 @@ body {
 }
 
 .inputBox:focus {
-  border: 2px solid #34945c;
+  border: 1px solid #34945c;
   background-color: #f7faf9;
   border-radius: 5px;
   box-sizing: border-box;
@@ -127,10 +133,10 @@ body {
 } */
 
 .socialLogin img {
-    width: 100%;
-    margin: 10px 0;
-    max-width: 530px;
-    border-radius: 5px;
+  width: 100%;
+  margin: 10px 0;
+  max-width: 530px;
+  border-radius: 5px;
 }
 
 #loginBtn:hover,
@@ -148,6 +154,7 @@ body {
   font-size: 16px;
   margin: 30px 110px 20px 110px;
 }
+
 .hr-sect::before,
 .hr-sect::after {
   content: "";
@@ -231,6 +238,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .modal-content {
   /* width: auto; */
   text-align: center;

@@ -38,9 +38,9 @@
         </div>
         <hr />
 
-        <!--  action="/signup" method="post"   -->
+        <!-- action="/signup" method="post" -->
         <form name="form_register">
-          <section id="firstSection" class="">
+          <section id="firstSection">
             <div class="signupId">
               <input
                 type="text"
@@ -116,7 +116,14 @@
                 id="useremail"
                 placeholder="이메일 입력(abc@example.com)"
                 required
-              />
+              />@
+              <input type="text" class="inputBox" id="domainTxt" required />
+              <select class="inputBox" id="domainList">
+                <option value="type">직접입력</option>
+                <option value="naver.com">naver.com</option>
+                <option value="google.com">google.com</option>
+                <option value="daum.net">daum.net</option>
+              </select>
               <div id="emailError" class="error"></div>
             </div>
 
