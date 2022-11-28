@@ -1,5 +1,9 @@
 const { User } = require("../models");
 const models = require("../models"); // ../models/index.js
+const nodemailer = require("nodemailer");
+const ejs = require("ejs");
+const { callbackPromise } = require("nodemailer/lib/shared");
+const { renderFile } = require("ejs");
 
 exports.index = (req, res) => {
   const userSession = req.session.user;
@@ -254,53 +258,70 @@ exports.findId = (req, res) => {
       useremail: req.body.useremail,
     },
   }).then((result) => {
-    console.log("ID 찾기 >>", result); // [{}]
+    // console.log("ID 찾기 >>", result.userid); // [{}]
     if (result === null) {
-      res.send(false); // 해당 이메일에 대응하는 ID값 X
+      res.send(`존재하지 않는 이메일입니다!`); // 해당 이메일에 대응하는 ID값 X
     } else {
-      res.send(true); // ID값 출력 or 다른 처리
+      //res.send(true); // ID값 출력 or 다른 처리
+      res.send(result.userid);
     }
   });
 };
 
-// exports.findPw = (req, res) => {
-//   models.User.findOne({
-//     where: {
-//       userid: req.body.userid,
-//       useremail: req.body.useremail,
-//     },
-//   }).then((result) => {
-//     console.log("PW 찾기 >>", result); // [{}]
-//     if (result === null) {
-//       res.send(false); // 해당 ID, 이메일에 대응하는 PW값 X
-//       // return
-//     } else {
-//       models.User.update(
-//         {
-//           userpw: 1111,
-//         },
-//         {
-//           where: {
-//             userid: req.body.id,
-//           },
-//         }
-//       ).then((result) => {
-//         console.log("PW초기화 >>", result); // update >> [ 1 ]
-//       });
-//       res.render("mypage"); // ID값 출력 or 다른 처리
-//     }
-//   });
-// };
-
-exports.findPw = (req, res) => {
-  if (req.body.email === "") {
-    res.status(400).send("email required");
-  }
-
-  User.findOne({
+//ID 중복확인
+exports.checkid = (req, res) => {
+  models.User.findOne({
     where: {
-      email: req.body.email,
+      userid: req.body.userid,
     },
+  }).then((result) => {
+    // console.log(req.body);
+    // console.log(result);
+    if (result === null) {
+      res.send(true);
+    } else {
+      return res.send(false);
+    }
+  });
+};
+
+//PW찾기
+
+exports.sendEmail = (req, res) => {
+  models.User.findOne({
+    where: {
+      useremail: req.body.useremail,
+    },
+  }).then((result) => {
+    if (result === null) {
+      return res.send(false);
+    }
+    const mailPoster = nodemailer.createTransport({
+      service: "Naver",
+      host: "smtp.naver.com",
+      port: 587,
+      auth: {
+        user: "kcal-cal@naver.com",
+        pass: "KcalcalE2",
+      },
+    });
+    // let authNum = Math.random().toString().slice(2, 8);
+    // const content = ejs
+    //   .renderFile("./views/authMail.ejs", { authcode: authNum })
+    //   .toString();
+
+    const mailOpt = {
+      from: "kcal-cal@naver.com",
+      to: `${req.body.useremail}`,
+      subject: "[kcalcal] 이메일 인증을 통한 비밀번호 찾기",
+      html:
+        ' <p style="color: black"><b>안녕하세요, Kcal-cal 입니다.<br> 회원님의 비밀번호는</b></p><br>' +
+        `<p style = "color: blue">${result.userpw} </p>` +
+        "<br> <b>입니다</b><br><br>" +
+        '<hr> <button type="button"><a href="http://localhost:8000/login">로그인 하러 가기</a> </button>',
+    };
+    mailPoster.sendMail(mailOpt, res);
+    res.send(true);
   });
 };
 
@@ -354,6 +375,22 @@ exports.postsignup = async (req, res) => {
   res.send(true);
 }; // axios요청 한버튼에 두개 -> 각기 다른 DB에 저장되게끔
 
+exports.signupCheckId = (req, res) => {
+  models.User.findOne({
+    where: {
+      userid: req.body.userid,
+    },
+  }).then((result) => {
+    // console.log(req.body);
+    // console.log(result);
+    if (result === null) {
+      res.send(true);
+    } else {
+      return res.send(false);
+    }
+  });
+};
+
 exports.bmi = (req, res) => {
   // const query = `SELECT date, weight FROM userweight WHERE userid=userweight.userid ORDER BY Date DESC;`;
   const query = `SELECT date, weight FROM userweight WHERE userid=${req.body.userid} ORDER BY Date DESC;`;
@@ -389,47 +426,6 @@ exports.mypage = (req, res) => {
   } else {
     res.render("404");
   }
-};
-
-exports.mypageEdit = (req, res) => {
-  models.User.update(
-    {
-      userid: req.body.userid,
-      userpw: req.body.userpw,
-      useremail: req.body.useremail,
-      nickname: req.body.nickname,
-      gender: req.body.gender,
-      age: req.body.age,
-      height: req.body.height,
-    },
-    {
-      where: {
-        userid: req.body.userid,
-      },
-    }
-  ).then((result) => {
-    console.log("UserEdit 성공 >>", result);
-    console.log("전", req.session.user);
-    if (result) {
-      if (result === null) {
-        res.send(false);
-        return;
-      } else {
-        req.session.user = {
-          isLogin: true,
-          userid: req.body.userid,
-          userpw: req.body.userpw,
-          useremail: req.body.useremail,
-          nickname: req.body.nickname,
-          gender: req.body.gender,
-          age: req.body.age,
-          height: req.body.height,
-        };
-      }
-      console.log("후", req.session.user);
-      res.send(req.session.user);
-    }
-  });
 };
 
 exports.myweightEdit = (req, res) => {

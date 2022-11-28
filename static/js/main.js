@@ -24,22 +24,22 @@ function inputInformation() {
       if (foodsInformation == null) {
         for (let i = 0; i < value[0].length; i++) {
           const html = `
-    <li class="foods-information">
-      <dl>
-      <dt class="food-name">${value[0][i].title}</dt>
-      <dd class="food-brand ">${value[0][i].brand}</dd>
-      <dd class="food-vol">${value[0][i].amount}</dd>
-    </dl>
-    <div class="cal-box clearfix">
-      <p class="food-kcal">${value[0][i].kcal}kcal</p>
-      <p class="food-car">탄수화물 ${value[0][i].carbs}g</p>
-      <p class="food-protein">단백질 ${value[0][i].protein}g</p>
-      <p class="food-fat">지방 ${value[0][i].fat}g</p>
-    </div>
-    <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
-    <hr>
-  </li>
-  `;
+            <li class="foods-information">
+              <dl>
+              <dt class="food-name">${value[0][i].title}</dt>
+              <dd class="food-brand ">${value[0][i].brand}</dd>
+              <dd class="food-vol">${value[0][i].amount}</dd>
+            </dl>
+            <div class="cal-box clearfix">
+              <p class="food-kcal">${value[0][i].kcal}kcal</p>
+              <p class="food-car">탄수화물 ${value[0][i].carbs}g</p>
+              <p class="food-protein">단백질 ${value[0][i].protein}g</p>
+              <p class="food-fat">지방 ${value[0][i].fat}g</p>
+            </div>
+            <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
+            <hr>
+          </li>
+         `;
 
           const foodList = document.querySelector(".food-list");
           foodList.insertAdjacentHTML("afterbegin", html);
@@ -50,22 +50,22 @@ function inputInformation() {
         }
         for (let i = 0; i < value[0].length; i++) {
           const html = `
-    <li class="foods-information">
-      <dl>
-      <dt class="food-name">${value[0][i].title}</dt>
-      <dd class="food-brand ">${value[0][i].brand}</dd>
-      <dd class="food-vol">${value[0][i].amount}</dd>
-    </dl>
-    <div class="cal-box clearfix">
-      <p class="food-kcal">${value[0][i].kcal}kcal</p>
-      <p class="food-car">탄수화물 ${value[0][i].carbs}g</p>
-      <p class="food-protein">단백질 ${value[0][i].protein}g</p>
-      <p class="food-fat">지방 ${value[0][i].fat}g</p>
-    </div>
-    <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
-    <hr>
-  </li>
-  `;
+            <li class="foods-information">
+              <dl>
+              <dt class="food-name">${value[0][i].title}</dt>
+              <dd class="food-brand ">${value[0][i].brand}</dd>
+              <dd class="food-vol">${value[0][i].amount}</dd>
+            </dl>
+            <div class="cal-box clearfix">
+              <p class="food-kcal">${value[0][i].kcal}kcal</p>
+              <p class="food-car">탄수화물 ${value[0][i].carbs}g</p>
+              <p class="food-protein">단백질 ${value[0][i].protein}g</p>
+              <p class="food-fat">지방 ${value[0][i].fat}g</p>
+            </div>
+            <div class="select" onclick="addKcal(${value[0][i].kcal});"><i class="fas fa-check"></i></div>
+            <hr>
+          </li>
+          `;
 
           const foodList = document.querySelector(".food-list");
           foodList.insertAdjacentHTML("afterbegin", html);
