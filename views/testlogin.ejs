@@ -54,7 +54,7 @@
     <h1>카카오로 회원가입</h1>
     <ul>
       <li id="kakaosignup">
-        <button type="button" onclick="kakaoLogin()">카카오로 회원가입</button>
+        <button type="button" onclick="kakaoSignup()">카카오로 회원가입</button>
       </li>
     </ul>
 
@@ -128,6 +128,15 @@
           Kakao.Auth.setAccessToken(undefined);
         }
       }
+      //     function kakaoLogout() {
+      //   if (!Kakao.Auth.getAccessToken()) {
+      //     alert('Not logged in.');
+      //     return;
+      //   }
+      //   Kakao.Auth.logout(function () {
+      //     alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
+      //   });
+      // }
 
       // 네이버 로그인
       var naverLogin = new naver.LoginWithNaverId({
@@ -229,49 +238,49 @@
         console.log(t);
       }
 
-      // function kakaoLogin() {
-      //   Kakao.Auth.login({
-      //     success: function (response) {
-      //       Kakao.API.request({
-      //         url: "/v2/user/me",
-      //         success: function (response) {
-      //           axios({
-      //             method: "POST",
-      //             url: "/kakaosignup",
-      //             data: {
-      //               userid: response.id,
-      //               useremail: response.kakao_account.email,
-      //               nickname: response.properties.nickname,
-      //             },
-      //           })
-      //             .then((response) => {
-      //               return response.data;
-      //             })
-      //             .then((data) => {
-      //               if (data) {
-      //                 document.location.href = "/login";
-      //                 return;
-      //               } else {
-      //                 alert("이미 회원가입을 하셨습니다! 로그인 해주세요!");
-      //                 document.location.href = "/login";
-      //               }
-      //             });
-      //           console.log(response);
-      //           console.log(response.properties);
-      //           console.log(response.properties.nickname);
-      //           console.log(response.kakao_account.email);
-      //           console.log(response.id);
-      //         },
-      //         fail: function (error) {
-      //           console.log(error);
-      //         },
-      //       });
-      //     },
-      //     fail: function (error) {
-      //       console.log(error);
-      //     },
-      //   });
-      // }
+      function kakaoSignup() {
+        Kakao.Auth.login({
+          success: function (response) {
+            Kakao.API.request({
+              url: "/v2/user/me",
+              success: function (response) {
+                axios({
+                  method: "POST",
+                  url: "/kakaosignup",
+                  data: {
+                    userid: response.id,
+                    useremail: response.kakao_account.email,
+                    nickname: response.properties.nickname,
+                  },
+                })
+                  .then((response) => {
+                    return response.data;
+                  })
+                  .then((data) => {
+                    if (data) {
+                      document.location.href = "/login";
+                      return;
+                    } else {
+                      alert("이미 회원가입을 하셨습니다! 로그인 해주세요!");
+                      document.location.href = "/login";
+                    }
+                  });
+                console.log(response);
+                console.log(response.properties);
+                console.log(response.properties.nickname);
+                console.log(response.kakao_account.email);
+                console.log(response.id);
+              },
+              fail: function (error) {
+                console.log(error);
+              },
+            });
+          },
+          fail: function (error) {
+            console.log(error);
+          },
+        });
+      }
 
       function kakaoLogin() {
         Kakao.Auth.login({
