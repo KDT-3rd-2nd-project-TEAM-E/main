@@ -18,12 +18,35 @@ exports.main = (req, res) => {
   const userSession = req.session.user;
   console.log("Session 출력 >> ", userSession);
 
-  if (userSession !== undefined) {
+  if (userSession !== undefined && userSession.height !== undefined) {
+    const query = `SELECT user.userid as userid, user.nickname as nickname, user.useremail, user.height, userweight.weight
+  FROM user
+      INNER JOIN userweight
+      ON user.userid = userweight.userid
+      WHERE user.userid = '${userSession.userid}' ORDER BY date ASC LIMIT 1;`;
+    models.sequelize
+      .query(query, { type: models.sequelize.QueryTypes.SELECT })
+      .then((result) => {
+        // * Chrome 브라우저의 경우, JSONVue 확장프로그램 설치시 데이터 출력 결과를 가독성있게 볼 수 있음
+        // https://chrome.google.com/webstore/detail/jsonvue/chklaanhfefbnpoihckbnefhakgolnmc
+        console.log("로그인 데이터", result);
+        console.log("로그인 유저 키", result[0].height);
+        console.log("로그인 유저 몸무게", result[0].weight);
+        res.render("main", {
+          activeMenu: "main",
+          result: result[0],
+          isLogin: true,
+          userid: userSession.userid,
+        });
+        return;
+      });
+  } else if (userSession !== undefined && userSession.weight === undefined) {
     res.render("main", {
       activeMenu: "main",
       isLogin: true,
-      nickname: userSession.nickname,
+      userid: userSession.userid,
     });
+    return;
   } else {
     res.render("main", { activeMenu: "main", isLogin: false });
   }
@@ -105,15 +128,39 @@ exports.crawler = async (req, res) => {
 };
 
 exports.sub1 = (req, res) => {
-  res.render("sub1", { activeMenu: "sub1" });
+  const userSession = req.session.user;
+  if (userSession !== undefined) {
+    res.render("sub1", {
+      activeMenu: "sub1",
+      isLogin: true,
+    });
+  } else {
+    res.render("sub1", { activeMenu: "sub1", isLogin: false });
+  }
 };
 
 exports.sub2 = (req, res) => {
-  res.render("sub2", { activeMenu: "sub2" });
+  const userSession = req.session.user;
+  if (userSession !== undefined) {
+    res.render("sub2", {
+      activeMenu: "sub2",
+      isLogin: true,
+    });
+  } else {
+    res.render("sub2", { activeMenu: "sub2", isLogin: false });
+  }
 };
 
 exports.sub3 = (req, res) => {
-  res.render("sub3", { activeMenu: "sub3" });
+  const userSession = req.session.user;
+  if (userSession !== undefined) {
+    res.render("sub3", {
+      activeMenu: "sub3",
+      isLogin: true,
+    });
+  } else {
+    res.render("sub3", { activeMenu: "sub3", isLogin: false });
+  }
 };
 
 exports.getlogin = (req, res) => {
@@ -143,6 +190,8 @@ exports.kakaosignup = (req, res) => {
 };
 
 exports.loginkakao = (req, res) => {
+  console.log(req.body);
+
   models.User.findOne({
     where: {
       useremail: req.body.useremail, // useremail로 DB값과 비교
@@ -160,18 +209,20 @@ exports.loginkakao = (req, res) => {
         userid: result.userid,
         nickname: result.nickname,
         useremail: result.useremail,
+        height: result.height,
       };
       console.log(req.session.user);
-      res.redirect("/main");
+      res.send(req.session.user);
     }
   });
 };
 
 exports.postlogin = (req, res) => {
+  console.log(req.body);
   models.User.findOne({
     where: {
-      userid: req.body.userid,
-      userpw: req.body.userpw,
+      userid: req.body.id,
+      userpw: req.body.pw,
     },
   }).then((result) => {
     console.log("login 결과 >>", result); // [{}]
@@ -181,8 +232,8 @@ exports.postlogin = (req, res) => {
     } else {
       req.session.user = {
         isLogin: true,
-        userid: req.body.userid,
-        userpw: req.body.userpw,
+        userid: req.body.id,
+        userpw: req.body.pw,
         useremail: result.useremail,
         nickname: result.nickname,
         gender: result.gender,
@@ -402,6 +453,7 @@ exports.mypageDelete = async (req, res) => {
   let result1 = await models.User.destroy({
     where: {
       userid: req.body.userid,
+      userpw: req.body.userpw,
     },
   });
   let result2 = await models.Userweight.destroy({

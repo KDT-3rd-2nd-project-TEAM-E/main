@@ -44,9 +44,15 @@
           <article class="gauge">
             <h3 class="hidden">기초 대사량 칼로리 게이지</h3>
             <% if (isLogin) { %>
-            <p><%= nickname %> 님,<br />환영합니다 &#58;&#41;</p>
-            <% } else if (isLogin && userid === useremail) {%>
-            <p>정보수정에서 회원님의 정보를 입력해주세요!</p>
+            <p><%= result.nickname %> 님,<br />환영합니다 &#58;&#41;</p>
+            <% } else if (isLogin && result.height === undefined) {%>
+            <p>
+              정보수정에서 <%= result.nickname %>님의 정보를 추가 입력해주세요!
+            </p>
+            <% } else if (isLogin && result.weight === undefined) {%>
+            <p>
+              건강상태에서 <%= result.nickname %>님의 체중정보를 입력해주세요!
+            </p>
             <% } else { %>
             <p>로그인 후 조회 가능합니다!</p>
             <% } %>

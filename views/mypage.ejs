@@ -248,26 +248,25 @@
       }
 
       function delInfo() {
-        axios({
-          method: "DELETE",
-          url: "/mypage/delete",
-          data: {
-            userid: form.userid.value,
-            // userpw: form.userpw.value,
-            // useremail: form.useremail.value,
-            // nickname: form.nickname.value,
-            // gender: form.gender.value,
-            // age: form.age.value,
-            // height: form.height.value,
-          },
-        })
-          .then((res) => {
-            return res.data;
+        if (!confirm("정말 탈퇴하시겠습니까?")) {
+          return;
+        } else {
+          axios({
+            method: "DELETE",
+            url: "/mypage/delete",
+            data: {
+              userid: form.userid.value,
+              userpw: form.userpw.value,
+            },
           })
-          .then((data) => {
-            alert(data);
-            window.location.href = "/";
-          });
+            .then((res) => {
+              return res.data;
+            })
+            .then((data) => {
+              alert(data);
+              window.location.href = "/";
+            });
+        }
       }
     </script>
   </body>

@@ -5,7 +5,6 @@
   padding: 0px;
   box-sizing: border-box;
   font-family: "Noto Sans KR", sans-serif;
-  scale: 0.95;
 }
 
 body {
@@ -28,7 +27,8 @@ body {
   box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05);
   border: 0.2rem solid #fff;
   border-radius: 2rem;
-  padding: 0.4em;
+  padding: 40px;
+  min-width: 530px;
 }
 
 .title {
@@ -105,9 +105,7 @@ body {
   margin-top: 20px;
 }
 
-
-
-.loginText > h2{
+.loginText > h2 {
   padding: 5px;
   padding-left: 20%;
   text-align: left;
@@ -128,35 +126,12 @@ body {
   margin-right: auto;
 } */
 
-#kkoLoginBtn {
+.socialLogin img {
   width: 100%;
+  margin: 10px 0;
   max-width: 530px;
-  height: 100%;
-  /* padding: 5px; */
-  cursor: pointer;
-  margin: 0px 10px 30px 10px;
-
-  /* scale: 0.7; */
-  /* padding-bottom: 10px; */
-  /* padding-top: 10px; */
-  scale: 0.7;
+  border-radius: 5px;
 }
-
-#kkoSignupBtn {
-  width: 100%;
-  max-width: 530px;
-  height: 100%;
-  /* padding: 5px; */
-  cursor: pointer;
-  margin: 0px 10px 10px 10px;
-
-  /* scale: 0.7; */
-  /* padding-bottom: 10px; */
-  /* padding-top: 10px; */
-  scale: 0.7;
-}
-
-
 
 #loginBtn:hover,
 #loginBtn:active,
@@ -235,24 +210,17 @@ body {
   cursor: pointer;
 }
 
-.loginEtc a:hover {
-  text-decoration: underline;
-}
-
 /* .socialLogin ul {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-
 .socialLogin li {
   float: left;
   justify-content: center;
   margin: 1px;
   padding: 0;
 } */
-
-
 
 /* 모달 */
 

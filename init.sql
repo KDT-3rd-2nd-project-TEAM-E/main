@@ -66,13 +66,20 @@ DROP TABLE test;
 DELETE FROM user WHERE userid = 'archangel67@naver.com';
 
 
-SELECT Date, weight FROM userweight WHERE userid='aaa' ORDER BY Date DESC;
+SELECT Date, weight FROM userweight WHERE userid='aaa' ORDER BY date DESC;
 
-SELECT *
+SELECT user.nickname as nickname, user.height, userweight.weight
 FROM user
     INNER JOIN userweight
     ON user.userid = userweight.userid;
-    
+    WHERE user.userid = '${req.body.userid}' ORDER BY date ASC LIMIT 1
+
+SELECT user.userid as userid, userweight.date, userweight.weight
+FROM user
+    INNER JOIN userweight
+    ON user.userid = userweight.userid;
+    WHERE user.userid = '${req.body.userid}' ORDER BY date ASC LIMIT 1
+
 -- 예시들
 SELECT id, address FROM user; -- id, 주소 컬럼 조회
 -- ASC: 오름차순 (기본값)
